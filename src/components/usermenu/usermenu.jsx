@@ -5,7 +5,7 @@ import authSelectors from 'redux/authSelector';
 
 const UserMenu = () => {
   const name = useSelector(authSelectors.getUsername);
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
@@ -14,8 +14,8 @@ const UserMenu = () => {
       <button
         type="button"
         onClick={() => {
-          dispath(authOperations.logOut());
-          navigate(-1);
+          dispatch(authOperations.logOut());
+          navigate('/');
         }}
       >
         Exit

@@ -10,6 +10,7 @@ import {
   PURGE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import { authReducer } from './authSlice';
 
 const authPersistConfig = {
