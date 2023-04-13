@@ -4,6 +4,7 @@ const AuthNav = () => {
   return (
     <div>
       <NavLink to="register">Registration</NavLink>
+      <NavLink to="verification">Verification</NavLink>
       <NavLink to="login">LogIn</NavLink>
     </div>
   );

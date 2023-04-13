@@ -5,6 +5,7 @@ import { PrivatRoute } from './PrivatRoute';
 import Register from './register/register';
 import Login from './login/login';
 import Cycles from './cycles/cycles';
+import Verifycation from './verifycation/verification';
 
 export const App = () => {
   return (
@@ -21,9 +22,18 @@ export const App = () => {
           }
         />
         <Route
-          path="/reg"
+          path="/register"
           element={
             <PublicRoute redirectTo="/cycles/month" component={<Register />} />
+          }
+        />
+        <Route
+          path="/verifycation"
+          element={
+            <PublicRoute
+              redirectTo="/cycles/month"
+              component={<Verifycation />}
+            />
           }
         />
         <Route

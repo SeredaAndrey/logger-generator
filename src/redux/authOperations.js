@@ -23,6 +23,18 @@ const register = createAsyncThunk('/auth/signup', async credential => {
   }
 });
 
+const verification = createAsyncThunk(
+  '/auth/verifycation',
+  async credential => {
+    try {
+      const { data } = await axios.get('api/auth/verify', credential);
+      return data;
+    } catch (error) {
+      return error.message;
+    }
+  }
+);
+
 const logIn = createAsyncThunk('auth/login', async credential => {
   try {
     const { data } = await axios.post('api/auth/login', credential);
@@ -56,5 +68,5 @@ const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   }
 });
 
-const authOperations = { register, logIn, logOut, refreshUser };
+const authOperations = { register, verification, logIn, logOut, refreshUser };
 export default authOperations;

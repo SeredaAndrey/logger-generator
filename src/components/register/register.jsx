@@ -5,18 +5,14 @@ import shortid from 'shortid';
 
 export default function Register() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const nameInputId = shortid.generate();
   const emailInputId = shortid.generate();
   const passwordInputId = shortid.generate();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
-        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -28,8 +24,7 @@ export default function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(operations.register({ name, email, password }));
-    setName('');
+    dispatch(operations.register({ email, password }));
     setEmail('');
     setPassword('');
   };
@@ -39,18 +34,8 @@ export default function Register() {
       <h2>Registration page</h2>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div>
-          <label htmlFor={nameInputId}>
-            Name
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={handleChange}
-              id={nameInputId}
-            />
-          </label>
           <label htmlFor={emailInputId}>
-            Name
+            E-mail
             <input
               type="email"
               name="email"
@@ -60,7 +45,7 @@ export default function Register() {
             />
           </label>
           <label htmlFor={passwordInputId}>
-            Name
+            Password
             <input
               type="password"
               name="password"
