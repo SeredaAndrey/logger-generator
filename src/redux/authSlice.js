@@ -21,18 +21,11 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
-    [authOperations.verification.fulfilled](state, action) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    },
-    [authOperations.verification.rejected](state, action) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    },
     [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.owner;
+      state.user = {
+        email: action.payload.owner.owner.email,
+        name: action.payload.owner.owner.firstName || null,
+      };
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },

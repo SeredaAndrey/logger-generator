@@ -9,7 +9,7 @@ export default function Verifycation() {
 
   const vTokenInputId = shortid.generate();
 
-  const handleChange = ({ value }) => {
+  const handleChange = ({ target: { value } }) => {
     return setVToken(value);
   };
 
@@ -21,14 +21,13 @@ export default function Verifycation() {
 
   return (
     <div>
-      <h2>verification page</h2>
+      <h2>Verification page</h2>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div>
           <label htmlFor={vTokenInputId}>
             Verificanion token
             <input
               type="text"
-              name="vToken"
               value={vToken}
               onChange={handleChange}
               id={vTokenInputId}

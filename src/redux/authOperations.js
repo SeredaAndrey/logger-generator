@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://loggingen.herokuapp.com';
+axios.defaults.baseURL = 'https://logger-generator-rest-api.onrender.com';
 
 const token = {
   set(token) {
@@ -16,6 +16,7 @@ const token = {
 const register = createAsyncThunk('/auth/signup', async credential => {
   try {
     const { data } = await axios.post('api/auth/reg', credential);
+    console.log(credential);
     token.unset();
     return data;
   } catch (error) {
@@ -26,8 +27,9 @@ const register = createAsyncThunk('/auth/signup', async credential => {
 const verification = createAsyncThunk(
   '/auth/verifycation',
   async credential => {
+    console.log(credential);
     try {
-      const { data } = await axios.get('api/auth/verify', credential);
+      const { data } = await axios.post('api/auth/verify', credential);
       return data;
     } catch (error) {
       return error.message;
@@ -38,7 +40,6 @@ const verification = createAsyncThunk(
 const logIn = createAsyncThunk('auth/login', async credential => {
   try {
     const { data } = await axios.post('api/auth/login', credential);
-    // console.log('data: ', data);
     token.set(data.token);
     return data;
   } catch (error) {

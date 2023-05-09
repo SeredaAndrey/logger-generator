@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import operations from '../../redux/authOperations';
 import shortid from 'shortid';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,6 +29,7 @@ export default function Register() {
     dispatch(operations.register({ email, password }));
     setEmail('');
     setPassword('');
+    navigate('/verifycation');
   };
 
   return (
