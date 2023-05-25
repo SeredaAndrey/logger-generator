@@ -1,16 +1,30 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import authOperations from 'redux/authOperations';
+
 import shortid from 'shortid';
 
+import { logIn } from 'redux/authOperations';
+
+import {
+  ButtonLogin,
+  ButtonNavigateLogin,
+  Input,
+  InputForm,
+  InputLabel,
+  LoginContainer,
+  LoginContainerTitle,
+  LoginTitle,
+} from './loginStyled';
+
 export default function Login() {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const emailInputId = shortid.generate();
   const passwordInputId = shortid.generate();
+  const navigation = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -25,40 +39,45 @@ export default function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispath(authOperations.logIn({ email, password }));
+    dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
     navigate('/cycles/month');
   };
 
   return (
-    <div>
-      <h2>Log In Page</h2>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <div>
-          <label htmlFor={emailInputId}>
-            E-mail
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              id={emailInputId}
-            />
-          </label>
-          <label htmlFor={passwordInputId}>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              id={passwordInputId}
-            />
-          </label>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <LoginContainer>
+      <LoginContainerTitle>PowerGen Tracker</LoginContainerTitle>
+      <LoginTitle>LOGIN</LoginTitle>
+      <InputForm onSubmit={handleSubmit} autoComplete="off">
+        <InputLabel htmlFor={emailInputId}>
+          <Input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            id={emailInputId}
+          />
+        </InputLabel>
+        <InputLabel htmlFor={passwordInputId}>
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            id={passwordInputId}
+          />
+        </InputLabel>
+        <ButtonLogin type="submit">LOGIN</ButtonLogin>
+      </InputForm>
+      <ButtonNavigateLogin
+        type="button"
+        onClick={() => {
+          navigation('/register');
+        }}
+      >
+        no account? register
+      </ButtonNavigateLogin>
+    </LoginContainer>
   );
 }

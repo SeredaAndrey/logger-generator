@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import operations from '../../redux/authOperations';
 import shortid from 'shortid';
+
+import { register } from '../../redux/authOperations';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
@@ -26,7 +27,7 @@ export default function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(operations.register({ email, password }));
+    dispatch(register({ email, password }));
     setEmail('');
     setPassword('');
     navigate('/verifycation');

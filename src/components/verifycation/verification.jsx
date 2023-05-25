@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import operations from '../../redux/authOperations';
+import { verification } from '../../redux/authOperations';
 import shortid from 'shortid';
 
 export default function Verifycation() {
@@ -15,7 +15,7 @@ export default function Verifycation() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(operations.verification({ vToken }));
+    dispatch(verification({ vToken }));
     setVToken('');
   };
 

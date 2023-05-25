@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import authOperations from 'redux/authOperations';
-import authSelectors from 'redux/authSelector';
+
+import { logOut } from 'redux/authOperations';
+import { getUsername } from 'redux/authSelector';
 
 const UserMenu = () => {
-  const name = useSelector(authSelectors.getUsername);
+  const name = useSelector(getUsername);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,7 +15,7 @@ const UserMenu = () => {
       <button
         type="button"
         onClick={() => {
-          dispatch(authOperations.logOut());
+          dispatch(logOut());
           navigate('/');
         }}
       >

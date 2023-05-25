@@ -13,7 +13,7 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('/auth/signup', async credential => {
+export const register = createAsyncThunk('/auth/signup', async credential => {
   try {
     const { data } = await axios.post('api/auth/reg', credential);
     console.log(credential);
@@ -24,7 +24,7 @@ const register = createAsyncThunk('/auth/signup', async credential => {
   }
 });
 
-const verification = createAsyncThunk(
+export const verification = createAsyncThunk(
   '/auth/verifycation',
   async credential => {
     console.log(credential);
@@ -37,7 +37,7 @@ const verification = createAsyncThunk(
   }
 );
 
-const logIn = createAsyncThunk('auth/login', async credential => {
+export const logIn = createAsyncThunk('auth/login', async credential => {
   try {
     const { data } = await axios.post('api/auth/login', credential);
     token.set(data.token);
@@ -47,7 +47,7 @@ const logIn = createAsyncThunk('auth/login', async credential => {
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.get('api/auth/logout');
     token.unset();
@@ -56,19 +56,19 @@ const logOut = createAsyncThunk('auth/logout', async () => {
   }
 });
 
-const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
-  const persistedToken = thunkAPI.getState().auth.token;
-  if (persistedToken === null) {
-    return thunkAPI.rejectWithValue();
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('api/owner');
+      return data;
+    } catch (error) {
+      return error.message;
+    }
   }
-  token.set(persistedToken);
-  try {
-    const { data } = await axios.get('api/owner');
-    return data;
-  } catch (error) {
-    return error.message;
-  }
-});
-
-const authOperations = { register, verification, logIn, logOut, refreshUser };
-export default authOperations;
+);
