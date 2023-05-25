@@ -52,6 +52,7 @@ export default function Login() {
       <InputForm onSubmit={handleSubmit} autoComplete="off">
         <InputLabel htmlFor={emailInputId}>
           <Input
+            placeholder="E-MAIL"
             type="email"
             name="email"
             value={email}
@@ -61,6 +62,7 @@ export default function Login() {
         </InputLabel>
         <InputLabel htmlFor={passwordInputId}>
           <Input
+            placeholder="PASSWORD"
             type="password"
             name="password"
             value={password}
