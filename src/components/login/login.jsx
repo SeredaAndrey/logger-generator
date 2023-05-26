@@ -1,30 +1,34 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import shortid from 'shortid';
+
+import { Grid } from 'react-loader-spinner';
 
 import { logIn } from 'redux/authOperations';
 
 import {
   ButtonLogin,
   ButtonNavigateLogin,
-  Input,
-  InputForm,
-  InputLabel,
+  LoginInput,
+  LoginInputForm,
+  LoginInputLabel,
   LoginContainer,
   LoginContainerTitle,
   LoginTitle,
 } from './loginStyled';
 
+import { getIsLoading } from 'redux/authSelector';
+
 export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
   const emailInputId = shortid.generate();
   const passwordInputId = shortid.generate();
   const navigation = useNavigate();
+  const isLoading = useSelector(getIsLoading);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -42,16 +46,16 @@ export default function Login() {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
-    navigate('/cycles/month');
+    navigation('/cycles/month');
   };
 
   return (
     <LoginContainer>
       <LoginContainerTitle>PowerGen Tracker</LoginContainerTitle>
       <LoginTitle>LOGIN</LoginTitle>
-      <InputForm onSubmit={handleSubmit} autoComplete="off">
-        <InputLabel htmlFor={emailInputId}>
-          <Input
+      <LoginInputForm onSubmit={handleSubmit} autoComplete="off">
+        <LoginInputLabel htmlFor={emailInputId}>
+          <LoginInput
             placeholder="E-MAIL"
             type="email"
             name="email"
@@ -59,9 +63,9 @@ export default function Login() {
             onChange={handleChange}
             id={emailInputId}
           />
-        </InputLabel>
-        <InputLabel htmlFor={passwordInputId}>
-          <Input
+        </LoginInputLabel>
+        <LoginInputLabel htmlFor={passwordInputId}>
+          <LoginInput
             placeholder="PASSWORD"
             type="password"
             name="password"
@@ -69,9 +73,24 @@ export default function Login() {
             onChange={handleChange}
             id={passwordInputId}
           />
-        </InputLabel>
-        <ButtonLogin type="submit">LOGIN</ButtonLogin>
-      </InputForm>
+        </LoginInputLabel>
+        <ButtonLogin type="submit">
+          {isLoading ? (
+            <Grid
+              height="35"
+              width="35"
+              color="#3761F5"
+              ariaLabel="grid-loading"
+              radius="20"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          ) : (
+            'LOGIN'
+          )}
+        </ButtonLogin>
+      </LoginInputForm>
       <ButtonNavigateLogin
         type="button"
         onClick={() => {

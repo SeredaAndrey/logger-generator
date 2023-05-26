@@ -13,10 +13,9 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk('/auth/signup', async credential => {
+export const register = createAsyncThunk('auth/signup', async credential => {
   try {
     const { data } = await axios.post('api/auth/reg', credential);
-    console.log(credential);
     token.unset();
     return data;
   } catch (error) {
@@ -25,9 +24,8 @@ export const register = createAsyncThunk('/auth/signup', async credential => {
 });
 
 export const verification = createAsyncThunk(
-  '/auth/verifycation',
+  'auth/verifycation',
   async credential => {
-    console.log(credential);
     try {
       const { data } = await axios.post('api/auth/verify', credential);
       return data;

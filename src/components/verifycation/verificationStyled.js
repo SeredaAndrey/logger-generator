@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import fonImage from '../../pictures/logo-generators.png';
 
-export const LoginContainer = styled.div`
+export const VerifiContainer = styled.div`
   position: relative;
 
   display: flex;
@@ -37,7 +37,7 @@ export const LoginContainer = styled.div`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 `;
 
-export const LoginContainerTitle = styled.h2`
+export const VerifiContainerTitle = styled.h2`
   margin-top: ${p => p.theme.space[5]};
   margin-bottom: ${p => p.theme.space[11]};
 
@@ -51,7 +51,7 @@ export const LoginContainerTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const LoginTitle = styled.h2`
+export const VerifiTitle = styled.h2`
   margin-top: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[3]};
 
@@ -65,7 +65,21 @@ export const LoginTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const LoginInputForm = styled.form`
+export const VerifiText = styled.p`
+  margin-left: ${p => p.theme.space[4]};
+  margin-right: ${p => p.theme.space[4]};
+
+  color: ${p => p.theme.colors.colorTextLight};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: ${p => p.theme.fontSizes.s};
+  text-align: center;
+`;
+
+export const VerifiInputForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +88,7 @@ export const LoginInputForm = styled.form`
   margin: ${p => p.theme.space[0]};
 `;
 
-export const LoginInputLabel = styled.label`
+export const VerifiInputLabel = styled.label`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[14]};
 
@@ -83,7 +97,7 @@ export const LoginInputLabel = styled.label`
   margin-bottom: ${p => p.theme.space[5]};
 `;
 
-export const LoginInput = styled.input`
+export const VerifiInput = styled.input`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[14]};
 
@@ -104,7 +118,8 @@ export const LoginInput = styled.input`
   font-size: ${p => p.theme.fontSizes.l};
   line-height: ${p => p.theme.fontSizes.xl};
 `;
-export const ButtonLogin = styled.button`
+
+export const ButtonVerifi = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,28 +151,5 @@ export const ButtonLogin = styled.button`
   &:hover,
   &:focus {
     background-color: ${p => p.theme.colors.colorButtonInHover};
-  }
-`;
-
-export const ButtonNavigateLogin = styled.button`
-  margin-top: ${p => p.theme.space[3]};
-
-  border: 0;
-  background: transparent;
-
-  cursor: pointer;
-
-  font-family: 'Jura';
-  font-style: normal;
-  font-weight: 500;
-  font-size: ${p => p.theme.fontSizes.m};
-  line-height: ${p => p.theme.fontSizes.l};
-  text-transform: uppercase;
-  transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
-  transition-property: color;
-
-  color: ${p => p.theme.colors.colorTextLight};
-  &:hover {
-    color: ${p => p.theme.colors.colorTextHover};
   }
 `;

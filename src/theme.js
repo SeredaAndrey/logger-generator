@@ -15,6 +15,7 @@ export const theme = {
 
     colorButtonActive: '#5CD3A8',
     colorButtonNoActive: '#B9B9B9',
+    colorButtonInHover: '#86A1FF',
 
     colorLine: '#EBD8FF',
   },

@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './authOperations';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  verification,
+} from './authOperations';
 
 const initialState = {
   name: null,
@@ -33,10 +39,32 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.isLoading = false;
       })
+      //Verification
+      .addCase(verification.fulfilled, (state, action) => {
+        state.email = action.payload.owner.owner.email;
+        state.name =
+          action.payload.owner.owner.firstName ||
+          action.payload.owner.owner.email;
+        state.token = action.payload.owner.token;
+        state.isLoggedIn = true;
+        state.isLoading = false;
+      })
+      .addCase(verification.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(verification.rejected, (state, action) => {
+        state.name = null;
+        state.email = null;
+        state.token = null;
+        state.isLoggedIn = false;
+        state.isLoading = false;
+      })
       //login
       .addCase(logIn.fulfilled, (state, action) => {
         state.email = action.payload.owner.owner.email;
-        state.name = action.payload.owner.owner.firstName || null;
+        state.name =
+          action.payload.owner.owner.firstName ||
+          action.payload.owner.owner.email;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -67,7 +95,9 @@ const authSlice = createSlice({
       })
       //refresh
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.name = action.payload.userData.firstName;
+        console.log('action: ', action);
+        state.name =
+          action.payload.userData.firstName || action.payload.userData.email;
         state.email = action.payload.userData.email;
         state.isLoggedIn = true;
         state.isRefreshing = false;

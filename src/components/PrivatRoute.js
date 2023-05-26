@@ -6,9 +6,7 @@ import { getIsLoggedIn, getIsRefreshing } from 'redux/authSelector';
 export const PrivatRoute = ({ component: Component, redirectTo = '/' }) => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const isRefreshing = useSelector(getIsRefreshing);
-  const shoulRedirect = !isLoggedIn && !isRefreshing;
-
-  console.log('shoulRedirect: ', shoulRedirect);
+  const shoulRedirect = isLoggedIn && isRefreshing;
 
   return !shoulRedirect ? <Navigate to={redirectTo} /> : Component;
 };

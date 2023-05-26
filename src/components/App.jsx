@@ -29,7 +29,7 @@ export const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        {isLoading || isRefreshing ? (
+        {/* {isLoading || isRefreshing ? (
           <>
             <Circles
               height="80"
@@ -42,43 +42,47 @@ export const App = () => {
             />
             <div>{isLoading}Loading...</div>
           </>
-        ) : (
-          <>
-            <AppBar />
-            <Routes>
+        ) : ( */}
+        <>
+          <AppBar />
+          <Routes>
+            <Route
+              path="/register"
+              element={<PublicRoute redirectTo="/" component={<Register />} />}
+            />
+            <Route
+              path="/verifycation"
+              element={
+                <PublicRoute redirectTo="/" component={<Verifycation />} />
+              }
+            />
+            <Route
+              path="/login"
+              element={<PublicRoute redirectTo="/" component={<Login />} />}
+            />
+            <Route path="/" element={<SharedLayout />}>
               <Route
-                path="/register"
+                path="/cycles"
                 element={
-                  <PublicRoute redirectTo="/" component={<Register />} />
+                  <PrivatRoute redirectTo="/login" component={<Cycles />} />
                 }
-              />
+              ></Route>
               <Route
-                path="/verifycation"
+                path="/"
                 element={
-                  <PublicRoute redirectTo="/" component={<Verifycation />} />
+                  <PrivatRoute redirectTo="/login" component={<Cycles />} />
                 }
-              />
+              ></Route>
               <Route
-                path="/login"
-                element={<PublicRoute redirectTo="/" component={<Login />} />}
-              />
-              <Route path="/" element={<SharedLayout />}>
-                <Route
-                  path="/cycles"
-                  element={
-                    <PrivatRoute redirectTo="/login" component={<Cycles />} />
-                  }
-                ></Route>
-                <Route
-                  path="/*"
-                  element={
-                    <PrivatRoute redirectTo="/login" component={<Cycles />} />
-                  }
-                ></Route>
-              </Route>
-            </Routes>
-          </>
-        )}
+                path="*"
+                element={
+                  <PrivatRoute redirectTo="/login" component={<Cycles />} />
+                }
+              ></Route>
+            </Route>
+          </Routes>
+        </>
+        {/* )} */}
       </ThemeProvider>
     </>
   );
