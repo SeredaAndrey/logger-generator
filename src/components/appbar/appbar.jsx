@@ -1,21 +1,66 @@
+import UserMenu from 'components/usermenu/usermenu';
 import { useSelector } from 'react-redux';
+
+import logo from '../../pictures/logo-generators.png';
 
 import { getIsLoggedIn } from 'redux/authSelector';
 
-import AuthNav from 'components/authnav/authnav';
-import UserMenu from 'components/usermenu/usermenu';
+import {
+  AuthNavButton,
+  HeaderLogoImage,
+  HeaderTitle,
+  HederAppBar,
+} from './appbarStyled';
+import { useNavigate } from 'react-router-dom';
 
 const AppBar = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
-    <header>
-      <h1>Logger generator</h1>
+    <HederAppBar>
+      <HeaderLogoImage
+        src={logo}
+        alt="logo"
+        height="80"
+        width="80"
+      ></HeaderLogoImage>
+      <HeaderTitle>Logger generator</HeaderTitle>
 
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      <h2>{isLoggedIn}</h2>
-    </header>
+    </HederAppBar>
   );
 };
 
 export default AppBar;
+
+const AuthNav = () => {
+  const navigation = useNavigate();
+  return (
+    <authNavButtonContainer>
+      <AuthNavButton
+        type="button"
+        onClick={() => {
+          navigation('/register');
+        }}
+      >
+        Registration
+      </AuthNavButton>
+      <AuthNavButton
+        type="button"
+        onClick={() => {
+          navigation('/verifycation');
+        }}
+      >
+        Verification
+      </AuthNavButton>
+      <AuthNavButton
+        type="button"
+        onClick={() => {
+          navigation('/login');
+        }}
+      >
+        LogIn
+      </AuthNavButton>
+    </authNavButtonContainer>
+  );
+};

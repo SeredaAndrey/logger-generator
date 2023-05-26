@@ -11,6 +11,7 @@ const initialState = {
   name: null,
   email: null,
   token: null,
+  avatar: null,
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
@@ -25,6 +26,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.name = null;
         state.email = null;
+        state.avatar = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -35,6 +37,7 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.name = null;
         state.email = null;
+        state.avatar = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -45,6 +48,7 @@ const authSlice = createSlice({
         state.name =
           action.payload.owner.owner.firstName ||
           action.payload.owner.owner.email;
+        state.avatar = action.payload.owner.owner.avatarUrl;
         state.token = action.payload.owner.token;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -55,6 +59,7 @@ const authSlice = createSlice({
       .addCase(verification.rejected, (state, action) => {
         state.name = null;
         state.email = null;
+        state.avatar = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -65,6 +70,7 @@ const authSlice = createSlice({
         state.name =
           action.payload.owner.owner.firstName ||
           action.payload.owner.owner.email;
+        state.avatar = action.payload.owner.owner.avatarUrl;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -75,6 +81,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, (state, action) => {
         state.name = null;
         state.email = null;
+        state.avatar = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -83,6 +90,7 @@ const authSlice = createSlice({
       .addCase(logOut.fulfilled, state => {
         state.name = null;
         state.email = null;
+        state.avatar = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -99,6 +107,7 @@ const authSlice = createSlice({
         state.name =
           action.payload.userData.firstName || action.payload.userData.email;
         state.email = action.payload.userData.email;
+        state.avatar = action.payload.userData.avatarUrl;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -111,6 +120,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.name = null;
         state.email = null;
+        state.avatar = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;

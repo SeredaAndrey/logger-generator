@@ -25,13 +25,6 @@ export const VerifiContainer = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 20%;
 
-  // background: linear-gradient(
-  //   134.58deg,
-  //   #8a8a8a 5.45%,
-  //   rgba(139, 139, 139, 0.69) 31.84%,
-  //   #14111a 81.21%
-  // );
-
   border-radius: ${p => p.theme.radii.big};
 
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);

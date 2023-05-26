@@ -46,7 +46,7 @@ export default function Login() {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
-    navigation('/cycles/month');
+    navigation('/');
   };
 
   return (

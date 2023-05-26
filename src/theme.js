@@ -4,6 +4,7 @@ export const theme = {
     bgColorBox: '#8B8B8B',
     bgColorForm: '#D9D9D9',
     bgColorFoto: '#5736A3',
+    dgColorPhoto: '#A5A5A5',
 
     bgColorGradient1: 'rgba(87, 54, 163, 1) 35%',
     bgColorGradient2: 'rgba(71, 28, 169, 1) 54.28%',
@@ -24,20 +25,21 @@ export const theme = {
     '2px',
     '4px',
     '8px',
-    '12px',
-    '32px',
+    '12px', //4
+    '32px', //5
     '50px',
     '62px',
     '80px',
-    '100px',
-    '128px',
+    '100px', //9
+    '128px', //10
     '168px',
-    '196px',
+    '196px', //12
     '256px',
-    '304px',
-    '380px',
+    '304px', //14
+    '380px', //15
     '486px',
     '775px',
+    '1140px', //18
   ],
 
   fontSizes: {

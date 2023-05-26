@@ -158,7 +158,8 @@ export const ButtonNavigateRegister = styled.button`
   transition-property: color;
 
   color: ${p => p.theme.colors.colorTextLight};
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${p => p.theme.colors.colorTextHover};
   }
 `;

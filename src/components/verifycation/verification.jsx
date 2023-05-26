@@ -32,7 +32,7 @@ export default function Verifycation() {
     e.preventDefault();
     dispatch(verification({ vToken }));
     setVToken('');
-    navigation('/cycles/month');
+    navigation('/');
   };
 
   return (
