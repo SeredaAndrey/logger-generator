@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { verification } from '../../redux/authOperations';
 import shortid from 'shortid';
 import {
+  BackVerifiContainer,
   ButtonVerifi,
   VerifiContainer,
   VerifiContainerTitle,
@@ -12,19 +13,18 @@ import {
   VerifiText,
   VerifiTitle,
 } from './verificationStyled';
-import { getIsLoading } from 'redux/authSelector';
-import { Grid } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 
 export default function Verifycation() {
   const dispatch = useDispatch();
   const [vToken, setVToken] = useState('');
-  const isLoading = useSelector(getIsLoading);
   const navigation = useNavigate();
+  const [isButtonDisable, setButtonDisable] = useState(true);
 
   const vTokenInputId = shortid.generate();
 
   const handleChange = ({ target: { value } }) => {
+    setButtonDisable(false);
     return setVToken(value);
   };
 
@@ -36,40 +36,30 @@ export default function Verifycation() {
   };
 
   return (
-    <VerifiContainer>
-      <VerifiContainerTitle>PowerGen Tracker</VerifiContainerTitle>
-      <VerifiTitle>VERIFICATION E-MAIL</VerifiTitle>
-      <VerifiText>
-        Please check your email, provided during registration, copy the key, and
-        paste it in the field below to confirm the authenticity of your email
-      </VerifiText>
-      <VerifiInputForm onSubmit={handleSubmit} autoComplete="off">
-        <VerifiInputLabel htmlFor={vTokenInputId}>
-          <VerifiInput
-            placeholder="Verificanion token"
-            type="text"
-            value={vToken}
-            onChange={handleChange}
-            id={vTokenInputId}
-          />
-        </VerifiInputLabel>
-        <ButtonVerifi type="submit">
-          {isLoading ? (
-            <Grid
-              height="35"
-              width="35"
-              color="#3761F5"
-              ariaLabel="grid-loading"
-              radius="20"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
+    <BackVerifiContainer>
+      <VerifiContainer>
+        <VerifiContainerTitle>PowerGen Tracker</VerifiContainerTitle>
+        <VerifiTitle>VERIFICATION E-MAIL</VerifiTitle>
+        <VerifiText>
+          Please check your email, provided during registration, copy the key,
+          and paste it in the field below to confirm the authenticity of your
+          email
+        </VerifiText>
+        <VerifiInputForm onSubmit={handleSubmit} autoComplete="off">
+          <VerifiInputLabel htmlFor={vTokenInputId}>
+            <VerifiInput
+              placeholder="Verificanion token"
+              type="text"
+              value={vToken}
+              onChange={handleChange}
+              id={vTokenInputId}
             />
-          ) : (
-            'VERIFICATION'
-          )}
-        </ButtonVerifi>
-      </VerifiInputForm>
-    </VerifiContainer>
+          </VerifiInputLabel>
+          <ButtonVerifi type="submit" disabled={isButtonDisable}>
+            VERIFICATION
+          </ButtonVerifi>
+        </VerifiInputForm>
+      </VerifiContainer>
+    </BackVerifiContainer>
   );
 }

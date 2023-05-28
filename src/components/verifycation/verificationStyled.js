@@ -2,17 +2,31 @@ import styled from '@emotion/styled';
 
 import fonImage from '../../pictures/logo-generators.png';
 
+export const BackVerifiContainer = styled.div`
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-color: ${p => p.theme.colors.bgColorSpinner};
+`;
+
 export const VerifiContainer = styled.div`
-  position: relative;
+  position: absolute;
 
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
 
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: ${p => p.theme.space[5]};
+  display: grid;
+  place-items: center;
 
   padding: ${p => p.theme.space[0]};
 
@@ -126,8 +140,14 @@ export const ButtonVerifi = styled.button`
   border-radius: ${p => p.theme.radii.normal};
   border: none;
 
-  background-color: ${p => p.theme.colors.colorButtonNoActive};
-  color: ${p => p.theme.colors.colorTextDark};
+  background-color: ${p =>
+    p.disabled
+      ? p.theme.colors.colorButtonIsDisabled
+      : p.theme.colors.colorButtonNoActive};
+  color: ${p =>
+    p.disabled
+      ? p.theme.colors.colorTextDisabled
+      : p.theme.colors.colorTextDark};
 
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
 
@@ -143,6 +163,10 @@ export const ButtonVerifi = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.colorButtonInHover};
+    background-color: ${p =>
+      p.disabled
+        ? p.theme.colors.colorButtonIsDisabled
+        : p.theme.colors.colorButtonInHover};
   }
+  cursor: pointer;
 `;

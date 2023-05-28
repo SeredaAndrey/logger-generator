@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
 
 import { register } from '../../redux/authOperations';
 import { useNavigate } from 'react-router-dom';
 import {
+  BackRegisterContainer,
   ButtonNavigateRegister,
   ButtonRegister,
   RegisterContainer,
@@ -14,15 +15,13 @@ import {
   RegistrationInputLabel,
   RegistrationTitle,
 } from './registerStyled';
-import { getIsLoading } from 'redux/authSelector';
-import { Grid } from 'react-loader-spinner';
 
 export default function Register() {
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isLoading = useSelector(getIsLoading);
+  const [isButtonDisable, setButtonDisable] = useState(true);
 
   const emailInputId = shortid.generate();
   const passwordInputId = shortid.generate();
@@ -30,8 +29,10 @@ export default function Register() {
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
+        setButtonDisable(false);
         return setEmail(value);
       case 'password':
+        setButtonDisable(false);
         return setPassword(value);
       default:
         return;
@@ -47,55 +48,44 @@ export default function Register() {
   };
 
   return (
-    <RegisterContainer>
-      <RegisterContainerTitle>PowerGen Tracker</RegisterContainerTitle>
-      <RegistrationTitle>REGISTRATION</RegistrationTitle>
-      <RegistrationInputForm onSubmit={handleSubmit} autoComplete="off">
-        <RegistrationInputLabel htmlFor={emailInputId}>
-          <RegistrationInput
-            placeholder="E-MAIL"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            id={emailInputId}
-          />
-        </RegistrationInputLabel>
-        <RegistrationInputLabel htmlFor={passwordInputId}>
-          <RegistrationInput
-            placeholder="PASSWORD"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            id={passwordInputId}
-          />
-        </RegistrationInputLabel>
-        <ButtonRegister type="submit">
-          {isLoading ? (
-            <Grid
-              height="35"
-              width="35"
-              color="#3761F5"
-              ariaLabel="grid-loading"
-              radius="20"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
+    <BackRegisterContainer>
+      <RegisterContainer>
+        <RegisterContainerTitle>PowerGen Tracker</RegisterContainerTitle>
+        <RegistrationTitle>REGISTRATION</RegistrationTitle>
+        <RegistrationInputForm onSubmit={handleSubmit} autoComplete="off">
+          <RegistrationInputLabel htmlFor={emailInputId}>
+            <RegistrationInput
+              placeholder="E-MAIL"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              id={emailInputId}
             />
-          ) : (
-            'REGISTRATION'
-          )}
-        </ButtonRegister>
-      </RegistrationInputForm>
-      <ButtonNavigateRegister
-        type="button"
-        onClick={() => {
-          navigation('/login');
-        }}
-      >
-        have an account? log in
-      </ButtonNavigateRegister>
-    </RegisterContainer>
+          </RegistrationInputLabel>
+          <RegistrationInputLabel htmlFor={passwordInputId}>
+            <RegistrationInput
+              placeholder="PASSWORD"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              id={passwordInputId}
+            />
+          </RegistrationInputLabel>
+          <ButtonRegister type="submit" disabled={isButtonDisable}>
+            REGISTRATION
+          </ButtonRegister>
+        </RegistrationInputForm>
+        <ButtonNavigateRegister
+          type="button"
+          onClick={() => {
+            navigation('/login');
+          }}
+        >
+          have an account? log in
+        </ButtonNavigateRegister>
+      </RegisterContainer>
+    </BackRegisterContainer>
   );
 }

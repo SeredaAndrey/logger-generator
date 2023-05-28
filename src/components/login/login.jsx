@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import shortid from 'shortid';
-
-import { Grid } from 'react-loader-spinner';
 
 import { logIn } from 'redux/authOperations';
 
@@ -17,9 +15,8 @@ import {
   LoginContainer,
   LoginContainerTitle,
   LoginTitle,
+  BackLoginContainer,
 } from './loginStyled';
-
-import { getIsLoading } from 'redux/authSelector';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -28,13 +25,15 @@ export default function Login() {
   const emailInputId = shortid.generate();
   const passwordInputId = shortid.generate();
   const navigation = useNavigate();
-  const isLoading = useSelector(getIsLoading);
+  const [isButtonDisable, setButtonDisable] = useState(true);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
+        setButtonDisable(false);
         return setEmail(value);
       case 'password':
+        setButtonDisable(false);
         return setPassword(value);
       default:
         return;
@@ -50,55 +49,44 @@ export default function Login() {
   };
 
   return (
-    <LoginContainer>
-      <LoginContainerTitle>PowerGen Tracker</LoginContainerTitle>
-      <LoginTitle>LOGIN</LoginTitle>
-      <LoginInputForm onSubmit={handleSubmit} autoComplete="off">
-        <LoginInputLabel htmlFor={emailInputId}>
-          <LoginInput
-            placeholder="E-MAIL"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            id={emailInputId}
-          />
-        </LoginInputLabel>
-        <LoginInputLabel htmlFor={passwordInputId}>
-          <LoginInput
-            placeholder="PASSWORD"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            id={passwordInputId}
-          />
-        </LoginInputLabel>
-        <ButtonLogin type="submit">
-          {isLoading ? (
-            <Grid
-              height="35"
-              width="35"
-              color="#3761F5"
-              ariaLabel="grid-loading"
-              radius="20"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
+    <BackLoginContainer>
+      <LoginContainer>
+        <LoginContainerTitle>PowerGen Tracker</LoginContainerTitle>
+        <LoginTitle>LOGIN</LoginTitle>
+        <LoginInputForm onSubmit={handleSubmit} autoComplete="off">
+          <LoginInputLabel htmlFor={emailInputId}>
+            <LoginInput
+              placeholder="E-MAIL"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              id={emailInputId}
             />
-          ) : (
-            'LOGIN'
-          )}
-        </ButtonLogin>
-      </LoginInputForm>
-      <ButtonNavigateLogin
-        type="button"
-        onClick={() => {
-          navigation('/register');
-        }}
-      >
-        no account? register
-      </ButtonNavigateLogin>
-    </LoginContainer>
+          </LoginInputLabel>
+          <LoginInputLabel htmlFor={passwordInputId}>
+            <LoginInput
+              placeholder="PASSWORD"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              id={passwordInputId}
+            />
+          </LoginInputLabel>
+          <ButtonLogin type="submit" disabled={isButtonDisable}>
+            LOGIN
+          </ButtonLogin>
+        </LoginInputForm>
+        <ButtonNavigateLogin
+          type="button"
+          onClick={() => {
+            navigation('/register');
+          }}
+        >
+          no account? register
+        </ButtonNavigateLogin>
+      </LoginContainer>
+    </BackLoginContainer>
   );
 }

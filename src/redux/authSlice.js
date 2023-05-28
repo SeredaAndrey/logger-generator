@@ -103,7 +103,6 @@ const authSlice = createSlice({
       })
       //refresh
       .addCase(refreshUser.fulfilled, (state, action) => {
-        console.log('action: ', action);
         state.name =
           action.payload.userData.firstName || action.payload.userData.email;
         state.email = action.payload.userData.email;
