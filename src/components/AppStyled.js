@@ -21,3 +21,10 @@ export const PrimaryScreenContainer = styled.div`
 
   width: ${p => p.theme.space[18]};
 `;
+
+export const PrimaryHomeContainer = styled.div`
+  display: flex;
+
+  margin: ${p => p.theme.space[0]};
+  padding: ${p => p.theme.space[0]};
+`;

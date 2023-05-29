@@ -1,7 +1,7 @@
 export default function UserSettingPage() {
   return (
-    <div>
-      <p>User Setting</p>
-    </div>
+    <>
+      <h2>User Setting</h2>
+    </>
   );
 }

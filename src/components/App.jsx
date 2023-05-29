@@ -11,6 +11,10 @@ import { PrivatRoute } from './PrivatRoute';
 import { RotatingLines } from 'react-loader-spinner';
 import { PrimaryScreenContainer, SpinnerContainer } from './AppStyled';
 
+import { refreshUser } from 'redux/authOperations';
+import { theme } from 'theme';
+import { getIsLoading } from 'redux/authSelector';
+
 import AppBar from './appbar/appbar';
 import Register from './register/register';
 import Verifycation from './verifycation/verification';
@@ -18,13 +22,7 @@ import Login from './login/login';
 import HomePage from './homePage/homePage';
 import AsideMenu from './asideMenu/asideMenu';
 import FuterPage from './futerPage/futerPage';
-
-import { refreshUser } from 'redux/authOperations';
-import { theme } from 'theme';
-import { getIsLoading } from 'redux/authSelector';
-import UserSettingPage from './userSetting/userSetting';
-
-// const Register = lazy(() => import('./register/register'));
+import SettingsPage from './settings/settingsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -60,50 +58,35 @@ export const App = () => {
             />
           </SpinnerContainer>
         )}
-
+        <AppBar />
         <PrimaryScreenContainer>
-          <AppBar />
-          <AsideMenu />
           <Routes>
-            <Route
-              path="/register"
-              element={
-                <PublicRoute redirectTo="/home" component={<Register />} />
-              }
-            />
-            <Route
-              path="/verifycation"
-              element={
-                <PublicRoute redirectTo="/home" component={<Verifycation />} />
-              }
-            />
-            <Route
-              path="/login"
-              element={<PublicRoute redirectTo="/home" component={<Login />} />}
-            />
-            <Route path="/" element={<HomePage />}>
+            <Route path="/" component={<HomePage />}>
+              <Route
+                path="/register"
+                element={
+                  <PublicRoute redirectTo="/" component={<Register />} />
+                }
+              />
+              <Route
+                path="/verifycation"
+                element={
+                  <PublicRoute redirectTo="/" component={<Verifycation />} />
+                }
+              />
+              <Route
+                path="/login"
+                element={<PublicRoute redirectTo="/" component={<Login />} />}
+              />
+              <Route path="*" element={<HomePage />} />
               <Route
                 index
-                path="/home"
-                element={
-                  <PrivatRoute redirectTo="/login" component={<HomePage />} />
-                }
-              >
-                {/* <Route path="/usersetting" element={<UserSettingPage />} />
-                <Route path="/gensetting" element={<UserSettingPage />} /> */}
-              </Route>
-              <Route
                 path="/"
                 element={
-                  <PrivatRoute redirectTo="/login" component={<HomePage />} />
+                  <PrivatRoute redirectTo="/login" component={<AsideMenu />} />
                 }
               ></Route>
-              <Route
-                path="*"
-                element={
-                  <PrivatRoute redirectTo="/login" component={<HomePage />} />
-                }
-              ></Route>
+              <Route path="/settings" element={<SettingsPage />}></Route>
             </Route>
           </Routes>
           <FuterPage />

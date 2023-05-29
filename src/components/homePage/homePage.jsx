@@ -1,13 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
+
+import { PrimaryHomeContainer } from 'components/AppStyled';
 
 export default function HomePage() {
   return (
-    <>
-      <Suspense fallback={null}>
-        <h2>Home</h2>
-        <Outlet />
-      </Suspense>
-    </>
+    <PrimaryHomeContainer>
+      <Outlet />
+    </PrimaryHomeContainer>
   );
 }

@@ -1,14 +1,12 @@
 import styled from '@emotion/styled';
 
 export const AsideMenuContainer = styled.aside`
-  width: ${p => p.theme.space[13]};
+  display: flex;
+
+  width: 100%;
   min-height: calc(
     100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[10]}
   );
-
-  padding-top: ${p => p.theme.space[4]};
-
-  background-color: ${p => p.theme.colors.bgColorAside};
 `;
 
 export const AsideTitle = styled.p`
@@ -28,12 +26,19 @@ export const AsideTitle = styled.p`
 export const AsidePrimaryListContainer = styled.ul`
   list-style-type: none;
 
+  width: ${p => p.theme.space[13]};
+
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[4]};
+  margin-left: ${p => p.theme.space[0]};
 
-  padding: ${p => p.theme.space[0]};
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[4]};
+
+  background-color: ${p => p.theme.colors.bgColorAside};
 `;
 
 export const AsidePrimaryListItem = styled.li`
