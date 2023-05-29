@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import {
-  AsideLink,
   AsideMenuContainer,
   AsidePrimaryListContainer,
   AsidePrimaryListItem,
@@ -21,13 +21,13 @@ export default function AsideMenu() {
             <AsideTitle>Setting</AsideTitle>
             <AsideSeccondaryListContainer>
               <AsideSeccondaryListItem>
-                <AsideLink>User setting</AsideLink>
+                <NavLink to="/usersetting">User setting</NavLink>
               </AsideSeccondaryListItem>
               <AsideSeccondaryListItem>
-                <AsideLink>Generator Setting</AsideLink>
+                <NavLink to="/gensetting">Generator Setting</NavLink>
               </AsideSeccondaryListItem>
               <AsideSeccondaryListItem>
-                <AsideLink>Global Setting</AsideLink>
+                <NavLink to="">Global Setting</NavLink>
               </AsideSeccondaryListItem>
             </AsideSeccondaryListContainer>
           </AsidePrimaryListItem>
@@ -35,13 +35,13 @@ export default function AsideMenu() {
             <AsideTitle>Cycles</AsideTitle>
             <AsideSeccondaryListContainer>
               <AsideSeccondaryListItem>
-                <AsideLink>Add cycle unit</AsideLink>
+                <NavLink to="">Add cycle unit</NavLink>
               </AsideSeccondaryListItem>
               <AsideSeccondaryListItem>
-                <AsideLink>show last month report</AsideLink>
+                <NavLink to="">show last month report</NavLink>
               </AsideSeccondaryListItem>
               <AsideSeccondaryListItem>
-                <AsideLink>show months report</AsideLink>
+                <NavLink to="">show months report</NavLink>
               </AsideSeccondaryListItem>
             </AsideSeccondaryListContainer>
           </AsidePrimaryListItem>

@@ -25,28 +25,6 @@ export const AsideTitle = styled.p`
   text-transform: uppercase;
 `;
 
-export const AsideLink = styled.a`
-  margin: ${p => p.theme.space[0]};
-
-  font-family: 'Jura';
-  font-style: normal;
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.m};
-  line-height: ${p => p.theme.fontSizes.l};
-  text-transform: uppercase;
-
-  cursor: pointer;
-
-  transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
-  transition-property: color, font-weight;
-
-  &:hover,
-  &:focus {
-    color: ${p => p.theme.colors.colorTextHover};
-    font-weight: ${p => p.theme.fontWeights.bold};
-  }
-`;
-
 export const AsidePrimaryListContainer = styled.ul`
   list-style-type: none;
 
@@ -82,6 +60,21 @@ export const AsideSeccondaryListContainer = styled.ul`
   margin-left: ${p => p.theme.space[4]};
 
   padding: ${p => p.theme.space[0]};
+
+  // > a {
+  //   list-style-type: none;
+
+  //   margin-top: ${p => p.theme.space[0]};
+  //   margin-right: ${p => p.theme.space[0]};
+  //   margin-bottom: ${p => p.theme.space[0]};
+  //   margin-left: ${p => p.theme.space[0]};
+
+  //   &:not(:last-child) {
+  //     margin-bottom: ${p => p.theme.space[4]};
+  //   }
+
+  //   padding: ${p => p.theme.space[0]};
+  // }
 `;
 
 export const AsideSeccondaryListItem = styled.li`
@@ -97,4 +90,30 @@ export const AsideSeccondaryListItem = styled.li`
   }
 
   padding: ${p => p.theme.space[0]};
+
+  > a {
+    margin: ${p => p.theme.space[0]};
+
+    font-family: 'Jura';
+    font-style: normal;
+    font-weight: ${p => p.theme.fontWeights.medium};
+    font-size: ${p => p.theme.fontSizes.m};
+    line-height: ${p => p.theme.fontSizes.l};
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color, font-weight;
+
+    &:hover,
+    &:focus {
+      color: ${p => p.theme.colors.colorTextHover};
+      font-weight: ${p => p.theme.fontWeights.bold};
+    }
+    .active {
+      color: ${p => p.theme.colors.colorTextHover};
+      font-weight: ${p => p.theme.fontWeights.bold};
+    }
+  }
 `;

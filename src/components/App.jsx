@@ -15,7 +15,6 @@ import AppBar from './appbar/appbar';
 import Register from './register/register';
 import Verifycation from './verifycation/verification';
 import Login from './login/login';
-import SharedLayout from './Shared/shared';
 import HomePage from './homePage/homePage';
 import AsideMenu from './asideMenu/asideMenu';
 import FuterPage from './futerPage/futerPage';
@@ -23,6 +22,7 @@ import FuterPage from './futerPage/futerPage';
 import { refreshUser } from 'redux/authOperations';
 import { theme } from 'theme';
 import { getIsLoading } from 'redux/authSelector';
+import UserSettingPage from './userSetting/userSetting';
 
 // const Register = lazy(() => import('./register/register'));
 
@@ -81,7 +81,7 @@ export const App = () => {
               path="/login"
               element={<PublicRoute redirectTo="/home" component={<Login />} />}
             />
-            <Route path="/" element={<SharedLayout />}>
+            <Route path="/" element={<HomePage />}>
               <Route
                 index
                 path="/home"
@@ -89,10 +89,8 @@ export const App = () => {
                   <PrivatRoute redirectTo="/login" component={<HomePage />} />
                 }
               >
-                {/* <Route
-                  path="/usersetting"
-                  // element={<div>user setting</div>}
-                ></Route> */}
+                {/* <Route path="/usersetting" element={<UserSettingPage />} />
+                <Route path="/gensetting" element={<UserSettingPage />} /> */}
               </Route>
               <Route
                 path="/"
