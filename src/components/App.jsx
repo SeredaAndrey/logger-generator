@@ -16,13 +16,20 @@ import { theme } from 'theme';
 import { getIsLoading } from 'redux/authSelector';
 
 import AppBar from './appbar/appbar';
-import Register from './register/register';
-import Verifycation from './verifycation/verification';
-import Login from './login/login';
+import Register from './authComponents/register/register';
+import Verifycation from './authComponents/verifycation/verification';
+import Login from './authComponents/login/login';
 import HomePage from './homePage/homePage';
 import AsideMenu from './asideMenu/asideMenu';
 import FuterPage from './futerPage/futerPage';
 import SettingsPage from './settings/settingsPage';
+import UserSettingPage from './settings/userSetting/userSetting';
+import GenSettingPage from './settings/genSetting/genSetting';
+import GlobalSettingPage from './settings/globalSetting/globalSetting';
+import AddCyclesPage from './cycles/addCycles/addCycles';
+import CyclesPage from './cycles/cycles';
+import MonthsReportPage from './cycles/monthsreport/monthsreport';
+import LastMonthReportPage from './cycles/lastmonthreport/lastmonthreport';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -86,7 +93,28 @@ export const App = () => {
                   <PrivatRoute redirectTo="/login" component={<AsideMenu />} />
                 }
               ></Route>
-              <Route path="/settings" element={<SettingsPage />}></Route>
+              <Route path="/settings" element={<SettingsPage />}>
+                <Route path="/settings/user" element={<UserSettingPage />} />
+                <Route
+                  path="/settings/generator"
+                  element={<GenSettingPage />}
+                />
+                <Route
+                  path="/settings/global"
+                  element={<GlobalSettingPage />}
+                />
+              </Route>
+              <Route path="/cycles" element={<CyclesPage />}>
+                <Route path="/cycles/add" element={<AddCyclesPage />} />
+                <Route
+                  path="/cycles/lastmonthreport"
+                  element={<LastMonthReportPage />}
+                />
+                <Route
+                  path="/cycles/monthsreport"
+                  element={<MonthsReportPage />}
+                />
+              </Route>
             </Route>
           </Routes>
           <FuterPage />

@@ -4,5 +4,6 @@ export const getIsLoading = state => state.auth.isLoading;
 
 export const getUsername = state => state.auth.name;
 export const getUserAvatar = state => state.auth.avatar;
+export const getUserToken = state => state.auth.token;
 
 export const getIsRefreshing = state => state.auth.isRefreshing;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { verification } from '../../redux/authOperations';
+import { verification } from '../../../redux/authOperations';
 import shortid from 'shortid';
 import {
   BackVerifiContainer,

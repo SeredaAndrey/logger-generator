@@ -11,7 +11,7 @@ import {
 } from './asideMenuStyled';
 import { getIsLoggedIn } from 'redux/authSelector';
 
-export default function AsideMenu() {
+const AsideMenu = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
@@ -20,32 +20,38 @@ export default function AsideMenu() {
         <AsideMenuContainer>
           <AsidePrimaryListContainer>
             <AsidePrimaryListItem>
-              <AsideTitle>Setting</AsideTitle>
+              <AsideTitle>
+                <NavLink to="/settings">Setting</NavLink>
+              </AsideTitle>
               <AsideSeccondaryListContainer>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/settings/usersetting">User setting</NavLink>
+                  <NavLink to="/settings/user">User setting</NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/settings/gensetting">Generator Setting</NavLink>
+                  <NavLink to="/settings/generator">Generator Setting</NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/settings/globalsetting">Global Setting</NavLink>
+                  <NavLink to="/settings/global">Global Setting</NavLink>
                 </AsideSeccondaryListItem>
               </AsideSeccondaryListContainer>
             </AsidePrimaryListItem>
             <AsidePrimaryListItem>
-              <AsideTitle>Cycles</AsideTitle>
+              <AsideTitle>
+                <NavLink to="cycles">Cycles</NavLink>
+              </AsideTitle>
               <AsideSeccondaryListContainer>
                 <AsideSeccondaryListItem>
-                  <NavLink to="">Add cycle unit</NavLink>
+                  <NavLink to="/cycles/add">Add cycle unit</NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/reports/monthreport">
+                  <NavLink to="/cycles/lastmonthreport">
                     show last month report
                   </NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="">show months report</NavLink>
+                  <NavLink to="/cycles/monthsreport">
+                    show months report
+                  </NavLink>
                 </AsideSeccondaryListItem>
               </AsideSeccondaryListContainer>
             </AsidePrimaryListItem>
@@ -55,4 +61,6 @@ export default function AsideMenu() {
       )}
     </>
   );
-}
+};
+
+export default AsideMenu;

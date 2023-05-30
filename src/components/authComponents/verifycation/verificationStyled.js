@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-import fonImage from '../../pictures/logo-generators.png';
+import fonImage from '../../../pictures/logo-generators.png';
 
-export const BackRegisterContainer = styled.div`
+export const BackVerifiContainer = styled.div`
   position: absolute;
   z-index: 5;
   display: grid;
@@ -17,7 +17,7 @@ export const BackRegisterContainer = styled.div`
   background-color: ${p => p.theme.colors.bgColorSpinner};
 `;
 
-export const RegisterContainer = styled.div`
+export const VerifiContainer = styled.div`
   position: absolute;
 
   display: flex;
@@ -44,7 +44,7 @@ export const RegisterContainer = styled.div`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 `;
 
-export const RegisterContainerTitle = styled.h2`
+export const VerifiContainerTitle = styled.h2`
   margin-top: ${p => p.theme.space[5]};
   margin-bottom: ${p => p.theme.space[11]};
 
@@ -58,7 +58,7 @@ export const RegisterContainerTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const RegistrationTitle = styled.h2`
+export const VerifiTitle = styled.h2`
   margin-top: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[3]};
 
@@ -72,7 +72,21 @@ export const RegistrationTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const RegistrationInputForm = styled.form`
+export const VerifiText = styled.p`
+  margin-left: ${p => p.theme.space[4]};
+  margin-right: ${p => p.theme.space[4]};
+
+  color: ${p => p.theme.colors.colorTextLight};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: ${p => p.theme.fontSizes.s};
+  text-align: center;
+`;
+
+export const VerifiInputForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +95,7 @@ export const RegistrationInputForm = styled.form`
   margin: ${p => p.theme.space[0]};
 `;
 
-export const RegistrationInputLabel = styled.label`
+export const VerifiInputLabel = styled.label`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[14]};
 
@@ -90,7 +104,7 @@ export const RegistrationInputLabel = styled.label`
   margin-bottom: ${p => p.theme.space[5]};
 `;
 
-export const RegistrationInput = styled.input`
+export const VerifiInput = styled.input`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[14]};
 
@@ -112,7 +126,7 @@ export const RegistrationInput = styled.input`
   line-height: ${p => p.theme.fontSizes.xl};
 `;
 
-export const ButtonRegister = styled.button`
+export const ButtonVerifi = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,28 +169,4 @@ export const ButtonRegister = styled.button`
         : p.theme.colors.colorButtonInHover};
   }
   cursor: pointer;
-`;
-
-export const ButtonNavigateRegister = styled.button`
-  margin-top: ${p => p.theme.space[3]};
-
-  border: 0;
-  background: transparent;
-
-  cursor: pointer;
-
-  font-family: 'Jura';
-  font-style: normal;
-  font-weight: 500;
-  font-size: ${p => p.theme.fontSizes.m};
-  line-height: ${p => p.theme.fontSizes.l};
-  text-transform: uppercase;
-  transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
-  transition-property: color;
-
-  color: ${p => p.theme.colors.colorTextLight};
-  &:hover,
-  &:focus {
-    color: ${p => p.theme.colors.colorTextHover};
-  }
 `;

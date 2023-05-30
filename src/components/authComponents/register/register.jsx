@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
 
-import { register } from '../../redux/authOperations';
+import { register } from '../../../redux/authOperations';
 import { useNavigate } from 'react-router-dom';
 import {
   BackRegisterContainer,

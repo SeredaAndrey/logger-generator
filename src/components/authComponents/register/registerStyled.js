@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-import fonImage from '../../pictures/logo-generators.png';
+import fonImage from '../../../pictures/logo-generators.png';
 
-export const BackLoginContainer = styled.div`
+export const BackRegisterContainer = styled.div`
   position: absolute;
   z-index: 5;
   display: grid;
@@ -17,7 +17,7 @@ export const BackLoginContainer = styled.div`
   background-color: ${p => p.theme.colors.bgColorSpinner};
 `;
 
-export const LoginContainer = styled.div`
+export const RegisterContainer = styled.div`
   position: absolute;
 
   display: flex;
@@ -44,7 +44,7 @@ export const LoginContainer = styled.div`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 `;
 
-export const LoginContainerTitle = styled.h2`
+export const RegisterContainerTitle = styled.h2`
   margin-top: ${p => p.theme.space[5]};
   margin-bottom: ${p => p.theme.space[11]};
 
@@ -58,7 +58,7 @@ export const LoginContainerTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const LoginTitle = styled.h2`
+export const RegistrationTitle = styled.h2`
   margin-top: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[3]};
 
@@ -72,7 +72,7 @@ export const LoginTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const LoginInputForm = styled.form`
+export const RegistrationInputForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,7 @@ export const LoginInputForm = styled.form`
   margin: ${p => p.theme.space[0]};
 `;
 
-export const LoginInputLabel = styled.label`
+export const RegistrationInputLabel = styled.label`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[14]};
 
@@ -90,7 +90,7 @@ export const LoginInputLabel = styled.label`
   margin-bottom: ${p => p.theme.space[5]};
 `;
 
-export const LoginInput = styled.input`
+export const RegistrationInput = styled.input`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[14]};
 
@@ -111,7 +111,8 @@ export const LoginInput = styled.input`
   font-size: ${p => p.theme.fontSizes.l};
   line-height: ${p => p.theme.fontSizes.xl};
 `;
-export const ButtonLogin = styled.button`
+
+export const ButtonRegister = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +157,7 @@ export const ButtonLogin = styled.button`
   cursor: pointer;
 `;
 
-export const ButtonNavigateLogin = styled.button`
+export const ButtonNavigateRegister = styled.button`
   margin-top: ${p => p.theme.space[3]};
 
   border: 0;
