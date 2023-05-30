@@ -22,8 +22,16 @@ const UserSettingPage = () => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    setUserData(fetchUserData(token));
-  }, [token]);
+    async function fetchData() {
+      try {
+        const { userData } = await fetchUserData(token);
+        setUserData(userData);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchData();
+  }, []);
 
   console.log(userData);
 

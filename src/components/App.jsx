@@ -94,7 +94,11 @@ export const App = () => {
                 }
               ></Route>
               <Route path="/settings" element={<SettingsPage />}>
-                <Route path="/settings/user" element={<UserSettingPage />} />
+                <Route
+                  index
+                  path="/settings/user"
+                  element={<UserSettingPage />}
+                />
                 <Route
                   path="/settings/generator"
                   element={<GenSettingPage />}

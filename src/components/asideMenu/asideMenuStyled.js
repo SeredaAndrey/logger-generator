@@ -65,21 +65,6 @@ export const AsideSeccondaryListContainer = styled.ul`
   margin-left: ${p => p.theme.space[4]};
 
   padding: ${p => p.theme.space[0]};
-
-  // > a {
-  //   list-style-type: none;
-
-  //   margin-top: ${p => p.theme.space[0]};
-  //   margin-right: ${p => p.theme.space[0]};
-  //   margin-bottom: ${p => p.theme.space[0]};
-  //   margin-left: ${p => p.theme.space[0]};
-
-  //   &:not(:last-child) {
-  //     margin-bottom: ${p => p.theme.space[4]};
-  //   }
-
-  //   padding: ${p => p.theme.space[0]};
-  // }
 `;
 
 export const AsideSeccondaryListItem = styled.li`
