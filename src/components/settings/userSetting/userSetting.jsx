@@ -6,6 +6,15 @@ import shortid from 'shortid';
 import { getUserToken } from 'redux/authSelector';
 import { fetchUserData } from 'serviceAPI/APIservice';
 import { updateUserData } from 'redux/userOperations';
+import {
+  UserSettingAvatar,
+  UserSettingButton,
+  UserSettingContainer,
+  UserSettingFormDataForm,
+  UserSettingFormDataInput,
+  UserSettingFormDataLabel,
+  UserSettingFormDataSpan,
+} from './userSettingStyled';
 
 const UserSettingPage = () => {
   const token = useSelector(getUserToken);
@@ -58,44 +67,47 @@ const UserSettingPage = () => {
   };
 
   return (
-    <>
-      <img src={avatarUrl} alt={firstName}></img>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor={firstNameInputId}>
-            <input
-              placeholder={firstName}
-              type="firstName"
-              name="firstName"
-              value={firstName}
-              onChange={handleChange}
-              id={firstNameInputId}
-            />
-          </label>
-          <label htmlFor={secondNameInputId}>
-            <input
-              placeholder={secondName}
-              type="secondName"
-              name="secondName"
-              value={secondName}
-              onChange={handleChange}
-              id={secondNameInputId}
-            />
-          </label>
-          <label htmlFor={emailInputId}>
-            <input
-              placeholder={email}
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              id={emailInputId}
-            />
-          </label>
-          <button type="submit">submit</button>
-        </form>
-      </div>
-    </>
+    <UserSettingContainer>
+      <UserSettingAvatar src={avatarUrl} alt={firstName}></UserSettingAvatar>
+
+      <UserSettingFormDataForm onSubmit={handleSubmit}>
+        <UserSettingFormDataLabel htmlFor={firstNameInputId}>
+          <UserSettingFormDataInput
+            placeholder={firstName}
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={handleChange}
+            id={firstNameInputId}
+          />
+        </UserSettingFormDataLabel>
+        <UserSettingFormDataLabel htmlFor={secondNameInputId}>
+          <UserSettingFormDataInput
+            placeholder={secondName}
+            type="secondName"
+            name="secondName"
+            value={secondName}
+            onChange={handleChange}
+            id={secondNameInputId}
+          />
+        </UserSettingFormDataLabel>
+        <UserSettingFormDataLabel htmlFor={emailInputId}>
+          <UserSettingFormDataInput
+            placeholder={email}
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            id={emailInputId}
+          />
+          <UserSettingFormDataSpan>
+            if you change the email, the next login to the application using the
+            specified email address
+          </UserSettingFormDataSpan>
+        </UserSettingFormDataLabel>
+        <UserSettingButton type="submit">submit</UserSettingButton>
+      </UserSettingFormDataForm>
+    </UserSettingContainer>
   );
 };
 export default UserSettingPage;

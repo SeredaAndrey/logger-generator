@@ -6,6 +6,7 @@ import {
   refreshUser,
   verification,
 } from './authOperations';
+import { updateUserData } from './userOperations';
 
 const initialState = {
   name: null,
@@ -123,6 +124,18 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        console.log(action);
+        state.name = action.payload.data.firstName;
+        state.email = action.payload.data.email;
+        state.isLoading = false;
+      })
+      .addCase(updateUserData.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUserData.rejected, (state, action) => {
         state.isLoading = false;
       });
   },
