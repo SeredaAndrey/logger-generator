@@ -31,6 +31,7 @@ export const UserSettingAvatar = styled.img`
 
 export const UserSettingFormDataForm = styled.form`
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   margin-top: ${p => p.theme.space[0]};

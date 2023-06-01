@@ -73,7 +73,9 @@ const UserSettingPage = () => {
       <UserSettingFormDataForm onSubmit={handleSubmit}>
         <UserSettingFormDataLabel htmlFor={firstNameInputId}>
           <UserSettingFormDataInput
-            placeholder={firstName}
+            placeholder={firstName ? firstName : 'input first name'}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="First name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob, Charles"
             type="firstName"
             name="firstName"
             value={firstName}
@@ -83,7 +85,9 @@ const UserSettingPage = () => {
         </UserSettingFormDataLabel>
         <UserSettingFormDataLabel htmlFor={secondNameInputId}>
           <UserSettingFormDataInput
-            placeholder={secondName}
+            placeholder={secondName ? secondName : 'input second name'}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="First name may contain only letters, apostrophe, dash and spaces. For example Mercer, de Castelmore d'Artagnan"
             type="secondName"
             name="secondName"
             value={secondName}
