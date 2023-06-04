@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const GeneratorSettingFormDataForm = styled.form`
   display: flex;
@@ -26,7 +28,7 @@ export const GeneratorSettingFormDataLabel = styled.label`
 
 export const GeneratorSettingFormDataInput = styled.input`
   height: ${p => p.theme.space[5]};
-  width: ${p => p.theme.space[14]};
+  width: ${p => p.theme.space[16]};
 
   padding: ${p => p.theme.space[0]};
   margin: ${p => p.theme.space[0]};
@@ -110,31 +112,29 @@ export const DatePickerContainer = styled.div`
   height: ${p => p.theme.space[5]};
 
   margin-bottom: ${p => p.theme.space[4]};
+`;
 
-  //   > div {
-  //   width: ${p => p.theme.space[14]};
-  //   height: ${p => p.theme.space[5]};
+export const DateInputPickerContainer = styled.div`
+  width: ${p => p.theme.space[16]};
+`;
+export const CustomDatePicker = styled(DatePicker)`
+  height: ${p => p.theme.space[5]};
+  width: ${p => p.theme.space[16]};
 
-  // > input {
-  //   height: ${p => p.theme.space[5]};
-  //   width: ${p => p.theme.space[14]};
+  padding: ${p => p.theme.space[0]};
+  margin: ${p => p.theme.space[0]};
 
-  //   padding: ${p => p.theme.space[0]};
-  //   margin: ${p => p.theme.space[0]};
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.normal};
 
-  //   border: ${p => p.theme.borders.none};
-  //   border-radius: ${p => p.theme.radii.normal};
+  text-align: center;
 
-  //   text-align: center;
+  color: ${p => p.theme.colors.colorTextDark};
+  background-color: ${p => p.theme.colors.bgColorForm};
 
-  //   color: ${p => p.theme.colors.colorTextDark};
-  //   background-color: ${p => p.theme.colors.bgColorForm};
-
-  //   font-family: 'Jura';
-  //   font-style: normal;
-  //   font-weight: ${p => p.theme.fontWeights.medium};
-  //   font-size: ${p => p.theme.fontSizes.l};
-  //   line-height: ${p => p.theme.fontSizes.xl};
-  // }
-  //   }
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: ${p => p.theme.fontSizes.xl};
 `;

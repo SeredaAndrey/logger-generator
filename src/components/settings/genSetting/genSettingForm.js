@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -11,25 +10,20 @@ import {
   GeneratorSettingFormDataInput,
   GeneratorSettingFormDataLabel,
   GeneratorSettingFormDataSpan,
+  CustomDatePicker,
+  DateInputPickerContainer,
 } from './genSettingFormStyled';
+import { createNewSettingGenerator } from 'serviceAPI/APIservice';
 
 const GeneratorSettingsForm = () => {
-  const [brand, setBrand] = useState('');
-  const [type, setType] = useState('');
-  const [firstChangeOilReglament, setFirstChangeOilReglament] = useState('');
-  const [nextChangeOilReglament, setNextChangeOilReglament] = useState('');
-  const [electricalPower, setElectricalPower] = useState('');
+  const [setings, setSetings] = useState({});
   const [dataFirstStart, setDataFirstStart] = useState('');
-  const [workingFirsStart, setWorkingFirsStart] = useState('');
-  const [oilVolume, setOilVolume] = useState('');
-  const [fuelVolume, setFuelVolume] = useState('');
 
   const brandId = shortid.generate();
-  const typeId = shortid.generate();
+  const modelId = shortid.generate();
   const firstChangeOilReglamentId = shortid();
   const nextChangeOilReglamentId = shortid();
   const electricalPowerId = shortid();
-  // const dataFirstStartId = shortid();
   const workingFirsStartId = shortid();
   const oilVolumeId = shortid();
   const fuelVolumeId = shortid();
@@ -37,40 +31,54 @@ const GeneratorSettingsForm = () => {
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'brand':
-        return setBrand(value);
+        return setSetings({ ...setings, brand: value });
       case 'model':
-        return setType(value);
-      case 'firstOilChange':
-        return setFirstChangeOilReglament(value);
-      case 'nextOilChange':
-        return setNextChangeOilReglament(value);
+        return setSetings({ ...setings, type: value });
+      case 'firstChangeOilReglament':
+        return setSetings({ ...setings, firstChangeOilReglament: value });
+      case 'nextChangeOilReglament':
+        return setSetings({ ...setings, nextChangeOilReglament: value });
       case 'electricalPower':
-        return setElectricalPower(value);
-      // case 'dataFirstStart':
-      // return setDataFirstStart(value);
+        return setSetings({ ...setings, electricalPower: value });
       case 'workingFirsStart':
-        return setWorkingFirsStart(value);
+        return setSetings({ ...setings, workingFirsStart: value });
       case 'oilVolume':
-        return setOilVolume(value);
+        return setSetings({ ...setings, oilVolume: value });
       case 'fuelVolume':
-        return setFuelVolume(value);
+        return setSetings({ ...setings, fuelVolume: value });
       default:
         return;
     }
+  };
+
+  function MyDatePicker() {
+    return <CustomDatePicker />;
+  }
+
+  const onChangeDate = date => {
+    setDataFirstStart(date);
+    console.log(dataFirstStart);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(setings);
+    createNewSettingGenerator(setings);
   };
 
   return (
     <>
       <p>Generator settings form</p>
       <GeneratorSettingFormDataForm
+        onSubmit={handleSubmit}
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <GeneratorSettingFormDataLabel htmlFor={brandId}>
           <GeneratorSettingFormDataInput
-            placeholder={brand ? brand : 'example: Dnipro-M'}
+            placeholder={setings.brand ? setings.brand : 'example: Dnipro-M'}
             type="brand"
             name="brand"
-            value={brand}
+            value={setings.brand}
             onChange={handleChange}
             id={brandId}
           />
@@ -78,14 +86,14 @@ const GeneratorSettingsForm = () => {
             Brand name generator
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
-        <GeneratorSettingFormDataLabel htmlFor={typeId}>
+        <GeneratorSettingFormDataLabel htmlFor={modelId}>
           <GeneratorSettingFormDataInput
-            placeholder={type ? type : 'example: GX-50E'}
-            type="type"
-            name="type"
-            value={type}
+            placeholder={setings.model ? setings.model : 'example: GX-50E'}
+            type="model"
+            name="model"
+            value={setings.model}
             onChange={handleChange}
-            id={typeId}
+            id={modelId}
           />
           <GeneratorSettingFormDataSpan>
             Generator model
@@ -94,11 +102,13 @@ const GeneratorSettingsForm = () => {
         <GeneratorSettingFormDataLabel htmlFor={firstChangeOilReglamentId}>
           <GeneratorSettingFormDataInput
             placeholder={
-              firstChangeOilReglament ? firstChangeOilReglament : 'example: 20'
+              setings.firstChangeOilReglament
+                ? setings.firstChangeOilReglament
+                : 'example: 20'
             }
-            type="firstOilChange"
-            name="firstOilChange"
-            value={firstChangeOilReglament}
+            type="firstChangeOilReglament"
+            name="firstChangeOilReglament"
+            value={setings.firstChangeOilReglament}
             onChange={handleChange}
             id={firstChangeOilReglamentId}
           />
@@ -109,11 +119,13 @@ const GeneratorSettingsForm = () => {
         <GeneratorSettingFormDataLabel htmlFor={nextChangeOilReglamentId}>
           <GeneratorSettingFormDataInput
             placeholder={
-              nextChangeOilReglament ? nextChangeOilReglament : 'example: 50'
+              setings.nextChangeOilReglament
+                ? setings.nextChangeOilReglament
+                : 'example: 50'
             }
-            type="firstOilChange"
-            name="firstOilChange"
-            value={nextChangeOilReglament}
+            type="nextChangeOilReglament"
+            name="nextChangeOilReglament"
+            value={setings.nextChangeOilReglament}
             onChange={handleChange}
             id={nextChangeOilReglamentId}
           />
@@ -123,10 +135,12 @@ const GeneratorSettingsForm = () => {
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={electricalPowerId}>
           <GeneratorSettingFormDataInput
-            placeholder={electricalPower ? electricalPower : 'example: 5.5'}
+            placeholder={
+              setings.electricalPower ? setings.electricalPower : 'example: 5.5'
+            }
             type="electricalPower"
             name="electricalPower"
-            value={electricalPower}
+            value={setings.electricalPower}
             onChange={handleChange}
             id={electricalPowerId}
           />
@@ -134,35 +148,24 @@ const GeneratorSettingsForm = () => {
             Electrical power generator, kW
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
-        {/* <GeneratorSettingFormDataLabel htmlFor={dataFirstStartId}> */}
-        {/* <GeneratorSettingFormDataInput
-            placeholder={
-              dataFirstStart ? dataFirstStart : 'example: 05.04.2023'
-            }
-            type="dataFirstStart"
-            name="dataFirstStart"
-            value={dataFirstStart}
-            onChange={handleChange}
-            id={dataFirstStartId}
-          /> */}
         <DatePickerContainer>
-          <DatePicker
-            selected={dataFirstStart}
-            onChange={date => setDataFirstStart(date)}
-            style={{ ...GeneratorSettingFormDataInput }}
-          />
+          <DateInputPickerContainer>
+            <MyDatePicker selected={dataFirstStart} onChange={onChangeDate} />
+          </DateInputPickerContainer>
           <GeneratorSettingFormDataSpan>
             Date of first start generator
           </GeneratorSettingFormDataSpan>
         </DatePickerContainer>
-
-        {/* </GeneratorSettingFormDataLabel> */}
         <GeneratorSettingFormDataLabel htmlFor={workingFirsStartId}>
           <GeneratorSettingFormDataInput
-            placeholder={workingFirsStart ? workingFirsStart : 'example: 10'}
+            placeholder={
+              setings.workingFirsStart
+                ? setings.workingFirsStart
+                : 'example: 10'
+            }
             type="workingFirsStart"
             name="workingFirsStart"
-            value={workingFirsStart}
+            value={setings.workingFirsStart}
             onChange={handleChange}
             id={workingFirsStartId}
           />
@@ -172,10 +175,10 @@ const GeneratorSettingsForm = () => {
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={oilVolumeId}>
           <GeneratorSettingFormDataInput
-            placeholder={oilVolume ? oilVolume : 'example: 1.1'}
+            placeholder={setings.oilVolume ? setings.oilVolume : 'example: 1.1'}
             type="oilVolume"
             name="oilVolume"
-            value={oilVolume}
+            value={setings.oilVolume}
             onChange={handleChange}
             id={oilVolumeId}
           />
@@ -185,10 +188,12 @@ const GeneratorSettingsForm = () => {
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={fuelVolumeId}>
           <GeneratorSettingFormDataInput
-            placeholder={fuelVolume ? fuelVolume : 'example: 25'}
+            placeholder={
+              setings.fuelVolume ? setings.fuelVolume : 'example: 25'
+            }
             type="fuelVolume"
             name="fuelVolume"
-            value={fuelVolume}
+            value={setings.fuelVolume}
             onChange={handleChange}
             id={fuelVolumeId}
           />
