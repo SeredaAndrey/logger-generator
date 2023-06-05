@@ -27,6 +27,9 @@ export const UserSettingAvatar = styled.img`
   padding-right: ${p => p.theme.space[0]};
   padding-left: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[0]};
+
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.normal};
 `;
 
 export const UserSettingFormDataForm = styled.form`

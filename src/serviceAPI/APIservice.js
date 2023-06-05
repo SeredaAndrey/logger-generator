@@ -22,24 +22,24 @@ export const fetchUserData = async token => {
   }
 };
 
-export const fetchGeneratorSetting = async () => {
-  // axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  try {
-    const { data } = await axios.get('/api/generator');
+// export const fetchGeneratorSetting = async () => {
+//   // axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   try {
+//     const { data } = await axios.get('/api/generator');
 
-    return data;
-  } catch (error) {
-    toast.error(error);
-  }
-};
+//     return data;
+//   } catch (error) {
+//     toast.error(error);
+//   }
+// };
 
-export const createNewSettingGenerator = async body => {
-  // axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  try {
-    const { data } = await axios.post('/api/generator', body);
+// export const createNewSettingGenerator = async body => {
+//   // axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   try {
+//     const { data } = await axios.post('/api/generator', body);
 
-    return data;
-  } catch (error) {
-    toast.error(error);
-  }
-};
+//     return data;
+//   } catch (error) {
+//     toast.error(error);
+//   }
+// };

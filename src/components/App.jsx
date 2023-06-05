@@ -30,7 +30,6 @@ import AddCyclesPage from './cycles/addCycles/addCycles';
 import CyclesPage from './cycles/cycles';
 import MonthsReportPage from './cycles/monthsreport/monthsreport';
 import LastMonthReportPage from './cycles/lastmonthreport/lastmonthreport';
-import CreateNewGenerator from './settings/genSetting/createNewGenerator';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -101,10 +100,14 @@ export const App = () => {
                   element={<UserSettingPage />}
                 />
                 <Route path="/settings/generator" element={<GenSettingPage />}>
-                  <Route
+                  {/* <Route
                     path="/settings/generator/createNewGenerator"
                     element={<CreateNewGenerator />}
                   />
+                  <Route
+                    path="/settings/generator/patchGeneratorSettings"
+                    element={<PatchingGeneratorSettings />}
+                  /> */}
                 </Route>
                 <Route
                   path="/settings/global"

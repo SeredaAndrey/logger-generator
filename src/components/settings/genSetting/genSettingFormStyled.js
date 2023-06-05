@@ -117,7 +117,8 @@ export const DatePickerContainer = styled.div`
 export const DateInputPickerContainer = styled.div`
   width: ${p => p.theme.space[16]};
 `;
-export const CustomDatePicker = styled(DatePicker)`
+
+const CustomDatePicker = styled(DatePicker)`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[16]};
 
@@ -138,3 +139,8 @@ export const CustomDatePicker = styled(DatePicker)`
   font-size: ${p => p.theme.fontSizes.l};
   line-height: ${p => p.theme.fontSizes.xl};
 `;
+
+function MyDatePicker({ onChange, ...rest }) {
+  return <CustomDatePicker as={DatePicker} onChange={onChange} {...rest} />;
+}
+export default MyDatePicker;
