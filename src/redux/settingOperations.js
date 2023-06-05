@@ -5,10 +5,8 @@ import { toast } from 'react-toastify';
 export const fetchGeneratorSetting = createAsyncThunk(
   'setting/gen/fetch',
   async (credential, { rejectWithValue }) => {
-    // axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       const { data } = await axios.get('/api/generator');
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -19,10 +17,8 @@ export const fetchGeneratorSetting = createAsyncThunk(
 export const createNewSettingGenerator = createAsyncThunk(
   'setting/gen/new',
   async (credential, { rejectWithValue }) => {
-    // axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       const { data } = await axios.post('/api/generator', credential);
-
       return data;
     } catch (error) {
       toast.error('Generator already exist');
@@ -33,13 +29,57 @@ export const createNewSettingGenerator = createAsyncThunk(
 
 export const patchingSettingsGenerator = createAsyncThunk(
   'setting/gen/patch',
-  async (credential, { rejectWithValue }) => {
+  async ({ settings, idGenerator }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch('/api/generator', credential);
+      const { data } = await axios.patch(
+        `/api/generator/${idGenerator}`,
+        settings
+      );
 
       return data;
     } catch (error) {
       toast.error('Generator settings not found');
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchGeneralSetting = createAsyncThunk(
+  'setting/general/fetch',
+  async (credential, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/api/setting');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const createNewGeneralSetting = createAsyncThunk(
+  'setting/general/new',
+  async (credential, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/api/setting', credential);
+      return data;
+    } catch (error) {
+      toast.error('General setting already exist');
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const patchGeneralSetting = createAsyncThunk(
+  'setting/general/patch',
+  async ({ settings, idSettings }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(
+        `/api/setting/${idSettings}`,
+        settings
+      );
+      return data;
+    } catch (error) {
+      toast.error('General settings not found');
       return rejectWithValue(error.message);
     }
   }

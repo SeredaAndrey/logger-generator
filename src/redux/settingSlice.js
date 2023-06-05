@@ -2,6 +2,10 @@ const { createSlice } = require('@reduxjs/toolkit');
 const {
   fetchGeneratorSetting,
   createNewSettingGenerator,
+  patchingSettingsGenerator,
+  fetchGeneralSetting,
+  createNewGeneralSetting,
+  patchGeneralSetting,
 } = require('./settingOperations');
 
 const initialState = {
@@ -14,9 +18,15 @@ const initialState = {
   workingFirsStart: null,
   oilVolume: null,
   fuelVolume: null,
-  idGenerattor: null,
+  idGenerator: null,
   isLoading: false,
   isSettingPresent: false,
+
+  priceOfOil: null,
+  priceOfGasoline: null,
+  priceOfElectrical: null,
+  idGeneral: null,
+  isGeneralSettingPreset: false,
 };
 
 const settingsSlice = createSlice({
@@ -24,9 +34,8 @@ const settingsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      //font-stretch:
+      //fetch Generator Settings
       .addCase(fetchGeneratorSetting.fulfilled, (state, action) => {
-        console.log(action);
         state.brand = action.payload.settingGenerator.data.brand;
         state.type = action.payload.settingGenerator.data.type;
         state.firstChangeOilReglament =
@@ -41,7 +50,7 @@ const settingsSlice = createSlice({
           action.payload.settingGenerator.data.workingFirsStart;
         state.oilVolume = action.payload.settingGenerator.data.oilVolume;
         state.fuelVolume = action.payload.settingGenerator.data.fuelVolume;
-        state.idGenerattor = action.payload.settingGenerator.data._id;
+        state.idGenerator = action.payload.settingGenerator.data._id;
         state.isLoading = false;
         state.isSettingPresent = true;
       })
@@ -59,12 +68,12 @@ const settingsSlice = createSlice({
         state.workingFirsStart = null;
         state.oilVolume = null;
         state.fuelVolume = null;
-        state.idGenerattor = null;
+        state.idGenerator = null;
         state.isLoading = false;
         state.isSettingPresent = false;
       })
+      //create new generator settings
       .addCase(createNewSettingGenerator.fulfilled, (state, action) => {
-        console.log(action);
         state.brand = action.payload.settingGenerator.data.brand;
         state.type = action.payload.settingGenerator.data.type;
         state.firstChangeOilReglament =
@@ -79,7 +88,7 @@ const settingsSlice = createSlice({
           action.payload.settingGenerator.data.workingFirsStart;
         state.oilVolume = action.payload.settingGenerator.data.oilVolume;
         state.fuelVolume = action.payload.settingGenerator.data.fuelVolume;
-        state.idGenerattor = action.payload.settingGenerator.data._id;
+        state.idGenerator = action.payload.settingGenerator.data._id;
         state.isLoading = false;
         state.isSettingPresent = true;
       })
@@ -97,9 +106,119 @@ const settingsSlice = createSlice({
         state.workingFirsStart = null;
         state.oilVolume = null;
         state.fuelVolume = null;
-        state.idGenerattor = null;
+        state.idGenerator = null;
         state.isLoading = false;
         state.isSettingPresent = false;
+      })
+      //patching generator settings
+      .addCase(patchingSettingsGenerator.fulfilled, (state, action) => {
+        state.brand = action.payload.settingGenerator.data.brand;
+        state.type = action.payload.settingGenerator.data.type;
+        state.firstChangeOilReglament =
+          action.payload.settingGenerator.data.firstChangeOilReglament;
+        state.nextChangeOilReglament =
+          action.payload.settingGenerator.data.nextChangeOilReglament;
+        state.electricalPower =
+          action.payload.settingGenerator.data.electricalPower;
+        state.dataFirstStart =
+          action.payload.settingGenerator.data.dataFirstStart;
+        state.workingFirsStart =
+          action.payload.settingGenerator.data.workingFirsStart;
+        state.oilVolume = action.payload.settingGenerator.data.oilVolume;
+        state.fuelVolume = action.payload.settingGenerator.data.fuelVolume;
+        state.idGenerator = action.payload.settingGenerator.data._id;
+        state.isLoading = false;
+        state.isSettingPresent = true;
+      })
+      .addCase(patchingSettingsGenerator.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSettingPresent = false;
+      })
+      .addCase(patchingSettingsGenerator.rejected, (state, action) => {
+        state.brand = null;
+        state.type = null;
+        state.firstChangeOilReglament = null;
+        state.nextChangeOilReglament = null;
+        state.electricalPower = null;
+        state.dataFirstStart = null;
+        state.workingFirsStart = null;
+        state.oilVolume = null;
+        state.fuelVolume = null;
+        state.idGenerator = null;
+        state.isLoading = false;
+        state.isSettingPresent = false;
+      })
+      //fetch General settings
+      .addCase(fetchGeneralSetting.fulfilled, (state, action) => {
+        // console.log(action);
+        state.priceOfOil = action.payload.generalSettings.data.priceOfOil;
+        state.priceOfGasoline =
+          action.payload.generalSettings.data.priceOfGasoline;
+        state.priceOfElectrical =
+          action.payload.generalSettings.data.priceOfElectrical;
+        state.idGeneral = action.payload.generalSettings.data._id;
+        state.isLoading = false;
+        state.isGeneralSettingPreset = true;
+      })
+      .addCase(fetchGeneralSetting.pending, (state, action) => {
+        state.isLoading = true;
+        state.isGeneralSettingPreset = false;
+      })
+      .addCase(fetchGeneralSetting.rejected, (state, action) => {
+        state.priceOfOil = null;
+        state.priceOfGasoline = null;
+        state.priceOfElectrical = null;
+        state.idGeneral = null;
+        state.isLoading = false;
+        state.isGeneralSettingPreset = false;
+      })
+      //create new general settings
+      .addCase(createNewGeneralSetting.fulfilled, (state, action) => {
+        // console.log(action);
+        state.priceOfOil = action.payload.generalSettings.data.priceOfOil;
+        state.priceOfGasoline =
+          action.payload.generalSettings.data.priceOfGasoline;
+        state.priceOfElectrical =
+          action.payload.generalSettings.data.priceOfElectrical;
+        state.idGeneral = action.payload.generalSettings.data._id;
+        state.isLoading = false;
+        state.isGeneralSettingPreset = true;
+      })
+      .addCase(createNewGeneralSetting.pending, (state, action) => {
+        state.isLoading = true;
+        state.isGeneralSettingPreset = false;
+      })
+      .addCase(createNewGeneralSetting.rejected, (state, action) => {
+        state.priceOfOil = null;
+        state.priceOfGasoline = null;
+        state.priceOfElectrical = null;
+        state.idGeneral = null;
+        state.isLoading = false;
+        state.isGeneralSettingPreset = false;
+      })
+      //patch general settings
+      .addCase(patchGeneralSetting.fulfilled, (state, action) => {
+        // console.log(action);
+        state.priceOfOil = action.payload.generalSettings.data.priceOfOil;
+        state.priceOfGasoline =
+          action.payload.generalSettings.data.priceOfGasoline;
+        state.priceOfElectrical =
+          action.payload.generalSettings.data.priceOfElectrical;
+        state.idGeneral = action.payload.generalSettings.data._id;
+        state.isLoading = false;
+        state.isGeneralSettingPreset = true;
+      })
+      .addCase(patchGeneralSetting.pending, (state, action) => {
+        state.isLoading = true;
+        state.isGeneralSettingPreset = false;
+      })
+      .addCase(patchGeneralSetting.rejected, (state, action) => {
+        state.priceOfOil = null;
+        state.priceOfGasoline = null;
+        state.priceOfElectrical = null;
+        state.idGeneral = null;
+        state.isLoading = false;
+        state.isGeneralSettingPreset = false;
       });
   },
 });

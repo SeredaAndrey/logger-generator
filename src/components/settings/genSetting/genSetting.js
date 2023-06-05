@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { fetchGeneratorSetting } from 'redux/settingOperations';
-import { getSettingIsPresent } from 'redux/settingsSelector';
 
 import GeneratorSettingsForm from './genSettingForm';
 
 const GenSettingPage = () => {
-  const settingsIsPresent = useSelector(getSettingIsPresent);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +20,6 @@ const GenSettingPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log('settingsIsPresent: ', settingsIsPresent);
   return (
     <div>
       <GeneratorSettingsForm />

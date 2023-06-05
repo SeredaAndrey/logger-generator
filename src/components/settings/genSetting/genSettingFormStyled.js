@@ -6,7 +6,7 @@ export const GeneratorSettingFormDataForm = styled.form`
   display: flex;
   flex-direction: column;
 
-  margin-top: ${p => p.theme.space[0]};
+  margin-top: ${p => p.theme.space[5]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};

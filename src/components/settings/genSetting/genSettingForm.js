@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 import shortid from 'shortid';
 import MyDatePicker, {
@@ -20,6 +19,8 @@ import {
   getSettingBrand,
   getSettingDataFirstStart,
   getSettingFirstChangeOilReglament,
+  getSettingFuelVolume,
+  getSettingId,
   getSettingIsPresent,
   getSettingNextChangeOilReglament,
   getSettingOilVolume,
@@ -28,7 +29,7 @@ import {
   getSettingelEctricalPower,
 } from 'redux/settingsSelector';
 
-const GeneratorSettingsForm = ({ fetchSettings }) => {
+const GeneratorSettingsForm = () => {
   const dispatch = useDispatch();
   const brand = useSelector(getSettingBrand);
   const type = useSelector(getSettingType);
@@ -40,33 +41,52 @@ const GeneratorSettingsForm = ({ fetchSettings }) => {
   const dataFirstStart = useSelector(getSettingDataFirstStart);
   const workingFirsStart = useSelector(getSettingWorkingFirsStart);
   const oilVolume = useSelector(getSettingOilVolume);
+  const fuelVolume = useSelector(getSettingFuelVolume);
   const settingsIsPresent = useSelector(getSettingIsPresent);
+  const idGenerator = useSelector(getSettingId);
 
-  const [settings, setSettings] = useState({
+  const [settings, setSettings] = useState({});
+
+  const brandId = shortid.generate();
+  const typeId = shortid.generate();
+  const firstChangeOilReglamentId = shortid.generate();
+  const nextChangeOilReglamentId = shortid.generate();
+  const electricalPowerId = shortid.generate();
+  const workingFirsStartId = shortid.generate();
+  const oilVolumeId = shortid.generate();
+  const fuelVolumeId = shortid.generate();
+
+  useEffect(() => {
+    setSettings({
+      ...(brand !== null && { brand }),
+      ...(type !== null && { type }),
+      ...(firstChangeOilReglament !== null && { firstChangeOilReglament }),
+      ...(nextChangeOilReglament !== null && { nextChangeOilReglament }),
+      ...(electricalPower !== null && { electricalPower }),
+      ...(dataFirstStart !== null && {
+        dataFirstStart: new Date(dataFirstStart),
+      }),
+      ...(workingFirsStart !== null && { workingFirsStart }),
+      ...(oilVolume !== null && { oilVolume }),
+      ...(fuelVolume !== null && { fuelVolume }),
+    });
+  }, [
     brand,
     type,
     firstChangeOilReglament,
     nextChangeOilReglament,
     electricalPower,
-    dataFirstStart,
+    workingFirsStart,
     oilVolume,
-  });
-  const navigation = useNavigate();
-
-  const brandId = shortid.generate();
-  const modelId = shortid.generate();
-  const firstChangeOilReglamentId = shortid();
-  const nextChangeOilReglamentId = shortid();
-  const electricalPowerId = shortid();
-  const workingFirsStartId = shortid();
-  const oilVolumeId = shortid();
-  const fuelVolumeId = shortid();
+    fuelVolume,
+    dataFirstStart,
+  ]);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'brand':
         return setSettings({ ...settings, brand: value });
-      case 'model':
+      case 'type':
         return setSettings({ ...settings, type: value });
       case 'firstChangeOilReglament':
         return setSettings({ ...settings, firstChangeOilReglament: value });
@@ -93,15 +113,11 @@ const GeneratorSettingsForm = ({ fetchSettings }) => {
     e.preventDefault();
     !settingsIsPresent
       ? dispatch(createNewSettingGenerator(settings))
-      : dispatch(patchingSettingsGenerator(settings));
-    // navigation('/settings/generator');
+      : dispatch(patchingSettingsGenerator({ settings, idGenerator }));
   };
-
-  console.log(fetchSettings);
 
   return (
     <>
-      <p>Generator settings form</p>
       <GeneratorSettingFormDataForm
         onSubmit={handleSubmit}
         style={{ display: 'flex', flexDirection: 'column' }}
@@ -119,14 +135,14 @@ const GeneratorSettingsForm = ({ fetchSettings }) => {
             Brand name generator
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
-        <GeneratorSettingFormDataLabel htmlFor={modelId}>
+        <GeneratorSettingFormDataLabel htmlFor={typeId}>
           <GeneratorSettingFormDataInput
-            placeholder={settings.model ? settings.model : 'example: GX-50E'}
-            type="model"
-            name="model"
-            value={settings.model}
+            placeholder={settings.type ? settings.type : 'example: GX-50E'}
+            type="type"
+            name="type"
+            value={settings.type}
             onChange={handleChange}
-            id={modelId}
+            id={typeId}
           />
           <GeneratorSettingFormDataSpan>
             Generator model
@@ -188,7 +204,6 @@ const GeneratorSettingsForm = ({ fetchSettings }) => {
             <MyDatePicker
               selected={settings.dataFirstStart}
               onChange={onChangeDate}
-              showTimeSelect
             />
           </DateInputPickerContainer>
           <GeneratorSettingFormDataSpan>
