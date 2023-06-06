@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export const GeneratorSettingFormDataForm = styled.form`
+export const CycleFormDataForm = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -17,7 +17,7 @@ export const GeneratorSettingFormDataForm = styled.form`
   padding-bottom: ${p => p.theme.space[0]};
 `;
 
-export const GeneratorSettingFormDataLabel = styled.label`
+export const CycleFormDataLabel = styled.label`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[18]};
 
@@ -26,7 +26,7 @@ export const GeneratorSettingFormDataLabel = styled.label`
   margin-bottom: ${p => p.theme.space[4]};
 `;
 
-export const GeneratorSettingFormDataInput = styled.input`
+export const CycleFormDataInput = styled.input`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[16]};
 
@@ -47,16 +47,8 @@ export const GeneratorSettingFormDataInput = styled.input`
   font-size: ${p => p.theme.fontSizes.l};
   line-height: ${p => p.theme.fontSizes.xl};
 `;
-export const GeneratorSettingFormDataSpan = styled.span`
-  margin-left: ${p => p.theme.space[4]};
 
-  font-family: 'Jura';
-  font-style: normal;
-  font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.m};
-  line-height: ${p => p.theme.fontSizes.m};
-`;
-export const GeneratorSettingButton = styled.button`
+export const CycleButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +97,7 @@ export const GeneratorSettingButton = styled.button`
   cursor: pointer;
 `;
 
-export const DatePickerContainer = styled.div`
+export const CycleDatePickerContainer = styled.div`
   display: flex;
   align-items: center;
 
@@ -114,11 +106,21 @@ export const DatePickerContainer = styled.div`
   margin-bottom: ${p => p.theme.space[4]};
 `;
 
-export const DateInputPickerContainer = styled.div`
+export const CycleDateInputPickerContainer = styled.div`
   width: ${p => p.theme.space[16]};
 `;
 
-const SettingDatePickerStyled = styled(DatePicker)`
+export const CyclesFormSpan = styled.span`
+  margin-left: ${p => p.theme.space[4]};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: ${p => p.theme.fontSizes.m};
+`;
+
+const CycleDatePickerStyled = styled(DatePicker)`
   height: ${p => p.theme.space[5]};
   width: ${p => p.theme.space[16]};
 
@@ -140,9 +142,9 @@ const SettingDatePickerStyled = styled(DatePicker)`
   line-height: ${p => p.theme.fontSizes.xl};
 `;
 
-function SettingDatePicker({ onChange, ...rest }) {
+function CycleDatePicker({ onChange, ...rest }) {
   return (
-    <SettingDatePickerStyled as={DatePicker} onChange={onChange} {...rest} />
+    <CycleDatePickerStyled as={DatePicker} onChange={onChange} {...rest} />
   );
 }
-export default SettingDatePicker;
+export default CycleDatePicker;

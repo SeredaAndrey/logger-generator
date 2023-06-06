@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from '@emotion/react';
 import { ToastContainer } from 'react-toastify';

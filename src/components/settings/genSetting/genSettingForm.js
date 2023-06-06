@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import shortid from 'shortid';
-import MyDatePicker, {
+import SettingDatePicker, {
   DatePickerContainer,
   GeneratorSettingButton,
   GeneratorSettingFormDataForm,
@@ -201,7 +201,7 @@ const GeneratorSettingsForm = () => {
         </GeneratorSettingFormDataLabel>
         <DatePickerContainer>
           <DateInputPickerContainer>
-            <MyDatePicker
+            <SettingDatePicker
               selected={settings.dataFirstStart}
               onChange={onChangeDate}
             />
