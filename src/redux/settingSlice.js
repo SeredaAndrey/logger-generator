@@ -132,7 +132,6 @@ const settingsSlice = createSlice({
       })
       .addCase(patchingSettingsGenerator.pending, (state, action) => {
         state.isLoading = true;
-        state.isSettingPresent = false;
       })
       .addCase(patchingSettingsGenerator.rejected, (state, action) => {
         state.brand = null;
@@ -146,11 +145,9 @@ const settingsSlice = createSlice({
         state.fuelVolume = null;
         state.idGenerator = null;
         state.isLoading = false;
-        state.isSettingPresent = false;
       })
       //fetch General settings
       .addCase(fetchGeneralSetting.fulfilled, (state, action) => {
-        // console.log(action);
         state.priceOfOil = action.payload.generalSettings.data.priceOfOil;
         state.priceOfGasoline =
           action.payload.generalSettings.data.priceOfGasoline;
@@ -174,7 +171,6 @@ const settingsSlice = createSlice({
       })
       //create new general settings
       .addCase(createNewGeneralSetting.fulfilled, (state, action) => {
-        // console.log(action);
         state.priceOfOil = action.payload.generalSettings.data.priceOfOil;
         state.priceOfGasoline =
           action.payload.generalSettings.data.priceOfGasoline;
@@ -198,19 +194,17 @@ const settingsSlice = createSlice({
       })
       //patch general settings
       .addCase(patchGeneralSetting.fulfilled, (state, action) => {
-        // console.log(action);
-        state.priceOfOil = action.payload.generalSettings.data.priceOfOil;
+        state.priceOfOil = action.payload.generalSetting.data.priceOfOil;
         state.priceOfGasoline =
-          action.payload.generalSettings.data.priceOfGasoline;
+          action.payload.generalSetting.data.priceOfGasoline;
         state.priceOfElectrical =
-          action.payload.generalSettings.data.priceOfElectrical;
-        state.idGeneral = action.payload.generalSettings.data._id;
+          action.payload.generalSetting.data.priceOfElectrical;
+        state.idGeneral = action.payload.generalSetting.data._id;
         state.isLoading = false;
         state.isGeneralSettingPreset = true;
       })
       .addCase(patchGeneralSetting.pending, (state, action) => {
         state.isLoading = true;
-        state.isGeneralSettingPreset = false;
       })
       .addCase(patchGeneralSetting.rejected, (state, action) => {
         state.priceOfOil = null;
@@ -218,7 +212,6 @@ const settingsSlice = createSlice({
         state.priceOfElectrical = null;
         state.idGeneral = null;
         state.isLoading = false;
-        state.isGeneralSettingPreset = false;
       });
   },
 });

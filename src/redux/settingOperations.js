@@ -71,11 +71,11 @@ export const createNewGeneralSetting = createAsyncThunk(
 
 export const patchGeneralSetting = createAsyncThunk(
   'setting/general/patch',
-  async ({ settings, idSettings }, { rejectWithValue }) => {
+  async ({ generalSettings, idGeneral }, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch(
-        `/api/setting/${idSettings}`,
-        settings
+        `/api/setting/${idGeneral}`,
+        generalSettings
       );
       return data;
     } catch (error) {
