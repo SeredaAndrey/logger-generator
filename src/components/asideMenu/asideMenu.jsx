@@ -44,13 +44,8 @@ const AsideMenu = () => {
                   <NavLink to="/cycles/add">Add cycle unit</NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/cycles/lastmonthreport">
-                    show last month report
-                  </NavLink>
-                </AsideSeccondaryListItem>
-                <AsideSeccondaryListItem>
-                  <NavLink to="/cycles/monthsreport">
-                    show months report
+                  <NavLink to="/cycles/workingreport">
+                    show working report
                   </NavLink>
                 </AsideSeccondaryListItem>
               </AsideSeccondaryListContainer>

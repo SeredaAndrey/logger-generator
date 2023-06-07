@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from '@emotion/react';
 import { ToastContainer } from 'react-toastify';
@@ -27,9 +27,8 @@ import UserSettingPage from './settings/userSetting/userSetting';
 import GenSettingPage from './settings/genSetting/genSetting';
 import AddCyclesPage from './cycles/addCycles/addCycles';
 import CyclesPage from './cycles/cycles';
-import MonthsReportPage from './cycles/monthsreport/monthsreport';
-import LastMonthReportPage from './cycles/lastmonthreport/lastmonthreport';
 import GeneralSettingPage from './settings/generalSetting/generalSetting';
+import WorkingReportPage from './cycles/workingreport/workingreport';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -112,12 +111,8 @@ export const App = () => {
               <Route path="/cycles" element={<CyclesPage />}>
                 <Route path="/cycles/add" element={<AddCyclesPage />} />
                 <Route
-                  path="/cycles/lastmonthreport"
-                  element={<LastMonthReportPage />}
-                />
-                <Route
-                  path="/cycles/monthsreport"
-                  element={<MonthsReportPage />}
+                  path="/cycles/workingreport"
+                  element={<WorkingReportPage />}
                 />
               </Route>
             </Route>

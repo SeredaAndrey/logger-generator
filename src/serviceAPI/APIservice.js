@@ -23,9 +23,26 @@ export const fetchUserData = async token => {
 };
 
 export const addWorkingCycle = async cycle => {
-  console.log(cycle);
   try {
     const { data } = await axios.post('api/cycles', cycle);
+    return data;
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
+export const fetchWorkingCycles = async () => {
+  try {
+    const { data } = await axios.get('api/cycles');
+    return data;
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
+export const deleteWorkingCycleUnit = async id => {
+  try {
+    const { data } = await axios.delete(`api/cycles/${id}`);
     return data;
   } catch (error) {
     toast.error(error);

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import shortid from 'shortid';
 
@@ -17,7 +16,6 @@ import { addWorkingCycle } from 'serviceAPI/APIservice';
 
 const AddCyclesPage = () => {
   const [cycle, setCycle] = useState({});
-  const dispatch = useDispatch();
 
   const volumeElecricalGenerationId = shortid.generate();
   const refuelingId = shortid.generate();
@@ -25,7 +23,8 @@ const AddCyclesPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addWorkingCycle(cycle));
+    addWorkingCycle(cycle);
+    setCycle({});
   };
 
   const handleChange = ({ target: { name, value, checked } }) => {
@@ -47,7 +46,6 @@ const AddCyclesPage = () => {
   const onChangeStopTimeStamp = date => {
     setCycle({ ...cycle, timestampStop: date });
   };
-  console.log(cycle);
 
   return (
     <>

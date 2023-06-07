@@ -16,8 +16,7 @@ const CyclesPage = () => {
           <BiArrowBack />
         </NavLink>
         <NavLink to="/cycles/add">Add cycle unit</NavLink>
-        <NavLink to="/cycles/lastmonthreport">show last month report</NavLink>
-        <NavLink to="/cycles/monthsreport">show months report</NavLink>
+        <NavLink to="/cycles/workingreport">show working report</NavLink>
       </CyclesMenuItemContainer>
       <Outlet />
     </CyclesPageContainer>
