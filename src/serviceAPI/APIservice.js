@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { async } from 'q';
 import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://logger-generator-rest-api.onrender.com';
@@ -43,6 +44,15 @@ export const fetchWorkingCycles = async () => {
 export const deleteWorkingCycleUnit = async id => {
   try {
     const { data } = await axios.delete(`api/cycles/${id}`);
+    return data;
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
+export const patchWorkingCycleUnit = async (id, sycle) => {
+  try {
+    const { data } = await axios.patch(`api/cycles/${id}`, sycle);
     return data;
   } catch (error) {
     toast.error(error);

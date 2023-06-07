@@ -29,6 +29,7 @@ import AddCyclesPage from './cycles/addCycles/addCycles';
 import CyclesPage from './cycles/cycles';
 import GeneralSettingPage from './settings/generalSetting/generalSetting';
 import WorkingReportPage from './cycles/workingreport/workingreport';
+import PatchCyclesPage from './cycles/patchCycles/patchCycles';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -114,6 +115,7 @@ export const App = () => {
                   path="/cycles/workingreport"
                   element={<WorkingReportPage />}
                 />
+                <Route path="/cycles/patch" element={<PatchCyclesPage />} />
               </Route>
             </Route>
           </Routes>

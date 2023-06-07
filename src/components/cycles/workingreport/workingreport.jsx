@@ -33,6 +33,8 @@ const WorkingReportPage = () => {
     setCycles(updatedCycles);
   };
 
+ 
+
   return (
     <>
       {cycles && cycles.length !== 0 && (

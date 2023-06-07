@@ -1,4 +1,4 @@
-import { FaTrash, FaPenAlt } from 'react-icons/fa';
+import { FaTrash, FaPenAlt, FaCheck } from 'react-icons/fa';
 
 import {
   ReportUnitButtonContainer,
@@ -7,8 +7,11 @@ import {
   ReportUnitListItemText,
   ReportUnitListItemTextDate,
 } from './reportUnitStyled';
+import { useNavigate } from 'react-router';
 
 const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
+  const navigation = useNavigate();
+
   const formatedDate = dateString => {
     const date = new Date(dateString);
     const formattedDate = date.toLocaleDateString('en-US', {
@@ -36,9 +39,16 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
         {cycle.volumeElecricalGeneration}
       </ReportUnitListItemText>
       <ReportUnitListItemText>{cycle.refueling}</ReportUnitListItemText>
-      <ReportUnitListItemText>{cycle.changeOil}</ReportUnitListItemText>
+      <ReportUnitListItemText>
+        {cycle.changeOil && <FaCheck />}
+      </ReportUnitListItemText>
       <ReportUnitButtonContainer>
-        <ReportUnitListItemButon type="button">
+        <ReportUnitListItemButon
+          type="button"
+          onClick={() => {
+            navigation('/cycles/patch');
+          }}
+        >
           <FaPenAlt />
         </ReportUnitListItemButon>
         <ReportUnitListItemButon

@@ -41,7 +41,7 @@ export const ReportUnitListItemTextDate = styled.p`
   align-items: center;
   justify-content: center;
 
-  width: ${p => p.theme.space[11]};
+  width: ${p => p.theme.space[12]};
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[4]};
