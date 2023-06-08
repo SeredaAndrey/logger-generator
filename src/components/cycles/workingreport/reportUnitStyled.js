@@ -1,5 +1,35 @@
 import styled from '@emotion/styled';
 
+export const ReportUnitTitle = styled.div`
+  padding: ${p => p.theme.space[0]};
+  margin: ${p => p.theme.space[0]};
+
+  display: flex;
+
+  height: ${p => p.theme.space[5]};
+
+  border: ${p => p.theme.borders.none};
+  border-bottom-left-radius: ${p => p.theme.radii.normal};
+  border-bottom-right-radius: ${p => p.theme.radii.normal};
+
+  text-align: center;
+
+  color: ${p => p.theme.colors.colorTextDark};
+  background-color: ${p => p.theme.colors.bgColorForm};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.fontSizes.m};
+
+  word-wrap: break-word;
+
+  &:not(:last-child) {
+    margin-bottom: ${p => p.theme.space[4]};
+  }
+`;
+
 export const ReportUnitList = styled.ul`
   padding: ${p => p.theme.space[0]};
 

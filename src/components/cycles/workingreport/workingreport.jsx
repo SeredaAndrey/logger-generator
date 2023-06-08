@@ -7,7 +7,12 @@ import {
 } from 'serviceAPI/APIservice';
 import WorkingReportItem from './reportUnit';
 
-import { ReportUnitList } from './reportUnitStyled';
+import {
+  ReportUnitList,
+  ReportUnitListItemText,
+  ReportUnitListItemTextDate,
+  ReportUnitTitle,
+} from './reportUnitStyled';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
@@ -33,10 +38,15 @@ const WorkingReportPage = () => {
     setCycles(updatedCycles);
   };
 
- 
-
   return (
     <>
+      <ReportUnitTitle>
+        <ReportUnitListItemTextDate>start cycle</ReportUnitListItemTextDate>
+        <ReportUnitListItemTextDate>stop cycle</ReportUnitListItemTextDate>
+        <ReportUnitListItemText>electric. generation</ReportUnitListItemText>
+        <ReportUnitListItemText>refuling</ReportUnitListItemText>
+        <ReportUnitListItemText>change oil</ReportUnitListItemText>
+      </ReportUnitTitle>
       {cycles && cycles.length !== 0 && (
         <ReportUnitList>
           {cycles.map(cycle => {
