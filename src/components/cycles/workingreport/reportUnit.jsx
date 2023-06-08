@@ -40,7 +40,7 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
       </ReportUnitListItemText>
       <ReportUnitListItemText>{cycle.refueling}</ReportUnitListItemText>
       <ReportUnitListItemText>
-        {cycle.changeOil && <FaCheck />}
+        {cycle.changeOil ? <FaCheck /> : '-'}
       </ReportUnitListItemText>
       <ReportUnitButtonContainer>
         <ReportUnitListItemButon
@@ -49,7 +49,7 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
             navigation(`/cycles/patch/${cycle._id}`);
           }}
         >
-          <FaPenAlt />
+          <FaPenAlt size={20} />
         </ReportUnitListItemButon>
         <ReportUnitListItemButon
           type="button"
@@ -57,7 +57,7 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
             deleteWorkingCycle(cycle._id);
           }}
         >
-          <FaTrash />
+          <FaTrash size={20} />
         </ReportUnitListItemButon>
       </ReportUnitButtonContainer>
     </ReportUnitListItem>

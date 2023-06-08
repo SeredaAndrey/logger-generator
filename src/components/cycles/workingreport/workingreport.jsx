@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { FaGasPump, FaOilCan } from 'react-icons/fa';
+import { ImPower } from 'react-icons/im';
+
 import {
   deleteWorkingCycleUnit,
   fetchWorkingCycles,
@@ -43,9 +46,15 @@ const WorkingReportPage = () => {
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>start cycle</ReportUnitListItemTextDate>
         <ReportUnitListItemTextDate>stop cycle</ReportUnitListItemTextDate>
-        <ReportUnitListItemText>electric. generation</ReportUnitListItemText>
-        <ReportUnitListItemText>refuling</ReportUnitListItemText>
-        <ReportUnitListItemText>change oil</ReportUnitListItemText>
+        <ReportUnitListItemText>
+          <ImPower size={20} />
+        </ReportUnitListItemText>
+        <ReportUnitListItemText>
+          <FaGasPump size={20} />
+        </ReportUnitListItemText>
+        <ReportUnitListItemText>
+          <FaOilCan size={30} />
+        </ReportUnitListItemText>
       </ReportUnitTitle>
       {cycles && cycles.length !== 0 && (
         <ReportUnitList>
