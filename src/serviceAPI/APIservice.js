@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { async } from 'q';
 import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://logger-generator-rest-api.onrender.com';
