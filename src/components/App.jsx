@@ -25,11 +25,11 @@ import FuterPage from './futerPage/futerPage';
 import SettingsPage from './settings/settingsPage';
 import UserSettingPage from './settings/userSetting/userSetting';
 import GenSettingPage from './settings/genSetting/genSetting';
-import AddCyclesPage from './cycles/addCycles/addCycles';
+import AddCyclesPage from './cycles/workingCycle/addCycles/addCycles';
 import CyclesPage from './cycles/cycles';
 import GeneralSettingPage from './settings/generalSetting/generalSetting';
 import WorkingReportPage from './cycles/workingreport/workingreport';
-import PatchCyclesPage from './cycles/patchCycles/patchCycles';
+import PatchCyclesPage from './cycles/workingCycle/patchCycles/patchCycles';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -115,7 +115,7 @@ export const App = () => {
                   path="/cycles/workingreport"
                   element={<WorkingReportPage />}
                 />
-                <Route path="/cycles/patch" element={<PatchCyclesPage />} />
+                <Route path="/cycles/patch/:id" element={<PatchCyclesPage />} />
               </Route>
             </Route>
           </Routes>

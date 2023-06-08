@@ -40,6 +40,15 @@ export const fetchWorkingCycles = async () => {
   }
 };
 
+export const fetchSingleWorkingCycle = async id => {
+  try {
+    const { data } = await axios.get(`api/cycles/${id}`);
+    return data;
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
 export const deleteWorkingCycleUnit = async id => {
   try {
     const { data } = await axios.delete(`api/cycles/${id}`);
@@ -49,9 +58,10 @@ export const deleteWorkingCycleUnit = async id => {
   }
 };
 
-export const patchWorkingCycleUnit = async (id, sycle) => {
+export const patchWorkingCycleUnit = async ({ id, cycle }) => {
+  console.log(id, cycle);
   try {
-    const { data } = await axios.patch(`api/cycles/${id}`, sycle);
+    const { data } = await axios.patch(`api/cycles/${id}`, cycle);
     return data;
   } catch (error) {
     toast.error(error);

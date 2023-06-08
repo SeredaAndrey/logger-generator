@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import shortid from 'shortid';
 
 import CycleDatePicker, {
@@ -9,46 +7,29 @@ import CycleDatePicker, {
   CycleFormDataForm,
   CycleFormDataInput,
   CycleFormDataLabel,
+  CycleFormTitle,
   CyclesFormSpan,
-} from './addCyclesStyled';
+} from './CyclesFormStyled';
 
-import { addWorkingCycle } from 'serviceAPI/APIservice';
-
-const AddCyclesPage = () => {
-  const [cycle, setCycle] = useState({});
-
+const CycleForm = ({
+  handleSubmit,
+  handleChange,
+  onChangeStartTimeStamp,
+  onChangeStopTimeStamp,
+  cycle,
+  isNewCycle,
+}) => {
   const volumeElecricalGenerationId = shortid.generate();
   const refuelingId = shortid.generate();
   const changeOilId = shortid.generate();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    addWorkingCycle(cycle);
-    setCycle({});
-  };
-
-  const handleChange = ({ target: { name, value, checked } }) => {
-    switch (name) {
-      case 'volumeElecricalGeneration':
-        return setCycle({ ...cycle, volumeElecricalGeneration: value });
-      case 'refueling':
-        return setCycle({ ...cycle, refueling: value });
-      case 'changeOil':
-        return setCycle({ ...cycle, changeOil: checked });
-      default:
-        return;
-    }
-  };
-
-  const onChangeStartTimeStamp = date => {
-    setCycle({ ...cycle, timestampStart: date });
-  };
-  const onChangeStopTimeStamp = date => {
-    setCycle({ ...cycle, timestampStop: date });
-  };
+  //   console.log(isNewCycle);
 
   return (
     <>
+      <CycleFormTitle>
+        {isNewCycle ? 'create new working cycle' : 'patch working cycle'}
+      </CycleFormTitle>
       <CycleFormDataForm
         onSubmit={handleSubmit}
         style={{ display: 'flex', flexDirection: 'column' }}
@@ -115,10 +96,12 @@ const AddCyclesPage = () => {
           />
           <CyclesFormSpan>Change of oil</CyclesFormSpan>
         </CycleFormDataLabel>
-        <CycleButton type="submit">create</CycleButton>
+        <CycleButton type="submit">
+          {isNewCycle ? 'create' : 'patch'}
+        </CycleButton>
       </CycleFormDataForm>
     </>
   );
 };
 
-export default AddCyclesPage;
+export default CycleForm;

@@ -2,11 +2,31 @@ import styled from '@emotion/styled';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+export const CycleFormTitle = styled.h2`
+  margin-top: ${p => p.theme.space[4]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.semiBold};
+  font-size: ${p => p.theme.fontSizes.xl};
+  line-height: ${p => p.theme.fontSizes.xxl};
+  text-align: center;
+  text-transform: uppercase;
+`;
+
 export const CycleFormDataForm = styled.form`
   display: flex;
   flex-direction: column;
 
-  margin-top: ${p => p.theme.space[5]};
+  margin-top: ${p => p.theme.space[4]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};

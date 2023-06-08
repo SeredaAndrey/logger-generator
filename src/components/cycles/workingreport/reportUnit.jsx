@@ -46,7 +46,7 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
         <ReportUnitListItemButon
           type="button"
           onClick={() => {
-            navigation('/cycles/patch');
+            navigation(`/cycles/patch/${cycle._id}`);
           }}
         >
           <FaPenAlt />
