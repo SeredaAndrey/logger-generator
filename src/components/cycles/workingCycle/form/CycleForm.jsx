@@ -1,6 +1,9 @@
 import shortid from 'shortid';
+import { toast } from 'react-toastify';
+import { FaRegClock } from 'react-icons/fa';
 
 import CycleDatePicker, {
+  ClockIcoContainer,
   CycleButton,
   CycleDateInputPickerContainer,
   CycleDatePickerContainer,
@@ -9,7 +12,9 @@ import CycleDatePicker, {
   CycleFormDataLabel,
   CycleFormTitle,
   CyclesFormSpan,
+  TotalWorkingTime,
 } from './CyclesFormStyled';
+import { useEffect, useState } from 'react';
 
 const CycleForm = ({
   handleSubmit,
@@ -19,16 +24,58 @@ const CycleForm = ({
   cycle,
   isNewCycle,
 }) => {
+  const [workingTime, setWorkingTime] = useState(null);
+
   const volumeElecricalGenerationId = shortid.generate();
   const refuelingId = shortid.generate();
   const changeOilId = shortid.generate();
 
-  //   console.log(isNewCycle);
+  useEffect(() => {
+    calculateWorkingTime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cycle]);
+
+  const calculateWorkingTime = () => {
+    if (!cycle.timestampStart || !cycle.timestampStop) {
+      return;
+    } else {
+      const startDateTime = new Date(cycle.timestampStart);
+      const stopDateTime = new Date(cycle.timestampStop);
+
+      const timeDiff = stopDateTime.getTime() - startDateTime.getTime();
+
+      const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+      if (hours < 0 || minutes < 0) {
+        setWorkingTime(null);
+        toast.error('stop time is less than start time');
+        return;
+      } else {
+        const formattedTimeDiff = `${hours
+          .toString()
+          .padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        setWorkingTime(formattedTimeDiff);
+        return;
+      }
+    }
+  };
 
   return (
     <>
       <CycleFormTitle>
         {isNewCycle ? 'create new working cycle' : 'patch working cycle'}
+
+        <TotalWorkingTime
+          style={{
+            backgroundColor: !workingTime ? '#FEA2A2' : '#ABE5AE',
+          }}
+        >
+          {workingTime ? workingTime : '--:--'}
+        </TotalWorkingTime>
+        <ClockIcoContainer>
+          <FaRegClock size={20} />
+        </ClockIcoContainer>
       </CycleFormTitle>
       <CycleFormDataForm
         onSubmit={handleSubmit}
@@ -96,7 +143,7 @@ const CycleForm = ({
           />
           <CyclesFormSpan>Change of oil</CyclesFormSpan>
         </CycleFormDataLabel>
-        <CycleButton type="submit">
+        <CycleButton type="submit" disabled={!workingTime}>
           {isNewCycle ? 'create' : 'patch'}
         </CycleButton>
       </CycleFormDataForm>

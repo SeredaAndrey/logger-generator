@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -9,7 +9,21 @@ const AddCyclesPage = () => {
   const [cycle, setCycle] = useState({});
   const navigation = useNavigate();
 
+  useEffect(() => {
+    const startDateTime = new Date(cycle.timestampStart);
+    const stopDateTime = new Date(cycle.timestampStop);
+
+    console.log(stopDateTime.getTime() - startDateTime.getTime());
+    setCycle({
+      ...cycle,
+      workingTimeOfCycle: stopDateTime.getTime() - startDateTime.getTime(),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cycle.timestampStart, cycle.timestampStop]);
+
   const handleSubmit = async e => {
+    console.log(cycle);
+
     e.preventDefault();
     const data = await addWorkingCycle(cycle);
     setCycle({});

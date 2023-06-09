@@ -23,6 +23,7 @@ export const fetchUserData = async token => {
 };
 
 export const addWorkingCycle = async cycle => {
+  console.log(cycle);
   try {
     const { data } = await axios.post('api/cycles', cycle);
     return data;
@@ -59,7 +60,7 @@ export const deleteWorkingCycleUnit = async id => {
 };
 
 export const patchWorkingCycleUnit = async ({ id, cycle }) => {
-  console.log(id, cycle);
+  // console.log(id, cycle);
   try {
     const { data } = await axios.patch(`api/cycles/${id}`, cycle);
     return data;

@@ -14,6 +14,18 @@ const PatchCyclesPage = () => {
   const params = useParams();
 
   useEffect(() => {
+    const startDateTime = new Date(cycle.timestampStart);
+    const stopDateTime = new Date(cycle.timestampStop);
+
+    console.log(stopDateTime.getTime() - startDateTime.getTime());
+    setCycle({
+      ...cycle,
+      workingTimeOfCycle: stopDateTime.getTime() - startDateTime.getTime(),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cycle.timestampStart, cycle.timestampStop]);
+
+  useEffect(() => {
     async function fetchData() {
       try {
         const data = await fetchSingleWorkingCycle(params.id);

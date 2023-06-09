@@ -27,6 +27,16 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
     return `${formattedDate} ${formattedTime}`;
   };
 
+  const calculateTime = () => {
+    const hours = Math.floor(cycle.workingTimeOfCycle / (1000 * 60 * 60));
+    const minutes = Math.floor(
+      (cycle.workingTimeOfCycle % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    return `${hours.toString().padStart(2, '0')}:${minutes
+      .toString()
+      .padStart(2, '0')}`;
+  };
+
   return (
     <ReportUnitListItem>
       <ReportUnitListItemTextDate>
@@ -35,10 +45,15 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
       <ReportUnitListItemTextDate>
         {formatedDate(cycle.timestampStop)}
       </ReportUnitListItemTextDate>
+      <ReportUnitListItemText>{calculateTime()}</ReportUnitListItemText>
       <ReportUnitListItemText>
-        {cycle.volumeElecricalGeneration}
+        {cycle.volumeElecricalGeneration
+          ? `${cycle.volumeElecricalGeneration} kW`
+          : '-'}
       </ReportUnitListItemText>
-      <ReportUnitListItemText>{cycle.refueling}</ReportUnitListItemText>
+      <ReportUnitListItemText>
+        {cycle.refueling ? `${cycle.refueling} litr` : '-'}
+      </ReportUnitListItemText>
       <ReportUnitListItemText>
         {cycle.changeOil ? <FaCheck /> : '-'}
       </ReportUnitListItemText>

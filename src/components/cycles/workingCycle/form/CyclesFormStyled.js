@@ -3,6 +3,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const CycleFormTitle = styled.h2`
+  position: relative;
+
   margin-top: ${p => p.theme.space[4]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
@@ -168,3 +170,44 @@ function CycleDatePicker({ onChange, ...rest }) {
   );
 }
 export default CycleDatePicker;
+
+export const TotalWorkingTime = styled.p`
+  position: absolute;
+
+  right: ${p => p.theme.space[4]};
+  top: ${p => p.theme.space[6]};
+
+  height: ${p => p.theme.space[7]};
+  width: ${p => p.theme.space[12]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+
+  border: ${p => p.theme.borders.normal};
+  border-radius: ${p => p.theme.radii.normal};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xxxl};
+  line-height: ${p => p.theme.fontSizes.xxxl};
+  text-align: center;
+`;
+
+export const ClockIcoContainer = styled.div`
+  position: absolute;
+  z-index: 2;
+
+  right: calc(
+    ${p => p.theme.space[11]} + ${p => p.theme.space[4]} +
+      ${p => p.theme.space[3]}
+  );
+  top: ${p => p.theme.space[7]};
+`;

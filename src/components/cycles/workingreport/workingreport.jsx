@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { FaGasPump, FaOilCan } from 'react-icons/fa';
+import { FaGasPump, FaOilCan, FaRegClock } from 'react-icons/fa';
 import { ImPower } from 'react-icons/im';
 
 import {
@@ -46,6 +46,9 @@ const WorkingReportPage = () => {
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>start cycle</ReportUnitListItemTextDate>
         <ReportUnitListItemTextDate>stop cycle</ReportUnitListItemTextDate>
+        <ReportUnitListItemText>
+          <FaRegClock size={20} />
+        </ReportUnitListItemText>
         <ReportUnitListItemText>
           <ImPower size={20} />
         </ReportUnitListItemText>

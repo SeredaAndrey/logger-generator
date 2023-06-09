@@ -92,7 +92,7 @@ export const ReportUnitListItemText = styled.p`
   align-items: center;
   justify-content: center;
 
-  width: ${p => p.theme.space[6]};
+  width: ${p => p.theme.space[8]};
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[4]};

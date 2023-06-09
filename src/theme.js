@@ -53,6 +53,7 @@ export const theme = {
     l: '20px',
     xl: '24px',
     xxl: '28px',
+    xxxl: '56px',
   },
   fontWeights: {
     normal: 400,
