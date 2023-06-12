@@ -38,15 +38,15 @@ export const fetchWorkingCycles = async ({
   dateStart,
   dateStop,
 }) => {
-  const startDate = dateStart && new Date(dateStart);
-  const startDateMill = startDate.getTime();
-  const stopDate = dateStop && new Date(dateStop);
-  const stopDateMill = stopDate.getTime();
+  const startDate = dateStart !== null && new Date(dateStart);
+  const startDateMill = dateStart !== null && startDate.getTime();
+  const stopDate = dateStop !== null && new Date(dateStop);
+  const stopDateMill = dateStop !== null && stopDate.getTime();
   const queryParams = {
     ...(filter !== null && { filter }),
     ...(sort !== null && { sort }),
-    ...(dateStart !== null && { startDateMill }),
-    ...(dateStop !== null && { stopDateMill }),
+    ...(dateStart !== null && { dateStart: startDateMill }),
+    ...(dateStop !== null && { dateStop: stopDateMill }),
   };
   const queryStringParams = queryString.stringify(queryParams);
   console.log(queryParams);
