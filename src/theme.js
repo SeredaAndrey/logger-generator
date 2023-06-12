@@ -64,7 +64,6 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid',
-    picture: '13px solid',
   },
   radii: {
     none: '0',

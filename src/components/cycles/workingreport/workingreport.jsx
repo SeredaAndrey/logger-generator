@@ -16,15 +16,22 @@ import {
   ReportUnitListItemTextDate,
   ReportUnitTitle,
 } from './reportUnitStyled';
+import FilterCycles from '../filterCycles/filterCycles';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
   const dispatch = useDispatch();
+  const [sortfilter, setSortFilter] = useState({
+    filter: 'start',
+    sort: 'ascending',
+    dateStart: null,
+    dateStop: null,
+  });
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchWorkingCycles();
+        const data = await fetchWorkingCycles(sortfilter);
         setCycles(data.data.WorkingCycles);
       } catch (error) {
         console.log(error);
@@ -32,7 +39,7 @@ const WorkingReportPage = () => {
     }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch, sortfilter]);
 
   const deleteCycle = async id => {
     await deleteWorkingCycleUnit(id);
@@ -41,8 +48,13 @@ const WorkingReportPage = () => {
     setCycles(updatedCycles);
   };
 
+  const onChangeFilterMode = filter => {
+    setSortFilter(filter);
+  };
+
   return (
     <>
+      <FilterCycles onChangeFilterMode={onChangeFilterMode} />
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>start cycle</ReportUnitListItemTextDate>
         <ReportUnitListItemTextDate>stop cycle</ReportUnitListItemTextDate>
@@ -59,6 +71,7 @@ const WorkingReportPage = () => {
           <FaOilCan size={30} />
         </ReportUnitListItemText>
       </ReportUnitTitle>
+
       {cycles && cycles.length !== 0 && (
         <ReportUnitList>
           {cycles.map(cycle => {

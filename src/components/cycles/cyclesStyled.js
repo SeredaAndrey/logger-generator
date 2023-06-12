@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const CyclesPageContainer = styled.div`
+  position: relative;
   width: 100%;
 `;
 

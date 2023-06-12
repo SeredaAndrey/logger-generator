@@ -32,7 +32,8 @@ export const addWorkingCycle = async cycle => {
   }
 };
 
-export const fetchWorkingCycles = async () => {
+export const fetchWorkingCycles = async filter => {
+  console.log(filter);
   try {
     const { data } = await axios.get('api/cycles');
     return data;
