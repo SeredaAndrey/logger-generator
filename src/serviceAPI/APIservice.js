@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import queryString from 'query-string';
 
 axios.defaults.baseURL = 'https://logger-generator-rest-api.onrender.com';
 
@@ -23,7 +24,6 @@ export const fetchUserData = async token => {
 };
 
 export const addWorkingCycle = async cycle => {
-  console.log(cycle);
   try {
     const { data } = await axios.post('api/cycles', cycle);
     return data;
@@ -32,10 +32,27 @@ export const addWorkingCycle = async cycle => {
   }
 };
 
-export const fetchWorkingCycles = async filter => {
-  console.log(filter);
+export const fetchWorkingCycles = async ({
+  filter,
+  sort,
+  dateStart,
+  dateStop,
+}) => {
+  const startDate = dateStart && new Date(dateStart);
+  const startDateMill = startDate.getTime();
+  const stopDate = dateStop && new Date(dateStop);
+  const stopDateMill = stopDate.getTime();
+  const queryParams = {
+    ...(filter !== null && { filter }),
+    ...(sort !== null && { sort }),
+    ...(dateStart !== null && { startDateMill }),
+    ...(dateStop !== null && { stopDateMill }),
+  };
+  const queryStringParams = queryString.stringify(queryParams);
+  console.log(queryParams);
+
   try {
-    const { data } = await axios.get('api/cycles');
+    const { data } = await axios.get(`api/cycles/?${queryStringParams}`);
     return data;
   } catch (error) {
     toast.error(error);
