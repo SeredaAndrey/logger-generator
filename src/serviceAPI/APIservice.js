@@ -49,7 +49,6 @@ export const fetchWorkingCycles = async ({
     ...(dateStop !== null && { dateStop: stopDateMill }),
   };
   const queryStringParams = queryString.stringify(queryParams);
-  console.log(queryParams);
 
   try {
     const { data } = await axios.get(`api/cycles/?${queryStringParams}`);

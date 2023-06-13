@@ -17,6 +17,7 @@ import {
   ReportUnitTitle,
 } from './reportUnitStyled';
 import FilterCycles from '../filterCycles/filterCycles';
+import WorkingTotalReport from './workingTotalReport';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
@@ -85,6 +86,7 @@ const WorkingReportPage = () => {
           })}
         </ReportUnitList>
       )}
+      <WorkingTotalReport cycles={cycles} />
     </>
   );
 };

@@ -37,7 +37,7 @@ const FilterCycles = ({ onChangeFilterMode }) => {
       <FilterSelect id="filter" name="filter" onChange={onChangeFilter}>
         <option value="start">starting date</option>
         <option value="stop">stop date</option>
-        <option value="cycle">ascending cycle time</option>
+        <option value="cycle">cycle time</option>
         <option value="gen">generation power</option>
       </FilterSelect>
       <FilterSelect id="sort" name="sort" onChange={onChangeSort}>
