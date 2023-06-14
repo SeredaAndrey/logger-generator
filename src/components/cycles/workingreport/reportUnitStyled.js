@@ -66,10 +66,10 @@ export const ReportUnitListItem = styled.li`
   }
 `;
 
-export const ReportUnitListItemTextDate = styled.p`
+export const ReportUnitListItemTextDate = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   width: ${p => p.theme.space[12]};
 
@@ -87,10 +87,10 @@ export const ReportUnitListItemTextDate = styled.p`
   border-right: ${p => p.theme.borders.normal};
 `;
 
-export const ReportUnitListItemText = styled.p`
+export const ReportUnitListItemText = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   width: ${p => p.theme.space[8]};
 

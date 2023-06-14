@@ -64,7 +64,6 @@ const countTotalChangeOil = cycles => {
 };
 
 const WorkingTotalReport = ({ cycles }) => {
-  console.log(cycles);
   return (
     <>
       {cycles && (

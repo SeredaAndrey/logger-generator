@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import FilterDatePicker, {
-  FilterButton,
   FilterContainer,
   FilterDateContainer,
   FilterSelect,
@@ -15,6 +14,32 @@ const FilterCycles = ({ onChangeFilterMode }) => {
     dateStop: null,
   });
 
+  useEffect(() => {
+    onChangeFilterMode(filter);
+  }, [filter, onChangeFilterMode]);
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const firstDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
+    const lastDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    );
+
+    setFilter(prevFilter => ({
+      ...prevFilter,
+      dateStart: firstDayOfMonth,
+      dateStop: lastDayOfMonth,
+    }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const onChangeFilter = event => {
     setFilter({ ...filter, filter: event.target.value });
   };
@@ -26,10 +51,6 @@ const FilterCycles = ({ onChangeFilterMode }) => {
   };
   const onStopInterval = date => {
     setFilter({ ...filter, dateStop: date });
-  };
-
-  const onSubmit = () => {
-    onChangeFilterMode(filter);
   };
 
   return (
@@ -56,10 +77,6 @@ const FilterCycles = ({ onChangeFilterMode }) => {
           dateFormat="yyyy-MM-dd "
         />
       </FilterDateContainer>
-
-      <FilterButton type="button" onClick={onSubmit}>
-        apply
-      </FilterButton>
     </FilterContainer>
   );
 };

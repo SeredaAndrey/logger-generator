@@ -18,11 +18,12 @@ import {
 } from './reportUnitStyled';
 import FilterCycles from '../filterCycles/filterCycles';
 import WorkingTotalReport from './workingTotalReport';
+import SortingButtonComponent from '../sortingButton/sortingButton';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
   const dispatch = useDispatch();
-  const [sortfilter, setSortFilter] = useState({
+  const [sortFilter, setSortFilter] = useState({
     filter: 'start',
     sort: 'ascending',
     dateStart: null,
@@ -30,9 +31,31 @@ const WorkingReportPage = () => {
   });
 
   useEffect(() => {
+    const currentDate = new Date();
+    const firstDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
+    const lastDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    );
+
+    setSortFilter(prevFilter => ({
+      ...prevFilter,
+      dateStart: firstDayOfMonth,
+      dateStop: lastDayOfMonth,
+    }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchWorkingCycles(sortfilter);
+        const data = await fetchWorkingCycles(sortFilter);
         setCycles(data.data.WorkingCycles);
       } catch (error) {
         console.log(error);
@@ -40,7 +63,7 @@ const WorkingReportPage = () => {
     }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, sortfilter]);
+  }, [dispatch, sortFilter]);
 
   const deleteCycle = async id => {
     await deleteWorkingCycleUnit(id);
@@ -53,17 +76,78 @@ const WorkingReportPage = () => {
     setSortFilter(filter);
   };
 
+  const onChangeSortModeStart = sort => {
+    setSortFilter({ ...sortFilter, filter: 'start', sort: sort });
+  };
+  const onChangeSortModeStop = sort => {
+    setSortFilter({ ...sortFilter, filter: 'stop', sort: sort });
+  };
+  const onChangeSortModeCycle = sort => {
+    setSortFilter({ ...sortFilter, filter: 'cycle', sort: sort });
+  };
+  const onChangeSortModeGen = sort => {
+    setSortFilter({ ...sortFilter, filter: 'gen', sort: sort });
+  };
+
   return (
     <>
       <FilterCycles onChangeFilterMode={onChangeFilterMode} />
       <ReportUnitTitle>
-        <ReportUnitListItemTextDate>start cycle</ReportUnitListItemTextDate>
-        <ReportUnitListItemTextDate>stop cycle</ReportUnitListItemTextDate>
+        <ReportUnitListItemTextDate>
+          start cycle
+          <SortingButtonComponent
+            onChangeSortMode={onChangeSortModeStart}
+            visualChange={
+              sortFilter.filter === 'start' && sortFilter.sort === 'ascending'
+                ? 'up'
+                : sortFilter.filter === 'start' &&
+                  sortFilter.sort === 'descending'
+                ? 'down'
+                : ''
+            }
+          />
+        </ReportUnitListItemTextDate>
+        <ReportUnitListItemTextDate>
+          stop cycle
+          <SortingButtonComponent
+            onChangeSortMode={onChangeSortModeStop}
+            visualChange={
+              sortFilter.filter === 'stop' && sortFilter.sort === 'ascending'
+                ? 'up'
+                : sortFilter.filter === 'stop' &&
+                  sortFilter.sort === 'descending'
+                ? 'down'
+                : ''
+            }
+          />
+        </ReportUnitListItemTextDate>
         <ReportUnitListItemText>
           <FaRegClock size={20} />
+          <SortingButtonComponent
+            onChangeSortMode={onChangeSortModeCycle}
+            visualChange={
+              sortFilter.filter === 'cycle' && sortFilter.sort === 'ascending'
+                ? 'up'
+                : sortFilter.filter === 'cycle' &&
+                  sortFilter.sort === 'descending'
+                ? 'down'
+                : ''
+            }
+          />
         </ReportUnitListItemText>
         <ReportUnitListItemText>
           <ImPower size={20} />
+          <SortingButtonComponent
+            onChangeSortMode={onChangeSortModeGen}
+            visualChange={
+              sortFilter.filter === 'gen' && sortFilter.sort === 'ascending'
+                ? 'up'
+                : sortFilter.filter === 'gen' &&
+                  sortFilter.sort === 'descending'
+                ? 'down'
+                : ''
+            }
+          />
         </ReportUnitListItemText>
         <ReportUnitListItemText>
           <FaGasPump size={20} />
@@ -72,7 +156,6 @@ const WorkingReportPage = () => {
           <FaOilCan size={30} />
         </ReportUnitListItemText>
       </ReportUnitTitle>
-
       {cycles && cycles.length !== 0 && (
         <ReportUnitList>
           {cycles.map(cycle => {
