@@ -32,12 +32,9 @@ export const addWorkingCycle = async cycle => {
   }
 };
 
-export const fetchWorkingCycles = async ({
-  filter,
-  sort,
-  dateStart,
-  dateStop,
-}) => {
+export const fetchWorkingCycles = async (filtering, sorting) => {
+  const { dateStart, dateStop } = filtering;
+  const { filter, sort } = sorting;
   const startDate = dateStart !== null && new Date(dateStart);
   const startDateMill = dateStart !== null && startDate.getTime();
   const stopDate = dateStop !== null && new Date(dateStop);

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { FaGasPump, FaOilCan, FaRegClock } from 'react-icons/fa';
 import { ImPower } from 'react-icons/im';
@@ -22,12 +21,13 @@ import SortingButtonComponent from '../sortingButton/sortingButton';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
-  const dispatch = useDispatch();
-  const [sortFilter, setSortFilter] = useState({
-    filter: 'start',
-    sort: 'ascending',
+  const [filtering, setFiltering] = useState({
     dateStart: null,
     dateStop: null,
+  });
+  const [sorting, setSorting] = useState({
+    filter: 'start',
+    sort: 'ascending',
   });
 
   useEffect(() => {
@@ -42,28 +42,24 @@ const WorkingReportPage = () => {
       currentDate.getMonth() + 1,
       0
     );
-
-    setSortFilter(prevFilter => ({
+    setFiltering(prevFilter => ({
       ...prevFilter,
       dateStart: firstDayOfMonth,
       dateStop: lastDayOfMonth,
     }));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchWorkingCycles(sortFilter);
+        const data = await fetchWorkingCycles(filtering, sorting);
         setCycles(data.data.WorkingCycles);
       } catch (error) {
         console.log(error);
       }
     }
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, sortFilter]);
+  }, [filtering, sorting]);
 
   const deleteCycle = async id => {
     await deleteWorkingCycleUnit(id);
@@ -72,36 +68,43 @@ const WorkingReportPage = () => {
     setCycles(updatedCycles);
   };
 
-  const onChangeFilterMode = filter => {
-    setSortFilter(filter);
+  const onChangeStartFilter = date => {
+    setFiltering(prevFilter => ({ ...prevFilter, dateStart: date }));
+  };
+
+  const onChangeStopFilter = date => {
+    setFiltering(prevFilter => ({ ...prevFilter, dateStop: date }));
   };
 
   const onChangeSortModeStart = sort => {
-    setSortFilter({ ...sortFilter, filter: 'start', sort: sort });
+    setSorting(prevFilter => ({ ...prevFilter, filter: 'start', sort: sort }));
   };
   const onChangeSortModeStop = sort => {
-    setSortFilter({ ...sortFilter, filter: 'stop', sort: sort });
+    setSorting(prevFilter => ({ ...prevFilter, filter: 'stop', sort: sort }));
   };
   const onChangeSortModeCycle = sort => {
-    setSortFilter({ ...sortFilter, filter: 'cycle', sort: sort });
+    setSorting(prevFilter => ({ ...prevFilter, filter: 'cycle', sort: sort }));
   };
   const onChangeSortModeGen = sort => {
-    setSortFilter({ ...sortFilter, filter: 'gen', sort: sort });
+    setSorting(prevFilter => ({ ...prevFilter, filter: 'gen', sort: sort }));
   };
 
   return (
     <>
-      <FilterCycles onChangeFilterMode={onChangeFilterMode} />
+      <FilterCycles
+        onChangeStartFilter={onChangeStartFilter}
+        onChangeStopFilter={onChangeStopFilter}
+        filtering={filtering}
+      />
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>
           start cycle
           <SortingButtonComponent
             onChangeSortMode={onChangeSortModeStart}
             visualChange={
-              sortFilter.filter === 'start' && sortFilter.sort === 'ascending'
+              sorting.filter === 'start' && sorting.sort === 'ascending'
                 ? 'up'
-                : sortFilter.filter === 'start' &&
-                  sortFilter.sort === 'descending'
+                : sorting.filter === 'start' && sorting.sort === 'descending'
                 ? 'down'
                 : ''
             }
@@ -112,10 +115,9 @@ const WorkingReportPage = () => {
           <SortingButtonComponent
             onChangeSortMode={onChangeSortModeStop}
             visualChange={
-              sortFilter.filter === 'stop' && sortFilter.sort === 'ascending'
+              sorting.filter === 'stop' && sorting.sort === 'ascending'
                 ? 'up'
-                : sortFilter.filter === 'stop' &&
-                  sortFilter.sort === 'descending'
+                : sorting.filter === 'stop' && sorting.sort === 'descending'
                 ? 'down'
                 : ''
             }
@@ -126,10 +128,9 @@ const WorkingReportPage = () => {
           <SortingButtonComponent
             onChangeSortMode={onChangeSortModeCycle}
             visualChange={
-              sortFilter.filter === 'cycle' && sortFilter.sort === 'ascending'
+              sorting.filter === 'cycle' && sorting.sort === 'ascending'
                 ? 'up'
-                : sortFilter.filter === 'cycle' &&
-                  sortFilter.sort === 'descending'
+                : sorting.filter === 'cycle' && sorting.sort === 'descending'
                 ? 'down'
                 : ''
             }
@@ -140,10 +141,9 @@ const WorkingReportPage = () => {
           <SortingButtonComponent
             onChangeSortMode={onChangeSortModeGen}
             visualChange={
-              sortFilter.filter === 'gen' && sortFilter.sort === 'ascending'
+              sorting.filter === 'gen' && sorting.sort === 'ascending'
                 ? 'up'
-                : sortFilter.filter === 'gen' &&
-                  sortFilter.sort === 'descending'
+                : sorting.filter === 'gen' && sorting.sort === 'descending'
                 ? 'down'
                 : ''
             }
