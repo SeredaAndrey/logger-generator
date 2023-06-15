@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const UserSettingContainer = styled.div`
   display: flex;
+  position: relative;
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
@@ -30,6 +31,39 @@ export const UserSettingAvatar = styled.img`
 
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.normal};
+`;
+
+export const UserAvatarAddButton = styled.button`
+  display: flex;
+  position: absolute;
+
+  left: calc(${p => p.theme.space[13]} + ${p => p.theme.space[4]});
+  top: ${p => p.theme.space[12]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  background-color: ${p => p.theme.colors.bgColorAside};
+  border-radius: ${p => p.theme.radii.round};
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
+  transition-property: color;
+
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.colorTextHover};
+  }
 `;
 
 export const UserSettingFormDataForm = styled.form`

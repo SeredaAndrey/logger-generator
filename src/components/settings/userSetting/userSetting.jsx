@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { BsPlusCircle } from 'react-icons/bs';
 
 import shortid from 'shortid';
 
 import { getUserToken } from 'redux/authSelector';
 import { fetchUserData } from 'serviceAPI/APIservice';
-import { updateUserData } from 'redux/userOperations';
+import { updateUserData, uploadAvatar } from 'redux/userOperations';
 import {
+  UserAvatarAddButton,
   UserSettingAvatar,
   UserSettingButton,
   UserSettingContainer,
@@ -23,6 +25,7 @@ const UserSettingPage = () => {
   const [email, setEmail] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
   const dispatch = useDispatch();
+  const fileInputRef = useRef(null);
 
   const firstNameInputId = shortid.generate();
   const secondNameInputId = shortid.generate();
@@ -66,9 +69,27 @@ const UserSettingPage = () => {
     }
   };
 
+  const handleFileInputClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileInputChange = event => {
+    const selectedFile = event.target.files[0];
+    dispatch(uploadAvatar(selectedFile));
+  };
+
   return (
     <UserSettingContainer>
       <UserSettingAvatar src={avatarUrl} alt={firstName}></UserSettingAvatar>
+      <input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
+        onChange={handleFileInputChange}
+      />
+      <UserAvatarAddButton type="button" onClick={handleFileInputClick}>
+        <BsPlusCircle size={40} />
+      </UserAvatarAddButton>
 
       <UserSettingFormDataForm onSubmit={handleSubmit}>
         <UserSettingFormDataLabel htmlFor={firstNameInputId}>

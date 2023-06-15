@@ -18,3 +18,18 @@ export const updateUserData = createAsyncThunk(
     }
   }
 );
+
+export const uploadAvatar = createAsyncThunk(
+  'user/updateAvatar',
+  async (file, { rejectWithValue }) => {
+    const formData = new FormData();
+    formData.append('avatar', file);
+    try {
+      const { data } = await axios.patch('api/owner/patchAvatar', formData);
+      return data;
+    } catch (error) {
+      toast.error(error);
+      return rejectWithValue(error.message);
+    }
+  }
+);

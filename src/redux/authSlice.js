@@ -6,7 +6,7 @@ import {
   refreshUser,
   verification,
 } from './authOperations';
-import { updateUserData } from './userOperations';
+import { updateUserData, uploadAvatar } from './userOperations';
 
 const initialState = {
   name: null,
@@ -127,7 +127,6 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateUserData.fulfilled, (state, action) => {
-        console.log(action);
         state.name = action.payload.data.firstName;
         state.email = action.payload.data.email;
         state.isLoading = false;
@@ -136,6 +135,17 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateUserData.rejected, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(uploadAvatar.fulfilled, (state, action) => {
+        console.log(action);
+        state.avatar = action.payload.data.avatarUrl;
+        state.isLoading = false;
+      })
+      .addCase(uploadAvatar.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(uploadAvatar.rejected, (state, action) => {
         state.isLoading = false;
       });
   },
