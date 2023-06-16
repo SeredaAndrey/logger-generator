@@ -138,8 +138,7 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(uploadAvatar.fulfilled, (state, action) => {
-        console.log(action);
-        state.avatar = action.payload.data.avatarUrl;
+        state.avatar = action.payload.avatarURL;
         state.isLoading = false;
       })
       .addCase(uploadAvatar.pending, (state, action) => {

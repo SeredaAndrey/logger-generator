@@ -4,7 +4,7 @@ import { BsPlusCircle } from 'react-icons/bs';
 
 import shortid from 'shortid';
 
-import { getUserToken } from 'redux/authSelector';
+import { getUserAvatar, getUserToken } from 'redux/authSelector';
 import { fetchUserData } from 'serviceAPI/APIservice';
 import { updateUserData, uploadAvatar } from 'redux/userOperations';
 import {
@@ -26,6 +26,7 @@ const UserSettingPage = () => {
   const [avatarUrl, setAvatarUrl] = useState('');
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
+  const avatar = useSelector(getUserAvatar);
 
   const firstNameInputId = shortid.generate();
   const secondNameInputId = shortid.generate();
@@ -45,7 +46,7 @@ const UserSettingPage = () => {
     }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [avatar]);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -73,7 +74,7 @@ const UserSettingPage = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileInputChange = event => {
+  const handleFileInputChange = async event => {
     const selectedFile = event.target.files[0];
     dispatch(uploadAvatar(selectedFile));
   };
