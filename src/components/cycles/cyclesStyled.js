@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 export const CyclesPageContainer = styled.div`
   position: relative;
   width: 100%;
+
+  margin-bottom: ${p => p.theme.space[12]};
 `;
 
 export const CyclesPageTitle = styled.h2`
@@ -43,6 +45,8 @@ export const CyclesMenuItemContainer = styled.div`
   background-color: ${p => p.theme.colors.bgColorBox};
 
   > a {
+    text-decoration: none;
+
     margin-top: ${p => p.theme.space[0]};
     margin-right: ${p => p.theme.space[3]};
     margin-bottom: ${p => p.theme.space[0]};

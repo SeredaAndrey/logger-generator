@@ -42,6 +42,8 @@ export const SettingMenuItemContainer = styled.div`
   background-color: ${p => p.theme.colors.bgColorBox};
 
   > a {
+    text-decoration: none;
+
     margin-top: ${p => p.theme.space[0]};
     margin-right: ${p => p.theme.space[3]};
     margin-bottom: ${p => p.theme.space[0]};

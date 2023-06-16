@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
 
 export const TotalReportUnitTitle = styled.div`
-  padding: ${p => p.theme.space[0]};
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
 
   margin-top: ${p => p.theme.space[4]};
   margin-right: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[8]};
   margin-left: ${p => p.theme.space[0]};
 
   display: flex;

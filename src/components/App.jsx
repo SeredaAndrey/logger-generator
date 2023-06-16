@@ -119,8 +119,8 @@ export const App = () => {
               </Route>
             </Route>
           </Routes>
-          <FuterPage />
         </PrimaryScreenContainer>
+        <FuterPage />
       </ThemeProvider>
     </>
   );

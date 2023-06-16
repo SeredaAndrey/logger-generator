@@ -12,7 +12,10 @@ export const SpinnerContainer = styled.div`
 `;
 
 export const PrimaryScreenContainer = styled.div`
-  height: 100vh;
+  transform: translateY(${p => p.theme.space[10]});
+  z-index: 2;
+
+  // height: calc(100vh - ${p => p.theme.space[0]});
   align-items: center;
 
   margin-top: ${p => p.theme.space[0]};

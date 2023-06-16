@@ -19,6 +19,7 @@ const CyclesPage = () => {
         <NavLink to="/cycles/add">Add cycle unit</NavLink>
         <NavLink to="/cycles/workingreport">show working report</NavLink>
       </CyclesMenuItemContainer>
+
       <Outlet />
     </CyclesPageContainer>
   );

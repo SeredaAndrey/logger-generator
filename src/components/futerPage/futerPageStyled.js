@@ -1,15 +1,23 @@
 import styled from '@emotion/styled';
 
-export const FuterContainer = styled.footer`
+export const FuterContainer = styled.div`
   position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   bottom: ${p => p.theme.space[0]};
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 
   height: ${p => p.theme.space[8]};
   width: ${p => p.theme.space[18]};
+
+  background-color: ${p => p.theme.colors.bgColorWhite};
+`;
+
+export const Futer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   border-bottom-right-radius: ${p => p.theme.radii.big};
   border-bottom-left-radius: ${p => p.theme.radii.big};

@@ -1,12 +1,24 @@
 import styled from '@emotion/styled';
 
+export const HeaderContainer = styled.div`
+  position: fixed;
+
+  top: ${p => p.theme.space[0]};
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  height: ${p => p.theme.space[10]};
+  width: ${p => p.theme.space[18]};
+
+  background-color: ${p => p.theme.colors.bgColorWhite};
+`;
+
 export const HederAppBar = styled.header`
   display: flex;
   align-items: center;
 
-  margin-top: ${p => p.theme.space[0]};
-  margin-left: auto;
-  margin-right: auto;
+  margin: ${p => p.theme.space[0]};
 
   height: ${p => p.theme.space[10]};
   width: ${p => p.theme.space[18]};

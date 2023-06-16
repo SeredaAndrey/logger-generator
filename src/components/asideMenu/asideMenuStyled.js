@@ -21,6 +21,27 @@ export const AsideTitle = styled.p`
   font-size: ${p => p.theme.fontSizes.xl};
   line-height: ${p => p.theme.fontSizes.xxl};
   text-transform: uppercase;
+
+  > a {
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color, font-weight;
+
+    color: ${p => p.theme.colors.colorTextDark};
+
+    &:hover,
+    &:focus {
+      color: ${p => p.theme.colors.colorTextHover};
+      font-weight: ${p => p.theme.fontWeights.bold};
+    }
+    .active {
+      color: ${p => p.theme.colors.colorTextHover};
+      font-weight: ${p => p.theme.fontWeights.bold};
+    }
+  }
 `;
 
 export const AsidePrimaryListContainer = styled.ul`
@@ -82,6 +103,8 @@ export const AsideSeccondaryListItem = styled.li`
   padding: ${p => p.theme.space[0]};
 
   > a {
+    text-decoration: none;
+
     margin: ${p => p.theme.space[0]};
 
     font-family: 'Jura';
@@ -95,6 +118,8 @@ export const AsideSeccondaryListItem = styled.li`
 
     transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
     transition-property: color, font-weight;
+
+    color: ${p => p.theme.colors.colorTextDark};
 
     &:hover,
     &:focus {
