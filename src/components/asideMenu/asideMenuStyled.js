@@ -4,9 +4,12 @@ export const AsideMenuContainer = styled.aside`
   display: flex;
 
   width: 100%;
-  min-height: calc(
-    100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[10]}
-  );
+  min-height: calc(100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[8]});
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    min-height: calc(
+      100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[10]}
+    );
+  }
 `;
 
 export const AsideTitle = styled.p`

@@ -19,12 +19,7 @@ const AppBar = () => {
   return (
     <HeaderContainer>
       <HederAppBar>
-        <HeaderLogoImage
-          src={logo}
-          alt="logo"
-          height="80"
-          width="80"
-        ></HeaderLogoImage>
+        <HeaderLogoImage src={logo} alt="logo"></HeaderLogoImage>
         <HeaderTitle>PowerGen Tracker</HeaderTitle>
 
         {isLoggedIn ? <UserMenu /> : <AuthNav />}

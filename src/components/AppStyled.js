@@ -12,17 +12,24 @@ export const SpinnerContainer = styled.div`
 `;
 
 export const PrimaryScreenContainer = styled.div`
-  transform: translateY(${p => p.theme.space[10]});
+  transform: translateY(${p => p.theme.space[8]});
   z-index: 2;
 
-  // height: calc(100vh - ${p => p.theme.space[0]});
   align-items: center;
 
   margin-top: ${p => p.theme.space[0]};
   margin-left: auto;
   margin-right: auto;
 
-  width: ${p => p.theme.space[18]};
+  width: ${p => p.theme.space[15]};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    transform: translateY(${p => p.theme.space[10]});
+
+    width: ${p => p.theme.space[17]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[18]};
+  }
 `;
 
 export const PrimaryHomeContainer = styled.div`

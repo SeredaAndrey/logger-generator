@@ -9,9 +9,16 @@ export const FuterContainer = styled.div`
   z-index: 1;
 
   height: ${p => p.theme.space[8]};
-  width: ${p => p.theme.space[18]};
+  width: ${p => p.theme.space[15]};
 
   background-color: ${p => p.theme.colors.bgColorWhite};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[17]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[18]};
+  }
 `;
 
 export const Futer = styled.footer`
@@ -26,35 +33,67 @@ export const Futer = styled.footer`
 `;
 
 export const FuterText = styled.p`
-  margin-left: ${p => p.theme.space[5]};
+  margin-left: ${p => p.theme.space[4]};
 
   font-family: 'Jura';
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xl};
-  line-height: ${p => p.theme.fontSizes.xxl};
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: ${p => p.theme.fontSizes.l};
 
   color: ${p => p.theme.colors.colorTextDark};
 
   text-transform: uppercase;
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    margin-left: ${p => p.theme.space[5]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    font-size: ${p => p.theme.fontSizes.xl};
+    line-height: ${p => p.theme.fontSizes.xxl};
+  }
 `;
 
 export const ContactsComponentList = styled.ul`
   display: flex;
+  justify-content: flex-end;
+
+  flex-wrap: wrap;
 
   padding: ${p => p.theme.space[0]};
-  margin-right: ${p => p.theme.space[5]};
+  margin-right: ${p => p.theme.space[4]};
+  margin-top: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+
+  width: ${p => p.theme.space[12]};
 
   list-style-type: none;
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    margin-right: ${p => p.theme.space[5]};
+
+    width: ${p => p.theme.space[16]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[16]};
+  }
 `;
 
 export const ContactsComponentItem = styled.li`
-  &:not(:last-child) {
-    margin-right: ${p => p.theme.space[5]};
+  margin: ${p => p.theme.space[3]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    margin: ${p => p.theme.space[4]};
   }
 `;
 
 export const ContactsComponentItemLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(${p => p.theme.space[4]} + ${p => p.theme.space[2]});
+  height: calc(${p => p.theme.space[4]} + ${p => p.theme.space[2]});
+
   color: ${p => p.theme.colors.colorTextDark};
   &:visited {
     color: ${p => p.theme.colors.colorTextDark};
@@ -67,5 +106,14 @@ export const ContactsComponentItemLink = styled.a`
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.colorTextHover};
+  }
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    height: ${p => p.theme.space[5]};
+    width: ${p => p.theme.space[5]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    height: ${p => p.theme.space[5]};
+    width: ${p => p.theme.space[5]};
   }
 `;
