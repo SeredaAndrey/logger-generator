@@ -7,6 +7,11 @@ export const AsideMenuContainer = styled.aside`
   min-height: calc(100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[8]});
   @media screen and (min-width: ${p => p.theme.space[17]}) {
     min-height: calc(
+      100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[9]}
+    );
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    min-height: calc(
       100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[10]}
     );
   }
@@ -21,10 +26,18 @@ export const AsideTitle = styled.p`
   font-family: 'Jura';
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xl};
-  line-height: ${p => p.theme.fontSizes.xxl};
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: ${p => p.theme.fontSizes.l};
   text-transform: uppercase;
 
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.fontSizes.xl};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    font-size: ${p => p.theme.fontSizes.xl};
+    line-height: ${p => p.theme.fontSizes.xxl};
+  }
   > a {
     text-decoration: none;
 
@@ -99,8 +112,14 @@ export const AsideSeccondaryListItem = styled.li`
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};
 
+  margin-bottom: ${p => p.theme.space[2]};
   &:not(:last-child) {
-    margin-bottom: ${p => p.theme.space[4]};
+    @media screen and (min-width: ${p => p.theme.space[17]}) {
+      margin-bottom: ${p => p.theme.space[3]};
+    }
+    @media screen and (min-width: ${p => p.theme.space[18]}) {
+      margin-bottom: ${p => p.theme.space[4]};
+    }
   }
 
   padding: ${p => p.theme.space[0]};
@@ -113,9 +132,18 @@ export const AsideSeccondaryListItem = styled.li`
     font-family: 'Jura';
     font-style: normal;
     font-weight: ${p => p.theme.fontWeights.medium};
-    font-size: ${p => p.theme.fontSizes.m};
-    line-height: ${p => p.theme.fontSizes.l};
+    font-size: ${p => p.theme.fontSizes.xs};
+    line-height: ${p => p.theme.fontSizes.s};
     text-transform: uppercase;
+
+    @media screen and (min-width: ${p => p.theme.space[17]}) {
+      font-size: ${p => p.theme.fontSizes.s};
+      line-height: ${p => p.theme.fontSizes.m};
+    }
+    @media screen and (min-width: ${p => p.theme.space[18]}) {
+      font-size: ${p => p.theme.fontSizes.m};
+      line-height: ${p => p.theme.fontSizes.l};
+    }
 
     cursor: pointer;
 

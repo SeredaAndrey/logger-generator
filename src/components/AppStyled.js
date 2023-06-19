@@ -23,11 +23,13 @@ export const PrimaryScreenContainer = styled.div`
 
   width: ${p => p.theme.space[15]};
   @media screen and (min-width: ${p => p.theme.space[17]}) {
-    transform: translateY(${p => p.theme.space[10]});
+    transform: translateY(${p => p.theme.space[9]});
 
     width: ${p => p.theme.space[17]};
   }
   @media screen and (min-width: ${p => p.theme.space[18]}) {
+    transform: translateY(${p => p.theme.space[10]});
+
     width: ${p => p.theme.space[18]};
   }
 `;

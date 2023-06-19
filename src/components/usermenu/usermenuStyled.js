@@ -31,6 +31,17 @@ export const UserMenuTitle = styled.h2`
     width: ${p => p.theme.space[14]};
 
     font-weight: ${p => p.theme.fontWeights.medium};
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.fontSizes.xl};
+  }
+
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    text-align: right;
+    margin-right: ${p => p.theme.space[4]};
+
+    width: ${p => p.theme.space[14]};
+
+    font-weight: ${p => p.theme.fontWeights.medium};
     font-size: ${p => p.theme.fontSizes.xl};
     line-height: ${p => p.theme.fontSizes.xxl};
   }
@@ -45,6 +56,11 @@ export const UserMenuImageContainer = styled.div`
   background-color: ${p => p.theme.colors.dgColorPhoto};
 
   @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[8]};
+    height: ${p => p.theme.space[8]};
+  }
+
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
     width: ${p => p.theme.space[9]};
     height: ${p => p.theme.space[9]};
   }
@@ -57,6 +73,11 @@ export const UserMenuImage = styled.img`
   border-radius: ${p => p.theme.radii.normal};
 
   @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[8]};
+    height: ${p => p.theme.space[8]};
+  }
+
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
     width: ${p => p.theme.space[9]};
     height: ${p => p.theme.space[9]};
   }
@@ -88,7 +109,7 @@ export const UserMenuExitButton = styled.button`
     background-color: ${p => p.theme.colors.colorTextHover};
   }
 
-  @media screen and (min-width: ${p => p.theme.space[17]}) {
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
     right: calc(-${p => p.theme.space[5]} / 2);
     top: ${p => p.theme.space[6]};
 
