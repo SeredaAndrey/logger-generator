@@ -10,6 +10,7 @@ import CycleDatePicker, {
   CycleFormDataForm,
   CycleFormDataInput,
   CycleFormDataLabel,
+  CycleFormDataLabelCheckBox,
   CycleFormTitle,
   CyclesFormSpan,
   TotalWorkingTime,
@@ -117,7 +118,7 @@ const CycleForm = ({
             id={volumeElecricalGenerationId}
           />
           <CyclesFormSpan>
-            amount of electricity generated per generator cycle
+            amount electricity generated per cycle
           </CyclesFormSpan>
         </CycleFormDataLabel>
         <CycleFormDataLabel htmlFor={refuelingId}>
@@ -130,10 +131,10 @@ const CycleForm = ({
             id={refuelingId}
           />
           <CyclesFormSpan>
-            amount of fuel filled, specify when refueling
+            amount fuel filled, specify when refueling
           </CyclesFormSpan>
         </CycleFormDataLabel>
-        <CycleFormDataLabel htmlFor={changeOilId}>
+        <CycleFormDataLabelCheckBox htmlFor={changeOilId}>
           <CycleFormDataInput
             checked={cycle.changeOil}
             name="changeOil"
@@ -142,7 +143,7 @@ const CycleForm = ({
             id={changeOilId}
           />
           <CyclesFormSpan>Change of oil</CyclesFormSpan>
-        </CycleFormDataLabel>
+        </CycleFormDataLabelCheckBox>
         <CycleButton type="submit" disabled={!workingTime}>
           {isNewCycle ? 'create' : 'patch'}
         </CycleButton>

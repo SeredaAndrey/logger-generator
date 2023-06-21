@@ -18,12 +18,20 @@ export const SettingPageTitle = styled.h2`
   font-family: 'Jura';
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.xl};
-  line-height: ${p => p.theme.fontSizes.xxl};
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: ${p => p.theme.fontSizes.l};
   text-transform: uppercase;
 
   color: ${p => p.theme.colors.colorTextLight};
   background-color: ${p => p.theme.colors.bgColorBox};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.fontSizes.xl};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    font-size: ${p => p.theme.fontSizes.xl};
+    line-height: ${p => p.theme.fontSizes.xxl};
+  }
 `;
 
 export const SettingMenuItemContainer = styled.div`
@@ -60,8 +68,8 @@ export const SettingMenuItemContainer = styled.div`
     font-family: 'Jura';
     font-style: normal;
     font-weight: ${p => p.theme.fontWeights.medium};
-    font-size: ${p => p.theme.fontSizes.m};
-    line-height: ${p => p.theme.fontSizes.l};
+    font-size: ${p => p.theme.fontSizes.xs};
+    line-height: ${p => p.theme.fontSizes.s};
     text-transform: uppercase;
 
     color: ${p => p.theme.colors.colorTextLight};
@@ -73,6 +81,14 @@ export const SettingMenuItemContainer = styled.div`
     &:hover,
     &:focus {
       color: ${p => p.theme.colors.colorTextHover};
+    }
+    @media screen and (min-width: ${p => p.theme.space[17]}) {
+      font-size: ${p => p.theme.fontSizes.s};
+      line-height: ${p => p.theme.fontSizes.m};
+    }
+    @media screen and (min-width: ${p => p.theme.space[18]}) {
+      font-size: ${p => p.theme.fontSizes.m};
+      line-height: ${p => p.theme.fontSizes.l};
     }
   }
   .active {

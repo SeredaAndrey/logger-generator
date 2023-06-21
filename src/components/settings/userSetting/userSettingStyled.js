@@ -1,18 +1,26 @@
 import styled from '@emotion/styled';
 
 export const UserSettingContainer = styled.div`
-  display: flex;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[12]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[5]};
   padding-right: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[5]};
+  padding-left: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[0]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    flex-direction: row;
+
+    padding-top: ${p => p.theme.space[5]};
+    padding-left: ${p => p.theme.space[5]};
+  }
 `;
 
 export const UserSettingAvatar = styled.img`
@@ -21,8 +29,8 @@ export const UserSettingAvatar = styled.img`
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[4]};
+  margin-left: calc(${p => p.theme.space[6]} + ${p => p.theme.space[3]});
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[0]};
@@ -31,13 +39,18 @@ export const UserSettingAvatar = styled.img`
 
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.normal};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    padding-bottom: ${p => p.theme.space[0]};
+    margin-left: ${p => p.theme.space[0]};
+  }
 `;
 
 export const UserAvatarAddButton = styled.button`
   display: flex;
   position: absolute;
 
-  left: calc(${p => p.theme.space[13]} + ${p => p.theme.space[4]});
+  left: calc(${p => p.theme.space[13]} + ${p => p.theme.space[5]});
   top: ${p => p.theme.space[12]};
 
   padding-top: ${p => p.theme.space[0]};
@@ -64,6 +77,10 @@ export const UserAvatarAddButton = styled.button`
   &:focus {
     color: ${p => p.theme.colors.colorTextHover};
   }
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    left: calc(${p => p.theme.space[13]} + ${p => p.theme.space[4]});
+  }
 `;
 
 export const UserSettingFormDataForm = styled.form`
@@ -78,8 +95,12 @@ export const UserSettingFormDataForm = styled.form`
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[7]};
+  padding-left: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[0]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    padding-left: ${p => p.theme.space[7]};
+  }
 `;
 
 export const UserSettingFormDataLabel = styled.label`
@@ -131,7 +152,7 @@ export const UserSettingButton = styled.button`
 
   padding: ${p => p.theme.space[0]};
 
-  margin-top: ${p => p.theme.space[6]};
+  margin-top: ${p => p.theme.space[7]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};

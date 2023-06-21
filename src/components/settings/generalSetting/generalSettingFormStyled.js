@@ -6,27 +6,39 @@ export const GeneralSettingFormDataForm = styled.form`
 
   margin-top: ${p => p.theme.space[5]};
   margin-right: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[12]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[7]};
+  padding-left: ${p => p.theme.space[4]};
   padding-bottom: ${p => p.theme.space[0]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    padding-left: ${p => p.theme.space[5]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    margin-bottom: ${p => p.theme.space[13]};
+
+    padding-left: ${p => p.theme.space[7]};
+  }
 `;
 
 export const GeneralSettingFormDataLabel = styled.label`
   height: ${p => p.theme.space[5]};
-  width: ${p => p.theme.space[18]};
 
   padding: ${p => p.theme.space[0]};
   margin-top: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[4]};
+  margin-bottom: ${p => p.theme.space[5]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    margin-bottom: ${p => p.theme.space[4]};
+  }
 `;
 
 export const GeneralSettingFormDataInput = styled.input`
   height: ${p => p.theme.space[5]};
-  width: ${p => p.theme.space[16]};
+  width: calc(${p => p.theme.space[14]} + ${p => p.theme.space[5]});
 
   padding: ${p => p.theme.space[0]};
   margin: ${p => p.theme.space[0]};
@@ -44,6 +56,13 @@ export const GeneralSettingFormDataInput = styled.input`
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: ${p => p.theme.fontSizes.l};
   line-height: ${p => p.theme.fontSizes.xl};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[15]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[16]};
+  }
 `;
 
 export const GeneralSettingFormDataSpan = styled.span`
@@ -69,7 +88,7 @@ export const GeneralSettingButton = styled.button`
   margin-top: ${p => p.theme.space[4]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[11]};
+  margin-left: ${p => p.theme.space[8]};
 
   border-radius: ${p => p.theme.radii.normal};
   border: none;
@@ -103,4 +122,8 @@ export const GeneralSettingButton = styled.button`
         : p.theme.colors.colorButtonInHover};
   }
   cursor: pointer;
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    margin-left: ${p => p.theme.space[11]};
+  }
 `;
