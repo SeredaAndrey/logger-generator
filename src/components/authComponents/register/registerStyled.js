@@ -11,10 +11,22 @@ export const BackRegisterContainer = styled.div`
   top: 0;
   left: 0;
 
-  height: 100vh;
-  width: 100vw;
+  min-height: calc(100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[8]});
 
   background-color: ${p => p.theme.colors.bgColorSpinner};
+  width: ${p => p.theme.space[15]};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[17]};
+    min-height: calc(
+      100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[9]}
+    );
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[18]};
+    min-height: calc(
+      100vh - ${p => p.theme.space[8]} - ${p => p.theme.space[10]}
+    );
+  }
 `;
 
 export const RegisterContainer = styled.div`
@@ -24,9 +36,6 @@ export const RegisterContainer = styled.div`
   flex-direction: column;
   align-content: center;
   align-items: center;
-
-  display: grid;
-  place-items: center;
 
   padding: ${p => p.theme.space[0]};
 

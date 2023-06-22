@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const CyclesPageContainer = styled.div`
   position: relative;
-  width: 100%;
+  // width: 100%;
 
   margin-bottom: ${p => p.theme.space[12]};
 `;

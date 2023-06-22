@@ -124,7 +124,7 @@ const WorkingReportPage = () => {
           />
         </ReportUnitListItemTextDate>
         <ReportUnitListItemText>
-          <FaRegClock size={20} />
+          <FaRegClock size={15} />
           <SortingButtonComponent
             onChangeSortMode={onChangeSortModeCycle}
             visualChange={
@@ -137,7 +137,7 @@ const WorkingReportPage = () => {
           />
         </ReportUnitListItemText>
         <ReportUnitListItemText>
-          <ImPower size={20} />
+          <ImPower size={15} />
           <SortingButtonComponent
             onChangeSortMode={onChangeSortModeGen}
             visualChange={
@@ -150,10 +150,10 @@ const WorkingReportPage = () => {
           />
         </ReportUnitListItemText>
         <ReportUnitListItemText>
-          <FaGasPump size={20} />
+          <FaGasPump size={15} />
         </ReportUnitListItemText>
         <ReportUnitListItemText>
-          <FaOilCan size={30} />
+          <FaOilCan size={20} />
         </ReportUnitListItemText>
       </ReportUnitTitle>
       {cycles && cycles.length !== 0 && (

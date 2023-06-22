@@ -37,6 +37,19 @@ export const PrimaryScreenContainer = styled.div`
 export const PrimaryHomeContainer = styled.div`
   display: flex;
 
-  margin: ${p => p.theme.space[0]};
+  align-items: center;
+
+  margin-top: ${p => p.theme.space[0]};
+  // margin-left: auto;
+  // margin-right: auto;
+
   padding: ${p => p.theme.space[0]};
+
+  width: ${p => p.theme.space[15]};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[17]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[18]};
+  }
 `;

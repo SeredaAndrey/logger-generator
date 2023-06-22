@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { AuthNavButton } from './authNavStyled';
+import { AuthNavButton, AuthNavContainer } from './authNavStyled';
 
 const AuthNav = () => {
   const navigation = useNavigate();
   return (
-    <>
+    <AuthNavContainer>
       <AuthNavButton
         type="button"
         onClick={() => {
@@ -29,7 +29,7 @@ const AuthNav = () => {
       >
         LogIn
       </AuthNavButton>
-    </>
+    </AuthNavContainer>
   );
 };
 

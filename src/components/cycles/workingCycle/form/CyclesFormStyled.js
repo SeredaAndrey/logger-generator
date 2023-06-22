@@ -2,6 +2,17 @@ import styled from '@emotion/styled';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+export const CycleFormContainer = styled.div`
+  width: ${p => p.theme.space[15]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[17]};
+  }
+  @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[18]};
+  }
+`;
+
 export const CycleFormTitle = styled.h2`
   position: relative;
 
@@ -280,26 +291,5 @@ export const TotalWorkingTime = styled.p`
   @media screen and (min-width: ${p => p.theme.space[18]}) {
     right: ${p => p.theme.space[8]};
     top: ${p => p.theme.space[6]};
-  }
-`;
-
-export const ClockIcoContainer = styled.div`
-  position: absolute;
-  z-index: 2;
-
-  right: calc(
-    ${p => p.theme.space[11]} + ${p => p.theme.space[4]} +
-      ${p => p.theme.space[3]}
-  );
-  top: ${p => p.theme.space[7]};
-  left: ${p => p.theme.space[5]};
-
-  @media screen and (min-width: ${p => p.theme.space[17]}) {
-    right: -${p => p.theme.space[15]};
-    top: ${p => p.theme.space[4]};
-  }
-  @media screen and (min-width: ${p => p.theme.space[18]}) {
-    right: calc(-${p => p.theme.space[16]} - ${p => p.theme.space[9]});
-    top: ${p => p.theme.space[7]};
   }
 `;

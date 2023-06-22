@@ -1,12 +1,11 @@
 import shortid from 'shortid';
 import { toast } from 'react-toastify';
-import { FaRegClock } from 'react-icons/fa';
 
 import CycleDatePicker, {
-  ClockIcoContainer,
   CycleButton,
   CycleDateInputPickerContainer,
   CycleDatePickerContainer,
+  CycleFormContainer,
   CycleFormDataForm,
   CycleFormDataInput,
   CycleFormDataLabel,
@@ -63,7 +62,7 @@ const CycleForm = ({
   };
 
   return (
-    <>
+    <CycleFormContainer>
       <CycleFormTitle>
         {isNewCycle ? 'create new working cycle' : 'patch working cycle'}
 
@@ -74,9 +73,6 @@ const CycleForm = ({
         >
           {workingTime ? workingTime : '--:--'}
         </TotalWorkingTime>
-        <ClockIcoContainer>
-          <FaRegClock size={20} />
-        </ClockIcoContainer>
       </CycleFormTitle>
       <CycleFormDataForm
         onSubmit={handleSubmit}
@@ -148,7 +144,7 @@ const CycleForm = ({
           {isNewCycle ? 'create' : 'patch'}
         </CycleButton>
       </CycleFormDataForm>
-    </>
+    </CycleFormContainer>
   );
 };
 
