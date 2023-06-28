@@ -82,3 +82,12 @@ export const patchWorkingCycleUnit = async ({ id, cycle }) => {
     toast.error(error);
   }
 };
+
+export const fetchCalcData = async () => {
+  try {
+    const { data } = await axios.get('api/calcdata');
+    return data;
+  } catch (error) {
+    toast.error(error);
+  }
+};

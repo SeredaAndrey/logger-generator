@@ -10,6 +10,7 @@ import {
   AsideTitle,
 } from './asideMenuStyled';
 import { getIsLoggedIn } from 'redux/authSelector';
+import CalcData from 'components/calcData/calcData';
 
 const AsideMenu = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -51,7 +52,7 @@ const AsideMenu = () => {
               </AsideSeccondaryListContainer>
             </AsidePrimaryListItem>
           </AsidePrimaryListContainer>
-          <Outlet />
+          <CalcData />
         </AsideMenuContainer>
       )}
     </>

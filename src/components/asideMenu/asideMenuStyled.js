@@ -63,7 +63,7 @@ export const AsideTitle = styled.p`
 export const AsidePrimaryListContainer = styled.ul`
   list-style-type: none;
 
-  width: ${p => p.theme.space[13]};
+  width: ${p => p.theme.space[11]};
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
@@ -76,6 +76,9 @@ export const AsidePrimaryListContainer = styled.ul`
   padding-left: ${p => p.theme.space[4]};
 
   background-color: ${p => p.theme.colors.bgColorAside};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[13]};
+  }
 `;
 
 export const AsidePrimaryListItem = styled.li`
