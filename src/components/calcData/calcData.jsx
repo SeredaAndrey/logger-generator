@@ -23,6 +23,16 @@ const CalcData = () => {
     fetchData();
   }, []);
 
+  const calculateTime = totalWorkingTime => {
+    const hours = Math.floor(totalWorkingTime / (1000 * 60 * 60));
+    const minutes = Math.floor(
+      (totalWorkingTime % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    return `${hours.toString().padStart(2, '0')}:${minutes
+      .toString()
+      .padStart(2, '0')}`;
+  };
+
   return (
     <CalcDataContainer>
       {calcData && (
@@ -50,8 +60,10 @@ const CalcData = () => {
           <CalcDataString>
             {!calcData.calculationData.data.totalWorkingTime
               ? '---'
-              : calcData.calculationData.data.totalWorkingTime}{' '}
-            Hours
+              : calculateTime(
+                  calcData.calculationData.data.totalWorkingTime
+                )}{' '}
+            hours:minutes
           </CalcDataString>
           <CalcDataStringTitle>
             generator run time last month
@@ -59,15 +71,19 @@ const CalcData = () => {
           <CalcDataString>
             {!calcData.calculationData.data.totalWorkingTimeMonth
               ? '---'
-              : calcData.calculationData.data.totalWorkingTimeMonth}{' '}
-            Hours
+              : calculateTime(
+                  calcData.calculationData.data.totalWorkingTimeMonth
+                )}{' '}
+            hours:minutes
           </CalcDataString>
           <CalcDataStringTitle>time until next oil change</CalcDataStringTitle>
           <CalcDataString>
             {!calcData.calculationData.data.timeToChangeOil
               ? '---'
-              : calcData.calculationData.data.timeToChangeOil}{' '}
-            Hours
+              : calculateTime(
+                  calcData.calculationData.data.timeToChangeOil
+                )}{' '}
+            hours:minutes
           </CalcDataString>
         </>
       )}
