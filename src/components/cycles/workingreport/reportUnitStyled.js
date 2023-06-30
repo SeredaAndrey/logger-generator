@@ -4,7 +4,7 @@ export const ReportUnitTitle = styled.div`
   padding: ${p => p.theme.space[0]};
   margin: ${p => p.theme.space[0]};
 
-  display: flex;
+  display: none;
 
   height: ${p => p.theme.space[5]};
 
@@ -28,6 +28,9 @@ export const ReportUnitTitle = styled.div`
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[4]};
   }
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    display: flex;
+  }
   @media screen and (min-width: ${p => p.theme.space[18]}) {
     font-size: ${p => p.theme.fontSizes.s};
     line-height: ${p => p.theme.fontSizes.m};
@@ -41,20 +44,23 @@ export const ReportUnitList = styled.ul`
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};
+
+  list-style-type: none;
 `;
 
 export const ReportUnitListItem = styled.li`
-  display: flex;
+  display: grid;
+  grid-template-columns: 35% 35% 30%;
+  justify-items: center;
+  align-items: center;
 
-  height: ${p => p.theme.space[5]};
+  height: ${p => p.theme.space[6]};
 
   padding: ${p => p.theme.space[0]};
   margin: ${p => p.theme.space[0]};
 
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.normal};
-
-  text-align: center;
 
   color: ${p => p.theme.colors.colorTextDark};
   background-color: ${p => p.theme.colors.bgColorForm};
@@ -69,7 +75,26 @@ export const ReportUnitListItem = styled.li`
     margin-bottom: ${p => p.theme.space[4]};
   }
 
+  @media screen and (max-width: ${p => p.theme.space[17]}) {
+    &:hover,
+    &:focus {
+      .ButtonContainer {
+        background-color: ${p => p.theme.colors.bgColorSpinner};
+        border: ${p => p.theme.borders.none};
+        border-radius: ${p => p.theme.radii.normal};
+
+        display: flex;
+      }
+    }
+  }
+
   @media screen and (min-width: ${p => p.theme.space[17]}) {
+    display: flex;
+
+    text-align: center;
+
+    height: ${p => p.theme.space[5]};
+
     font-size: ${p => p.theme.fontSizes.s};
     line-height: ${p => p.theme.fontSizes.m};
   }
@@ -81,28 +106,31 @@ export const ReportUnitListItem = styled.li`
 
 export const ReportUnitListItemTextDate = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-around;
 
   word-wrap: break-word;
 
-  width: ${p => p.theme.space[8]};
+  align-items: center;
+  justify-content: space-around;
+  align-content: space-around;
+
+  width: ${p => p.theme.space[10]};
 
   padding-top: ${p => p.theme.space[0]};
-  padding-right: ${p => p.theme.space[2]};
+  padding-right: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[2]};
+  padding-left: ${p => p.theme.space[0]};
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[2]};
-
-  border-left: ${p => p.theme.borders.normal};
-  border-right: ${p => p.theme.borders.normal};
+  margin-left: ${p => p.theme.space[0]};
 
   @media screen and (min-width: ${p => p.theme.space[17]}) {
     width: ${p => p.theme.space[10]};
+    height: 100%;
+
+    border-left: ${p => p.theme.borders.normal};
+    border-right: ${p => p.theme.borders.normal};
 
     padding-right: ${p => p.theme.space[3]};
     padding-left: ${p => p.theme.space[3]};
@@ -120,25 +148,26 @@ export const ReportUnitListItemTextDate = styled.div`
 export const ReportUnitListItemText = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
-  width: ${p => p.theme.space[5]};
+  width: ${p => p.theme.space[7]};
 
   padding-top: ${p => p.theme.space[0]};
-  padding-right: ${p => p.theme.space[2]};
+  padding-right: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[2]};
+  padding-left: ${p => p.theme.space[0]};
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[2]};
-
-  border-left: ${p => p.theme.borders.normal};
-  border-right: ${p => p.theme.borders.normal};
+  margin-left: ${p => p.theme.space[0]};
 
   @media screen and (min-width: ${p => p.theme.space[17]}) {
     width: ${p => p.theme.space[7]};
+    height: 100%;
+
+    border-left: ${p => p.theme.borders.normal};
+    border-right: ${p => p.theme.borders.normal};
 
     padding-right: ${p => p.theme.space[3]};
     padding-left: ${p => p.theme.space[3]};
@@ -152,14 +181,42 @@ export const ReportUnitListItemText = styled.div`
     margin-left: ${p => p.theme.space[4]};
   }
 `;
+export const ReportUnitIcons = styled.span`
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[3]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    display: none;
+  }
+`;
 
 export const ReportUnitButtonContainer = styled.div`
-  display: flex;
+  display: none;
+
+  width: ${p => p.theme.space[15]};
+  height: ${p => p.theme.space[6]};
+
+  position: absolute;
   align-items: center;
   justify-content: center;
 
   margin-left: auto;
-  margin-right: ${p => p.theme.space[4]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    display: flex;
+    position: relative;
+
+    margin-right: ${p => p.theme.space[4]};
+
+    width: fit-content;
+    height: ${p => p.theme.space[5]};
+  }
 `;
 
 export const ReportUnitListItemButon = styled.button`
@@ -171,7 +228,7 @@ export const ReportUnitListItemButon = styled.button`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[4]};
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[4]};
 
   background-color: transparent;
   border: none;
@@ -184,6 +241,10 @@ export const ReportUnitListItemButon = styled.button`
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.colorTextHover};
+  }
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    margin-right: ${p => p.theme.space[4]};
+    margin-left: ${p => p.theme.space[0]};
   }
   @media screen and (min-width: ${p => p.theme.space[18]}) {
     margin-right: ${p => p.theme.space[5]};

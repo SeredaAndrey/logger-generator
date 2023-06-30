@@ -1,7 +1,16 @@
-import { FaTrash, FaPenAlt, FaCheck } from 'react-icons/fa';
+import {
+  FaTrash,
+  FaPenAlt,
+  FaCheck,
+  FaGasPump,
+  FaOilCan,
+  FaRegClock,
+} from 'react-icons/fa';
+import { ImPower } from 'react-icons/im';
 
 import {
   ReportUnitButtonContainer,
+  ReportUnitIcons,
   ReportUnitListItem,
   ReportUnitListItemButon,
   ReportUnitListItemText,
@@ -45,19 +54,34 @@ const WorkingReportItem = ({ cycle, deleteWorkingCycle }) => {
       <ReportUnitListItemTextDate>
         {formatedDate(cycle.timestampStop)}
       </ReportUnitListItemTextDate>
-      <ReportUnitListItemText>{calculateTime()}</ReportUnitListItemText>
       <ReportUnitListItemText>
+        {' '}
+        <ReportUnitIcons>
+          <FaRegClock size={10} />
+        </ReportUnitIcons>
+        {calculateTime()}
+      </ReportUnitListItemText>
+      <ReportUnitListItemText>
+        <ReportUnitIcons>
+          <ImPower size={10} />
+        </ReportUnitIcons>
         {cycle.volumeElecricalGeneration
           ? `${cycle.volumeElecricalGeneration} kW`
-          : '-'}
+          : '---'}
       </ReportUnitListItemText>
       <ReportUnitListItemText>
-        {cycle.refueling ? `${cycle.refueling} litr` : '-'}
+        <ReportUnitIcons>
+          <FaGasPump size={10} />
+        </ReportUnitIcons>
+        {cycle.refueling ? `${cycle.refueling} litre` : '---'}
       </ReportUnitListItemText>
       <ReportUnitListItemText>
-        {cycle.changeOil ? <FaCheck /> : '-'}
+        <ReportUnitIcons>
+          <FaOilCan size={15} />
+        </ReportUnitIcons>
+        {cycle.changeOil ? <FaCheck /> : '---'}
       </ReportUnitListItemText>
-      <ReportUnitButtonContainer>
+      <ReportUnitButtonContainer className="ButtonContainer">
         <ReportUnitListItemButon
           type="button"
           onClick={() => {

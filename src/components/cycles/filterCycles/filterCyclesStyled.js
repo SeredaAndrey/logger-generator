@@ -3,12 +3,16 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const FilterContainer = styled.div`
-  display: flex;
+  display: none;
   align-items: flex-end;
   position: absolute;
 
   top: ${p => p.theme.space[3]};
   right: ${p => p.theme.space[3]};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    display: flex;
+  }
 `;
 
 export const FilterSelect = styled.select`

@@ -42,8 +42,12 @@ export const CalcDataStringTitle = styled.p`
   font-family: 'Jura';
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.m};
-  line-height: ${p => p.theme.fontSizes.l};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: ${p => p.theme.fontSizes.s};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    font-size: ${p => p.theme.fontSizes.m};
+    line-height: ${p => p.theme.fontSizes.l};
+  }
 `;
 
 export const CalcDataString = styled.p`
@@ -59,6 +63,10 @@ export const CalcDataString = styled.p`
   font-family: 'Jura';
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.medium};
-  font-size: ${p => p.theme.fontSizes.l};
-  line-height: ${p => p.theme.fontSizes.xl};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.fontSizes.m};
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.fontSizes.xl};
+  }
 `;
