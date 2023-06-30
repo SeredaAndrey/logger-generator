@@ -21,16 +21,11 @@ import SortingButtonComponent from '../sortingButton/sortingButton';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
-  const [filtering, setFiltering] = useState({
-    dateStart: null,
-    dateStop: null,
-  });
-  const [sorting, setSorting] = useState({
-    filter: 'start',
-    sort: 'ascending',
-  });
-
-  useEffect(() => {
+  // const [filtering, setFiltering] = useState({
+  //   dateStart: null,
+  //   dateStop: null,
+  // });
+  const [filtering, setFiltering] = useState(() => {
     const currentDate = new Date();
     const firstDayOfMonth = new Date(
       currentDate.getFullYear(),
@@ -42,12 +37,35 @@ const WorkingReportPage = () => {
       currentDate.getMonth() + 1,
       0
     );
-    setFiltering(prevFilter => ({
-      ...prevFilter,
+
+    return {
       dateStart: firstDayOfMonth,
       dateStop: lastDayOfMonth,
-    }));
-  }, []);
+    };
+  });
+  const [sorting, setSorting] = useState({
+    filter: 'start',
+    sort: 'ascending',
+  });
+
+  // useEffect(() => {
+  //   const currentDate = new Date();
+  //   const firstDayOfMonth = new Date(
+  //     currentDate.getFullYear(),
+  //     currentDate.getMonth(),
+  //     1
+  //   );
+  //   const lastDayOfMonth = new Date(
+  //     currentDate.getFullYear(),
+  //     currentDate.getMonth() + 1,
+  //     0
+  //   );
+  //   setFiltering(prevFilter => ({
+  //     ...prevFilter,
+  //     dateStart: firstDayOfMonth,
+  //     dateStop: lastDayOfMonth,
+  //   }));
+  // }, []);
 
   useEffect(() => {
     async function fetchData() {
