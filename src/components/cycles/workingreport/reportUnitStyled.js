@@ -163,6 +163,8 @@ export const ReportUnitListItemText = styled.div`
   margin-left: ${p => p.theme.space[0]};
 
   @media screen and (min-width: ${p => p.theme.space[17]}) {
+    justify-content: center;
+
     width: ${p => p.theme.space[7]};
     height: 100%;
 

@@ -73,25 +73,25 @@ const WorkingTotalReport = ({ cycles }) => {
           <TotalReportUnitListItemText>
             total working time, h:m{' '}
             <TotalReportUnitListItemSpan>
-              {countTotalWorkingTime(cycles) || '-'}
+              {countTotalWorkingTime(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
           <TotalReportUnitListItemText>
             total generation power, kW
             <TotalReportUnitListItemSpan>
-              {countTotalGenerationPower(cycles) || '-'}
+              {countTotalGenerationPower(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
           <TotalReportUnitListItemText>
             total refueling, litre
             <TotalReportUnitListItemSpan>
-              {countTotalRefueling(cycles) || '-'}
+              {countTotalRefueling(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
           <TotalReportUnitListItemText>
             total changing oil, times
             <TotalReportUnitListItemSpan>
-              {countTotalChangeOil(cycles) || '-'}
+              {countTotalChangeOil(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
         </TotalReportUnitTitle>
