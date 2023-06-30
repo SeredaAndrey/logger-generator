@@ -19,11 +19,13 @@ const FilterCycles = ({
   return (
     <FilterContainer>
       <FilterDateContainer>
+        show report from
         <FilterDatePicker
           selected={filtering.dateStart}
           onChange={onStartInterval}
           dateFormat="yyyy-MM-dd "
         />
+        to
         <FilterDatePicker
           selected={filtering.dateStop}
           onChange={onStopInterval}

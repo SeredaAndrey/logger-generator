@@ -1,5 +1,26 @@
 import styled from '@emotion/styled';
 
+export const ReportUnitTitleMobile = styled.div`
+  @media screen and (max-width: ${p => p.theme.space[17]}) {
+    padding: ${p => p.theme.space[0]};
+    margin: ${p => p.theme.space[0]};
+
+    height: ${p => p.theme.space[5]};
+
+    display: flex;
+
+    color: ${p => p.theme.colors.colorTextDark};
+    background-color: ${p => p.theme.colors.bgColorForm};
+
+    border: ${p => p.theme.borders.none};
+    border-bottom-left-radius: ${p => p.theme.radii.normal};
+    border-bottom-right-radius: ${p => p.theme.radii.normal};
+  }
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    display: none;
+  }
+`;
+
 export const ReportUnitTitle = styled.div`
   padding: ${p => p.theme.space[0]};
   margin: ${p => p.theme.space[0]};

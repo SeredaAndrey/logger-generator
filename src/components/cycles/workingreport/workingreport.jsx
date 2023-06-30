@@ -14,6 +14,7 @@ import {
   ReportUnitListItemText,
   ReportUnitListItemTextDate,
   ReportUnitTitle,
+  ReportUnitTitleMobile,
 } from './reportUnitStyled';
 import FilterCycles from '../filterCycles/filterCycles';
 import WorkingTotalReport from './workingTotalReport';
@@ -92,6 +93,7 @@ const WorkingReportPage = () => {
         onChangeStopFilter={onChangeStopFilter}
         filtering={filtering}
       />
+      <ReportUnitTitleMobile></ReportUnitTitleMobile>
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>
           start cycle
