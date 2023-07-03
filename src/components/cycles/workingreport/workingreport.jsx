@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import shortid from 'shortid';
+
 import { FaGasPump, FaOilCan, FaRegClock } from 'react-icons/fa';
 import { ImPower } from 'react-icons/im';
 
@@ -22,6 +24,8 @@ import SortingButtonComponent from '../sortingButton/sortingButton';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
+  const sortingId = shortid.generate();
+  const filteringId = shortid.generate();
 
   const [filtering, setFiltering] = useState(() => {
     const currentDate = new Date();
@@ -93,7 +97,24 @@ const WorkingReportPage = () => {
         onChangeStopFilter={onChangeStopFilter}
         filtering={filtering}
       />
-      <ReportUnitTitleMobile></ReportUnitTitleMobile>
+      <ReportUnitTitleMobile>
+        <form>
+          <label htmlFor={sortingId}>
+            <select id={sortingId}>
+              <option value="start">date start</option>
+              <option value="stop">date stop</option>
+              <option value="cycle">cycle time</option>
+              <option value="gen">generation</option>
+            </select>
+          </label>
+          <label htmlFor={filteringId}>
+            <select id={filteringId}>
+              <option value="ascending">ascending</option>
+              <option value="descending">descending</option>
+            </select>
+          </label>
+        </form>
+      </ReportUnitTitleMobile>
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>
           start cycle
