@@ -1,7 +1,8 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import FilterDatePicker, {
   FilterContainer,
-  FilterDateContainer,
+  FilterDatePickerContainer,
+  FilterDatePickerTitle,
 } from './filterCyclesStyled';
 
 const FilterCycles = ({
@@ -18,20 +19,22 @@ const FilterCycles = ({
 
   return (
     <FilterContainer>
-      <FilterDateContainer>
-        show report from
+      <FilterDatePickerContainer>
+        <FilterDatePickerTitle>show report from:</FilterDatePickerTitle>
         <FilterDatePicker
           selected={filtering.dateStart}
           onChange={onStartInterval}
           dateFormat="yyyy-MM-dd "
         />
-        to
+      </FilterDatePickerContainer>
+      <FilterDatePickerContainer>
+        <FilterDatePickerTitle>to:</FilterDatePickerTitle>
         <FilterDatePicker
           selected={filtering.dateStop}
           onChange={onStopInterval}
           dateFormat="yyyy-MM-dd "
         />
-      </FilterDateContainer>
+      </FilterDatePickerContainer>
     </FilterContainer>
   );
 };
