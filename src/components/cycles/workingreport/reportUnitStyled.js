@@ -9,6 +9,9 @@ export const ReportUnitTitleMobile = styled.div`
 
     display: flex;
 
+    align-items: center;
+    justify-content: center;
+
     color: ${p => p.theme.colors.colorTextDark};
     background-color: ${p => p.theme.colors.bgColorForm};
 
@@ -19,6 +22,79 @@ export const ReportUnitTitleMobile = styled.div`
   @media screen and (min-width: ${p => p.theme.space[17]}) {
     display: none;
   }
+`;
+
+export const ReportFilterForm = styled.form`
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+`;
+
+export const ReportFilterFormSpan = styled.span`
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[3]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: ${p => p.theme.fontSizes.s};
+`;
+
+export const ReportFilterLabel = styled.label`
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  &:not(:last-child) {
+    margin-right: ${p => p.theme.space[3]};
+  }
+`;
+export const ReportFilterSelect = styled.select`
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  width: ${p => p.theme.space[9]};
+
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.normal};
+
+  text-align: center;
+
+  color: ${p => p.theme.colors.colorTextDark};
+  background-color: ${p => p.theme.colors.bgColorWhite};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.xs};
+  line-height: ${p => p.theme.fontSizes.s};
 `;
 
 export const ReportUnitTitle = styled.div`

@@ -12,6 +12,10 @@ import {
 import WorkingReportItem from './reportUnit';
 
 import {
+  ReportFilterForm,
+  ReportFilterFormSpan,
+  ReportFilterLabel,
+  ReportFilterSelect,
   ReportUnitList,
   ReportUnitListItemText,
   ReportUnitListItemTextDate,
@@ -105,9 +109,10 @@ const WorkingReportPage = () => {
         filtering={filtering}
       />
       <ReportUnitTitleMobile>
-        <form>
-          <label htmlFor={sortingId}>
-            <select id={sortingId} onChange={onChangeSorting}>
+        <ReportFilterForm>
+          <ReportFilterFormSpan>sorting results</ReportFilterFormSpan>
+          <ReportFilterLabel htmlFor={sortingId}>
+            <ReportFilterSelect id={sortingId} onChange={onChangeSorting}>
               <option value="start" selected={sorting.filter === 'start'}>
                 date start
               </option>
@@ -120,10 +125,10 @@ const WorkingReportPage = () => {
               <option value="gen" selected={sorting.filter === 'gen'}>
                 generation
               </option>
-            </select>
-          </label>
-          <label htmlFor={filteringId}>
-            <select id={filteringId} onChange={onChangeFiltering}>
+            </ReportFilterSelect>
+          </ReportFilterLabel>
+          <ReportFilterLabel htmlFor={filteringId}>
+            <ReportFilterSelect id={filteringId} onChange={onChangeFiltering}>
               <option value="ascending" selected={sorting.sort === 'ascending'}>
                 ascending
               </option>
@@ -133,9 +138,9 @@ const WorkingReportPage = () => {
               >
                 descending
               </option>
-            </select>
-          </label>
-        </form>
+            </ReportFilterSelect>
+          </ReportFilterLabel>
+        </ReportFilterForm>
       </ReportUnitTitleMobile>
       <ReportUnitTitle>
         <ReportUnitListItemTextDate>
