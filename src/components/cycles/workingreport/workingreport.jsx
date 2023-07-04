@@ -90,6 +90,13 @@ const WorkingReportPage = () => {
     setSorting(prevFilter => ({ ...prevFilter, filter: 'gen', sort: sort }));
   };
 
+  const onChangeSorting = event => {
+    setSorting(prevFilter => ({ ...prevFilter, filter: event.target.value }));
+  };
+  const onChangeFiltering = event => {
+    setSorting(prevFilter => ({ ...prevFilter, sort: event.target.value }));
+  };
+
   return (
     <>
       <FilterCycles
@@ -100,17 +107,32 @@ const WorkingReportPage = () => {
       <ReportUnitTitleMobile>
         <form>
           <label htmlFor={sortingId}>
-            <select id={sortingId}>
-              <option value="start">date start</option>
-              <option value="stop">date stop</option>
-              <option value="cycle">cycle time</option>
-              <option value="gen">generation</option>
+            <select id={sortingId} onChange={onChangeSorting}>
+              <option value="start" selected={sorting.filter === 'start'}>
+                date start
+              </option>
+              <option value="stop" selected={sorting.filter === 'stop'}>
+                date stop
+              </option>
+              <option value="cycle" selected={sorting.filter === 'cycle'}>
+                cycle time
+              </option>
+              <option value="gen" selected={sorting.filter === 'gen'}>
+                generation
+              </option>
             </select>
           </label>
           <label htmlFor={filteringId}>
-            <select id={filteringId}>
-              <option value="ascending">ascending</option>
-              <option value="descending">descending</option>
+            <select id={filteringId} onChange={onChangeFiltering}>
+              <option value="ascending" selected={sorting.sort === 'ascending'}>
+                ascending
+              </option>
+              <option
+                value="descending"
+                selected={sorting.sort === 'descending'}
+              >
+                descending
+              </option>
             </select>
           </label>
         </form>
