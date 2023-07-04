@@ -13,6 +13,7 @@ const initialState = {
   email: null,
   token: null,
   avatar: null,
+  inerfaceLanguage: 'en',
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
@@ -28,6 +29,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.avatar = null;
+        state.inerfaceLanguage = 'en';
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -39,6 +41,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.avatar = null;
+        state.inerfaceLanguage = 'en';
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -50,6 +53,7 @@ const authSlice = createSlice({
           action.payload.owner.owner.firstName ||
           action.payload.owner.owner.email;
         state.avatar = action.payload.owner.owner.avatarUrl;
+        state.inerfaceLanguage = action.payload.owner.owner.inerfaceLanguage;
         state.token = action.payload.owner.token;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -61,6 +65,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.avatar = null;
+        state.inerfaceLanguage = 'en';
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -72,6 +77,7 @@ const authSlice = createSlice({
           action.payload.owner.owner.firstName ||
           action.payload.owner.owner.email;
         state.avatar = action.payload.owner.owner.avatarUrl;
+        state.inerfaceLanguage = action.payload.owner.owner.inerfaceLanguage;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -83,6 +89,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.avatar = null;
+        state.inerfaceLanguage = 'en';
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -92,6 +99,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.avatar = null;
+        state.inerfaceLanguage = 'en';
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -108,6 +116,7 @@ const authSlice = createSlice({
           action.payload.userData.firstName || action.payload.userData.email;
         state.email = action.payload.userData.email;
         state.avatar = action.payload.userData.avatarUrl;
+        state.inerfaceLanguage = action.payload.userData.inerfaceLanguage;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -121,6 +130,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.avatar = null;
+        state.inerfaceLanguage = 'en';
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -129,6 +139,7 @@ const authSlice = createSlice({
       .addCase(updateUserData.fulfilled, (state, action) => {
         state.name = action.payload.data.firstName;
         state.email = action.payload.data.email;
+        state.inerfaceLanguage = action.payload.data.inerfaceLanguage;
         state.isLoading = false;
       })
       .addCase(updateUserData.pending, (state, action) => {

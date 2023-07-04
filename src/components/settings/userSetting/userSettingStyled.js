@@ -142,6 +142,73 @@ export const UserSettingFormDataSpan = styled.span`
   line-height: ${p => p.theme.fontSizes.m};
 `;
 
+export const UserSettingFormRadioContainer = styled.div`
+  margin-top: ${p => p.theme.space[7]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+
+  text-align: center;
+`;
+
+export const UserSettingFormRadioTitle = styled.p`
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: ${p => p.theme.fontSizes.xl};
+`;
+export const UserSettingFormRadioLabel = styled.label`
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  &:not(:last-child) {
+    margin-right: ${p => p.theme.space[5]};
+  }
+
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: ${p => p.theme.fontSizes.xl};
+
+  cursor: pointer;
+`;
+export const UserSettingFormRadioInput = styled.input`
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+
+  cursor: pointer;
+`;
+
 export const UserSettingButton = styled.button`
   display: flex;
   justify-content: center;
@@ -152,7 +219,7 @@ export const UserSettingButton = styled.button`
 
   padding: ${p => p.theme.space[0]};
 
-  margin-top: ${p => p.theme.space[7]};
+  margin-top: ${p => p.theme.space[4]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};

@@ -7,8 +7,16 @@ axios.defaults.baseURL = 'https://logger-generator-rest-api.onrender.com';
 
 export const updateUserData = createAsyncThunk(
   'user/updateData',
-  async ({ firstName, secondName, email }, { rejectWithValue }) => {
-    const body = { firstName, seccondName: secondName, email };
+  async (
+    { firstName, secondName, email, inerfaceLanguage },
+    { rejectWithValue }
+  ) => {
+    const body = {
+      firstName,
+      seccondName: secondName,
+      email,
+      inerfaceLanguage,
+    };
     try {
       const { data } = await axios.patch('api/owner/patchName', body);
       return data;

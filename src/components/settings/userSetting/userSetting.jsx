@@ -4,7 +4,11 @@ import { BsPlusCircle } from 'react-icons/bs';
 
 import shortid from 'shortid';
 
-import { getUserAvatar, getUserToken } from 'redux/authSelector';
+import {
+  getUserAvatar,
+  getUserLanguage,
+  getUserToken,
+} from 'redux/authSelector';
 import { fetchUserData } from 'serviceAPI/APIservice';
 import { updateUserData, uploadAvatar } from 'redux/userOperations';
 import {
@@ -16,6 +20,10 @@ import {
   UserSettingFormDataInput,
   UserSettingFormDataLabel,
   UserSettingFormDataSpan,
+  UserSettingFormRadioContainer,
+  UserSettingFormRadioInput,
+  UserSettingFormRadioLabel,
+  UserSettingFormRadioTitle,
 } from './userSettingStyled';
 
 const UserSettingPage = () => {
@@ -27,10 +35,14 @@ const UserSettingPage = () => {
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
   const avatar = useSelector(getUserAvatar);
+  const language = useSelector(getUserLanguage);
+  const [inerfaceLanguage, setInerfaceLanguage] = useState(language);
 
   const firstNameInputId = shortid.generate();
   const secondNameInputId = shortid.generate();
   const emailInputId = shortid.generate();
+  const radioCheckEnId = shortid.generate();
+  const radioCheckUaId = shortid.generate();
 
   useEffect(() => {
     async function fetchData() {
@@ -64,7 +76,9 @@ const UserSettingPage = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      dispatch(await updateUserData({ firstName, secondName, email }));
+      dispatch(
+        await updateUserData({ firstName, secondName, email, inerfaceLanguage })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -77,6 +91,10 @@ const UserSettingPage = () => {
   const handleFileInputChange = async event => {
     const selectedFile = event.target.files[0];
     dispatch(uploadAvatar(selectedFile));
+  };
+
+  const onChangeLanguage = event => {
+    setInerfaceLanguage(event.target.value);
   };
 
   return (
@@ -131,6 +149,35 @@ const UserSettingPage = () => {
             specified email address
           </UserSettingFormDataSpan>
         </UserSettingFormDataLabel>
+
+        <UserSettingFormRadioContainer>
+          <UserSettingFormRadioTitle>
+            interface language
+          </UserSettingFormRadioTitle>
+          <UserSettingFormRadioLabel htmlFor={radioCheckEnId}>
+            <UserSettingFormRadioInput
+              type="radio"
+              name="lang"
+              value="en"
+              id={radioCheckEnId}
+              checked={inerfaceLanguage === 'en'}
+              onChange={onChangeLanguage}
+            />
+            english
+          </UserSettingFormRadioLabel>
+          <UserSettingFormRadioLabel htmlFor={radioCheckUaId}>
+            <UserSettingFormRadioInput
+              type="radio"
+              name="lang"
+              value="ua"
+              id={radioCheckUaId}
+              checked={inerfaceLanguage === 'ua'}
+              onChange={onChangeLanguage}
+            />
+            ukrainian
+          </UserSettingFormRadioLabel>
+        </UserSettingFormRadioContainer>
+
         <UserSettingButton type="submit">submit</UserSettingButton>
       </UserSettingFormDataForm>
     </UserSettingContainer>
