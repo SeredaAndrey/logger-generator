@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
+import { FormattedMessage } from 'react-intl';
+
 import {
   SettingMenuItemContainer,
   SettingPageTitle,
@@ -9,14 +11,22 @@ import {
 const SettingsPage = () => {
   return (
     <SettingsPageContainer>
-      <SettingPageTitle>settings</SettingPageTitle>
+      <SettingPageTitle>
+        <FormattedMessage id="settings" />
+      </SettingPageTitle>
       <SettingMenuItemContainer>
         <NavLink to="/">
           <BiArrowBack />
         </NavLink>
-        <NavLink to="/settings/user">User setting</NavLink>
-        <NavLink to="/settings/generator">Generator Setting</NavLink>
-        <NavLink to="/settings/global">Global Setting</NavLink>
+        <NavLink to="/settings/user">
+          <FormattedMessage id="user_settings" />
+        </NavLink>
+        <NavLink to="/settings/generator">
+          <FormattedMessage id="gen_settings" />
+        </NavLink>
+        <NavLink to="/settings/global">
+          <FormattedMessage id="global_settings" />
+        </NavLink>
       </SettingMenuItemContainer>
       <Outlet />
     </SettingsPageContainer>

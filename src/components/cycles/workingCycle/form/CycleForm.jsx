@@ -1,5 +1,6 @@
 import shortid from 'shortid';
 import { toast } from 'react-toastify';
+import { FormattedMessage } from 'react-intl';
 
 import CycleDatePicker, {
   CycleButton,
@@ -64,7 +65,11 @@ const CycleForm = ({
   return (
     <CycleFormContainer>
       <CycleFormTitle>
-        {isNewCycle ? 'create new working cycle' : 'patch working cycle'}
+        {isNewCycle ? (
+          <FormattedMessage id="create_cycle" />
+        ) : (
+          <FormattedMessage id="patch_cycle" />
+        )}
 
         <TotalWorkingTime
           style={{
@@ -89,7 +94,9 @@ const CycleForm = ({
               dateFormat="yyyy-MM-dd HH:mm"
             />
           </CycleDateInputPickerContainer>
-          <CyclesFormSpan>Timestamp of start cycle generator</CyclesFormSpan>
+          <CyclesFormSpan>
+            <FormattedMessage id="start" />
+          </CyclesFormSpan>
         </CycleDatePickerContainer>
         <CycleDatePickerContainer>
           <CycleDateInputPickerContainer>
@@ -102,7 +109,9 @@ const CycleForm = ({
               dateFormat="yyyy-MM-dd HH:mm"
             />
           </CycleDateInputPickerContainer>
-          <CyclesFormSpan>Timestamp of stop cycle generator</CyclesFormSpan>
+          <CyclesFormSpan>
+            <FormattedMessage id="stop" />
+          </CyclesFormSpan>
         </CycleDatePickerContainer>
         <CycleFormDataLabel htmlFor={volumeElecricalGenerationId}>
           <CycleFormDataInput
@@ -114,7 +123,7 @@ const CycleForm = ({
             id={volumeElecricalGenerationId}
           />
           <CyclesFormSpan>
-            amount electricity generated per cycle
+            <FormattedMessage id="generated" />
           </CyclesFormSpan>
         </CycleFormDataLabel>
         <CycleFormDataLabel htmlFor={refuelingId}>
@@ -127,7 +136,7 @@ const CycleForm = ({
             id={refuelingId}
           />
           <CyclesFormSpan>
-            amount fuel filled, specify when refueling
+            <FormattedMessage id="refueling" />
           </CyclesFormSpan>
         </CycleFormDataLabel>
         <CycleFormDataLabelCheckBox htmlFor={changeOilId}>
@@ -138,10 +147,16 @@ const CycleForm = ({
             type="checkbox"
             id={changeOilId}
           />
-          <CyclesFormSpan>Change of oil</CyclesFormSpan>
+          <CyclesFormSpan>
+            <FormattedMessage id="reoiling" />
+          </CyclesFormSpan>
         </CycleFormDataLabelCheckBox>
         <CycleButton type="submit" disabled={!workingTime}>
-          {isNewCycle ? 'create' : 'patch'}
+          {isNewCycle ? (
+            <FormattedMessage id="create" />
+          ) : (
+            <FormattedMessage id="patch" />
+          )}
         </CycleButton>
       </CycleFormDataForm>
     </CycleFormContainer>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import shortid from 'shortid';
 
@@ -110,20 +111,22 @@ const WorkingReportPage = () => {
       />
       <ReportUnitTitleMobile>
         <ReportFilterForm>
-          <ReportFilterFormSpan>sorting results</ReportFilterFormSpan>
+          <ReportFilterFormSpan>
+            <FormattedMessage id="sorting" />
+          </ReportFilterFormSpan>
           <ReportFilterLabel htmlFor={sortingId}>
             <ReportFilterSelect id={sortingId} onChange={onChangeSorting}>
               <option value="start" selected={sorting.filter === 'start'}>
-                date start
+                <FormattedMessage id="sort_data_start" />
               </option>
               <option value="stop" selected={sorting.filter === 'stop'}>
-                date stop
+                <FormattedMessage id="sort_data_stop" />
               </option>
               <option value="cycle" selected={sorting.filter === 'cycle'}>
-                cycle time
+                <FormattedMessage id="sort_sycle" />
               </option>
               <option value="gen" selected={sorting.filter === 'gen'}>
-                generation
+                <FormattedMessage id="sort_gen" />
               </option>
             </ReportFilterSelect>
           </ReportFilterLabel>

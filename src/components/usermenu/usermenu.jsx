@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi';
+import { FormattedMessage } from 'react-intl';
 
 import { logOut } from 'redux/authOperations';
 import { getUserAvatar, getUsername } from 'redux/authSelector';
@@ -20,7 +21,9 @@ const UserMenu = () => {
 
   return (
     <UserMenuContainer>
-      <UserMenuTitle>Welcome, {name}</UserMenuTitle>
+      <UserMenuTitle>
+        <FormattedMessage id="welcome" />, {name}{' '}
+      </UserMenuTitle>
       <UserMenuImageContainer>
         <UserMenuImage
           src={avatar}

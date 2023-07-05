@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BsPlusCircle } from 'react-icons/bs';
+import { FormattedMessage } from 'react-intl';
 
 import shortid from 'shortid';
 
@@ -145,14 +146,13 @@ const UserSettingPage = () => {
             id={emailInputId}
           />
           <UserSettingFormDataSpan>
-            if you change the email, the next login to the application using the
-            specified email address
+            <FormattedMessage id="change_mail_message" />
           </UserSettingFormDataSpan>
         </UserSettingFormDataLabel>
 
         <UserSettingFormRadioContainer>
           <UserSettingFormRadioTitle>
-            interface language
+            <FormattedMessage id="language" />
           </UserSettingFormRadioTitle>
           <UserSettingFormRadioLabel htmlFor={radioCheckEnId}>
             <UserSettingFormRadioInput
@@ -163,7 +163,18 @@ const UserSettingPage = () => {
               checked={inerfaceLanguage === 'en'}
               onChange={onChangeLanguage}
             />
-            english
+            en
+          </UserSettingFormRadioLabel>
+          <UserSettingFormRadioLabel htmlFor={radioCheckEnId}>
+            <UserSettingFormRadioInput
+              type="radio"
+              name="lang"
+              value="ru"
+              id={radioCheckEnId}
+              checked={inerfaceLanguage === 'ru'}
+              onChange={onChangeLanguage}
+            />
+            ru
           </UserSettingFormRadioLabel>
           <UserSettingFormRadioLabel htmlFor={radioCheckUaId}>
             <UserSettingFormRadioInput
@@ -174,11 +185,13 @@ const UserSettingPage = () => {
               checked={inerfaceLanguage === 'ua'}
               onChange={onChangeLanguage}
             />
-            ukrainian
+            ua
           </UserSettingFormRadioLabel>
         </UserSettingFormRadioContainer>
 
-        <UserSettingButton type="submit">submit</UserSettingButton>
+        <UserSettingButton type="submit">
+          <FormattedMessage id="submit" />
+        </UserSettingButton>
       </UserSettingFormDataForm>
     </UserSettingContainer>
   );

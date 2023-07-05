@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import shortid from 'shortid';
 import SettingDatePicker, {
@@ -132,7 +133,7 @@ const GeneratorSettingsForm = () => {
             id={brandId}
           />
           <GeneratorSettingFormDataSpan>
-            Brand name generator
+            <FormattedMessage id="brand" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={typeId}>
@@ -145,7 +146,7 @@ const GeneratorSettingsForm = () => {
             id={typeId}
           />
           <GeneratorSettingFormDataSpan>
-            Generator model
+            <FormattedMessage id="model" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={firstChangeOilReglamentId}>
@@ -162,7 +163,7 @@ const GeneratorSettingsForm = () => {
             id={firstChangeOilReglamentId}
           />
           <GeneratorSettingFormDataSpan>
-            First change of time oil reglament, hours
+            <FormattedMessage id="first_reglament" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={nextChangeOilReglamentId}>
@@ -179,7 +180,7 @@ const GeneratorSettingsForm = () => {
             id={nextChangeOilReglamentId}
           />
           <GeneratorSettingFormDataSpan>
-            Next change of time oil reglament, hours
+            <FormattedMessage id="next_reglament" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={electricalPowerId}>
@@ -196,7 +197,7 @@ const GeneratorSettingsForm = () => {
             id={electricalPowerId}
           />
           <GeneratorSettingFormDataSpan>
-            Electrical power generator, kW
+            <FormattedMessage id="power" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <DatePickerContainer>
@@ -207,7 +208,7 @@ const GeneratorSettingsForm = () => {
             />
           </DateInputPickerContainer>
           <GeneratorSettingFormDataSpan>
-            Date of first start generator
+            <FormattedMessage id="first_start" />
           </GeneratorSettingFormDataSpan>
         </DatePickerContainer>
         <GeneratorSettingFormDataLabel htmlFor={workingFirsStartId}>
@@ -224,7 +225,7 @@ const GeneratorSettingsForm = () => {
             id={workingFirsStartId}
           />
           <GeneratorSettingFormDataSpan>
-            Time before first start generator, hours
+            <FormattedMessage id="before_first_start" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={oilVolumeId}>
@@ -239,7 +240,7 @@ const GeneratorSettingsForm = () => {
             id={oilVolumeId}
           />
           <GeneratorSettingFormDataSpan>
-            Volume oil of generator, litre
+            <FormattedMessage id="volume_oil" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingFormDataLabel htmlFor={fuelVolumeId}>
@@ -254,13 +255,15 @@ const GeneratorSettingsForm = () => {
             id={fuelVolumeId}
           />
           <GeneratorSettingFormDataSpan>
-            Volume of fuel tank generator, litre
+            <FormattedMessage id="volume_fuel" />
           </GeneratorSettingFormDataSpan>
         </GeneratorSettingFormDataLabel>
         <GeneratorSettingButton type="submit">
-          {settingsIsPresent
-            ? 'Patching gen. settings'
-            : 'create new generator'}
+          {settingsIsPresent ? (
+            <FormattedMessage id="patch_gen" />
+          ) : (
+            <FormattedMessage id="new_gen" />
+          )}
         </GeneratorSettingButton>
       </GeneratorSettingFormDataForm>
     </>

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import shortid from 'shortid';
 
@@ -93,7 +94,7 @@ const GeneralSettingForm = () => {
             id={priceOfOilId}
           />
           <GeneralSettingFormDataSpan>
-            Price of engine oil
+            <FormattedMessage id="price_oil" />
           </GeneralSettingFormDataSpan>
         </GeneralSettingFormDataLabel>
         <GeneralSettingFormDataLabel htmlFor={priceOfGasolineId}>
@@ -109,7 +110,9 @@ const GeneralSettingForm = () => {
             onChange={handleChange}
             id={priceOfGasolineId}
           />
-          <GeneralSettingFormDataSpan>Price of fuel</GeneralSettingFormDataSpan>
+          <GeneralSettingFormDataSpan>
+            <FormattedMessage id="price_fuel" />
+          </GeneralSettingFormDataSpan>
         </GeneralSettingFormDataLabel>
         <GeneralSettingFormDataLabel htmlFor={priceOfElecricalId}>
           <GeneralSettingFormDataInput
@@ -125,11 +128,15 @@ const GeneralSettingForm = () => {
             id={priceOfElecricalId}
           />
           <GeneralSettingFormDataSpan>
-            Price of electrical
+            <FormattedMessage id="price_electr" />
           </GeneralSettingFormDataSpan>
         </GeneralSettingFormDataLabel>
         <GeneralSettingButton type="submit">
-          {isGeneralSettingPreset ? 'patching settings' : 'create new settings'}
+          {isGeneralSettingPreset ? (
+            <FormattedMessage id="patch_gen" />
+          ) : (
+            <FormattedMessage id="new_gen" />
+          )}
         </GeneralSettingButton>
       </GeneralSettingFormDataForm>
     </>

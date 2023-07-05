@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 import {
   AsideMenuContainer,
@@ -22,31 +23,43 @@ const AsideMenu = () => {
           <AsidePrimaryListContainer>
             <AsidePrimaryListItem>
               <AsideTitle>
-                <NavLink to="/settings">Setting</NavLink>
+                <NavLink to="/settings">
+                  <FormattedMessage id="settings" />
+                </NavLink>
               </AsideTitle>
               <AsideSeccondaryListContainer>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/settings/user">User setting</NavLink>
+                  <NavLink to="/settings/user">
+                    <FormattedMessage id="user_settings" />
+                  </NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/settings/generator">Generator Setting</NavLink>
+                  <NavLink to="/settings/generator">
+                    <FormattedMessage id="gen_settings" />
+                  </NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/settings/global">Global Setting</NavLink>
+                  <NavLink to="/settings/global">
+                    <FormattedMessage id="global_settings" />
+                  </NavLink>
                 </AsideSeccondaryListItem>
               </AsideSeccondaryListContainer>
             </AsidePrimaryListItem>
             <AsidePrimaryListItem>
               <AsideTitle>
-                <NavLink to="cycles">Cycles</NavLink>
+                <NavLink to="cycles">
+                  <FormattedMessage id="cycles" />
+                </NavLink>
               </AsideTitle>
               <AsideSeccondaryListContainer>
                 <AsideSeccondaryListItem>
-                  <NavLink to="/cycles/add">Add cycle unit</NavLink>
+                  <NavLink to="/cycles/add">
+                    <FormattedMessage id="add_cycle" />
+                  </NavLink>
                 </AsideSeccondaryListItem>
                 <AsideSeccondaryListItem>
                   <NavLink to="/cycles/workingreport">
-                    show working report
+                    <FormattedMessage id="report" />
                   </NavLink>
                 </AsideSeccondaryListItem>
               </AsideSeccondaryListContainer>
