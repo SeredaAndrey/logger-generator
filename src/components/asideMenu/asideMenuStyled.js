@@ -63,7 +63,7 @@ export const AsideTitle = styled.p`
 export const AsidePrimaryListContainer = styled.ul`
   list-style-type: none;
 
-  width: ${p => p.theme.space[11]};
+  width: ${p => p.theme.space[12]};
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};

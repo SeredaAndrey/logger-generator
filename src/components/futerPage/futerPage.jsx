@@ -1,3 +1,5 @@
+import { FormattedMessage } from 'react-intl';
+
 import {
   ContactsComponentItem,
   FuterContainer,
@@ -21,7 +23,9 @@ export default function FuterPage() {
   return (
     <FuterContainer>
       <Futer>
-        <FuterText>designed & development by Sereda Andrii</FuterText>
+        <FuterText>
+          <FormattedMessage id="des_dev" />
+        </FuterText>
         <ContactsComponentList>
           <ContactsComponentItem>
             <ContactsComponentItemLink href={developerContactData.phone}>

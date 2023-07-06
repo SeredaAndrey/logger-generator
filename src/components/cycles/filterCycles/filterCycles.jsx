@@ -1,3 +1,5 @@
+import { FormattedMessage } from 'react-intl';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import FilterDatePicker, {
   FilterContainer,
@@ -20,7 +22,9 @@ const FilterCycles = ({
   return (
     <FilterContainer>
       <FilterDatePickerContainer>
-        <FilterDatePickerTitle>show report from:</FilterDatePickerTitle>
+        <FilterDatePickerTitle>
+          <FormattedMessage id="show_from" />
+        </FilterDatePickerTitle>
         <FilterDatePicker
           selected={filtering.dateStart}
           onChange={onStartInterval}
@@ -28,7 +32,9 @@ const FilterCycles = ({
         />
       </FilterDatePickerContainer>
       <FilterDatePickerContainer>
-        <FilterDatePickerTitle>to:</FilterDatePickerTitle>
+        <FilterDatePickerTitle>
+          <FormattedMessage id="show_to" />
+        </FilterDatePickerTitle>
         <FilterDatePicker
           selected={filtering.dateStop}
           onChange={onStopInterval}

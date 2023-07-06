@@ -4,6 +4,8 @@ export const messages = {
   [LOCALES.ENGLISH]: {
     welcome: 'Welcome',
 
+    des_dev: 'design & development by Sereda Andrii',
+
     settings: 'Settings',
     user_settings: 'User settings',
     global_settings: 'Global Setting',
@@ -53,9 +55,28 @@ export const messages = {
     sort_data_stop: 'date stop',
     sort_sycle: 'cycle time',
     sort_gen: 'generation',
+
+    show_from: 'show report from:',
+    show_to: 'to:',
+
+    calc_data: 'Calculation data',
+    calc_total_gen: 'generated electricity for the entire time of operation',
+    calc_month_gen: 'generated electricity for the last month operation',
+    calc_total_run: 'total generator run time',
+    calc_month_run: 'generator run time last month',
+    calc_oil_change: 'time until next oil change',
+    h_m: ' hours:minutes',
+    kw: 'kW',
+
+    total_time: 'total working time, h:m',
+    total_gen: 'total generation power, kW',
+    total_refueling: 'total refueling, litre',
+    total_reoiling: 'total changing oil, times',
   },
   [LOCALES.RUSSIAN]: {
     welcome: 'Добро пожаловать',
+
+    des_dev: 'дизайн и разработка Середа Андрей',
 
     settings: 'Настройки',
     user_settings: 'Настройки пользователя',
@@ -106,14 +127,34 @@ export const messages = {
     sort_data_stop: 'дата остановки',
     sort_sycle: 'время работы',
     sort_gen: 'генерация',
+
+    show_from: 'показать отчет с:',
+    show_to: 'по:',
+
+    calc_data: 'Глобальные данные',
+    calc_total_gen:
+      'количество сгенерированной электоэнергии за весь период работы',
+    calc_month_gen: 'количество сгенерированной электоэнергии за текущий месяц',
+    calc_total_run: 'общее время работы генератора за весь период',
+    calc_month_run: 'время работы генератора за текущий месяц',
+    calc_oil_change: 'время до следующей замены масла',
+    h_m: 'часы:минуы',
+    kw: 'кВт',
+
+    total_time: 'общее время работы, ч:м',
+    total_gen: 'общая генерация энергии, кВт',
+    total_refueling: 'общее количество топлива, литр',
+    total_reoiling: 'замена масла, раз',
   },
   [LOCALES.UKRAINIAN]: {
     welcome: 'Ласкаво просимо',
 
+    des_dev: 'дизайн та розробка Середа Андрій',
+
     settings: 'Налаштування',
-    user_settings: 'Налаштування користувача',
-    global_settings: 'Загальні налаштування',
-    gen_settings: 'Налаштування генератора',
+    user_settings: 'Налашт. користувача',
+    global_settings: 'Загальні налашт.',
+    gen_settings: 'Налашт. генератора',
 
     cycles: 'Цикли',
     add_cycle: 'Додати робочий цикл',
@@ -159,5 +200,24 @@ export const messages = {
     sort_data_stop: 'дата зупинки',
     sort_sycle: 'час работи',
     sort_gen: 'генерація',
+
+    show_from: 'відобразити звіт з:',
+    show_to: 'по:',
+
+    calc_data: 'Глобальні данні',
+    calc_total_gen:
+      'кількість сгенерированної електоенергії за весь період роботи',
+    calc_month_gen:
+      'кількість сгенерированної електоенергії за поточний місяць',
+    calc_total_run: 'загальний час роботи генератора за весь час',
+    calc_month_run: 'час роботи генератора за поточний місяць',
+    calc_oil_change: 'час до наступної заміни мастила',
+    h_m: 'години:хвилини',
+    kw: 'кВт',
+
+    total_time: 'загальний час роботи, г:х',
+    total_gen: 'загальна генерація енергії, кВт',
+    total_refueling: 'загальна кількість палива, літр',
+    total_reoiling: 'заміна мастила, разів',
   },
 };

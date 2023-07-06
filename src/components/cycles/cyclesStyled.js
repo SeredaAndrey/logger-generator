@@ -48,10 +48,14 @@ export const CyclesMenuItemContainer = styled.div`
 
   padding-top: ${p => p.theme.space[2]};
   padding-right: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[5]};
+  padding-left: ${p => p.theme.space[3]};
   padding-bottom: ${p => p.theme.space[0]};
 
   background-color: ${p => p.theme.colors.bgColorBox};
+
+  @media screen and (min-width: ${p => p.theme.space[17]}) {
+    padding-left: ${p => p.theme.space[5]};
+  }
 
   > a {
     text-decoration: none;

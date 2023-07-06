@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import { fetchCalcData } from 'serviceAPI/APIservice';
 import {
   CalcDataContainer,
@@ -37,36 +39,40 @@ const CalcData = () => {
     <CalcDataContainer>
       {calcData && (
         <>
-          <CalcDataTitle>Calculation data</CalcDataTitle>
+          <CalcDataTitle>
+            <FormattedMessage id="calc_data" />
+          </CalcDataTitle>
           <CalcDataStringTitle>
-            generated electricity for the entire time of operation
+            <FormattedMessage id="calc_total_gen" />
           </CalcDataStringTitle>
           <CalcDataString>
             {!calcData.calculationData.data.totalGeneration
               ? '---'
               : calcData.calculationData.data.totalGeneration}{' '}
-            kW
+            <FormattedMessage id="kw" />
           </CalcDataString>
           <CalcDataStringTitle>
-            generated electricity for the last month operation
+            <FormattedMessage id="calc_month_gen" />
           </CalcDataStringTitle>
           <CalcDataString>
             {!calcData.calculationData.data.totalGenerationMonth
               ? '---'
               : calcData.calculationData.data.totalGenerationMonth}{' '}
-            kW
+            <FormattedMessage id="kw" />
           </CalcDataString>
-          <CalcDataStringTitle>total generator run time</CalcDataStringTitle>
+          <CalcDataStringTitle>
+            <FormattedMessage id="calc_total_run" />
+          </CalcDataStringTitle>
           <CalcDataString>
             {!calcData.calculationData.data.totalWorkingTime
               ? '---'
               : calculateTime(
                   calcData.calculationData.data.totalWorkingTime
                 )}{' '}
-            hours:minutes
+            <FormattedMessage id="h_m" />
           </CalcDataString>
           <CalcDataStringTitle>
-            generator run time last month
+            <FormattedMessage id="calc_month_run" />
           </CalcDataStringTitle>
           <CalcDataString>
             {!calcData.calculationData.data.totalWorkingTimeMonth
@@ -74,16 +80,18 @@ const CalcData = () => {
               : calculateTime(
                   calcData.calculationData.data.totalWorkingTimeMonth
                 )}{' '}
-            hours:minutes
+            <FormattedMessage id="h_m" />
           </CalcDataString>
-          <CalcDataStringTitle>time until next oil change</CalcDataStringTitle>
+          <CalcDataStringTitle>
+            <FormattedMessage id="calc_oil_change" />
+          </CalcDataStringTitle>
           <CalcDataString>
             {!calcData.calculationData.data.timeToChangeOil
               ? '---'
               : calculateTime(
                   calcData.calculationData.data.timeToChangeOil
                 )}{' '}
-            hours:minutes
+            <FormattedMessage id="h_m" />
           </CalcDataString>
         </>
       )}

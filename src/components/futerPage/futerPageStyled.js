@@ -33,6 +33,8 @@ export const Futer = styled.footer`
 `;
 
 export const FuterText = styled.p`
+  width: ${p => p.theme.space[12]};
+
   margin-left: ${p => p.theme.space[4]};
 
   font-family: 'Jura';
@@ -45,9 +47,13 @@ export const FuterText = styled.p`
 
   text-transform: uppercase;
   @media screen and (min-width: ${p => p.theme.space[17]}) {
+    width: ${p => p.theme.space[15]};
+
     margin-left: ${p => p.theme.space[5]};
   }
   @media screen and (min-width: ${p => p.theme.space[18]}) {
+    width: ${p => p.theme.space[16]};
+
     font-size: ${p => p.theme.fontSizes.xl};
     line-height: ${p => p.theme.fontSizes.xxl};
   }
@@ -64,7 +70,7 @@ export const ContactsComponentList = styled.ul`
   margin-top: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
 
-  width: ${p => p.theme.space[12]};
+  width: ${p => p.theme.space[9]};
 
   list-style-type: none;
 

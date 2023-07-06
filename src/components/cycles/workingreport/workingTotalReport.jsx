@@ -1,3 +1,5 @@
+import { FormattedMessage } from 'react-intl';
+
 import {
   TotalReportUnitListItemSpan,
   TotalReportUnitListItemText,
@@ -71,25 +73,25 @@ const WorkingTotalReport = ({ cycles }) => {
           <TotalReportUnitListItemTextDate></TotalReportUnitListItemTextDate>
           <TotalReportUnitListItemTextDate></TotalReportUnitListItemTextDate>
           <TotalReportUnitListItemText>
-            total working time, h:m{' '}
+            <FormattedMessage id="total_time" />
             <TotalReportUnitListItemSpan>
               {countTotalWorkingTime(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
           <TotalReportUnitListItemText>
-            total generation power, kW
+            <FormattedMessage id="total_gen" />
             <TotalReportUnitListItemSpan>
               {countTotalGenerationPower(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
           <TotalReportUnitListItemText>
-            total refueling, litre
+            <FormattedMessage id="total_refueling" />
             <TotalReportUnitListItemSpan>
               {countTotalRefueling(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
           <TotalReportUnitListItemText>
-            total changing oil, times
+            <FormattedMessage id="total_reoiling" />
             <TotalReportUnitListItemSpan>
               {countTotalChangeOil(cycles) || '---'}
             </TotalReportUnitListItemSpan>
