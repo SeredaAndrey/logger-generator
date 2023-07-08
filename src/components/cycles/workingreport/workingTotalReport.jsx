@@ -1,10 +1,12 @@
 import { FormattedMessage } from 'react-intl';
+import * as XLSX from 'xlsx';
 
 import {
   TotalReportUnitListItemSpan,
   TotalReportUnitListItemText,
   TotalReportUnitListItemTextDate,
   TotalReportUnitTitle,
+  WorkingTotalExportXLSXButton,
 } from './workingTotalReportStyled';
 
 const countTotalWorkingTime = cycles => {
@@ -66,6 +68,15 @@ const countTotalChangeOil = cycles => {
 };
 
 const WorkingTotalReport = ({ cycles }) => {
+  const handleOnExport = () => {
+    var wb = XLSX.utils.book_new(),
+      ws = XLSX.utils.json_to_sheet(cycles);
+
+    XLSX.utils.book_append_sheet(wb, ws, 'report');
+
+    XLSX.writeFile(wb, 'report.xlsx');
+  };
+
   return (
     <>
       {cycles && (
@@ -96,6 +107,9 @@ const WorkingTotalReport = ({ cycles }) => {
               {countTotalChangeOil(cycles) || '---'}
             </TotalReportUnitListItemSpan>
           </TotalReportUnitListItemText>
+          <WorkingTotalExportXLSXButton onClick={handleOnExport}>
+            Export XLSX
+          </WorkingTotalExportXLSXButton>
         </TotalReportUnitTitle>
       )}
     </>
