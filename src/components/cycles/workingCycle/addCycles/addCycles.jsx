@@ -2,18 +2,19 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { addWorkingCycle } from 'serviceAPI/APIservice';
 import CycleForm from '../form/CycleForm';
+import { addWorkingCycle } from 'redux/cycleOperation';
+import { useDispatch } from 'react-redux';
 
 const AddCyclesPage = () => {
   const [cycle, setCycle] = useState({});
   const navigation = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const startDateTime = new Date(cycle.timestampStart);
     const stopDateTime = new Date(cycle.timestampStop);
 
-    console.log(stopDateTime.getTime() - startDateTime.getTime());
     setCycle({
       ...cycle,
       workingTimeOfCycle: stopDateTime.getTime() - startDateTime.getTime(),
@@ -22,10 +23,8 @@ const AddCyclesPage = () => {
   }, [cycle.timestampStart, cycle.timestampStop]);
 
   const handleSubmit = async e => {
-    console.log(cycle);
-
     e.preventDefault();
-    const data = await addWorkingCycle(cycle);
+    const data = await dispatch(addWorkingCycle(cycle));
     setCycle({});
     data
       ? navigation('/cycles/workingreport')

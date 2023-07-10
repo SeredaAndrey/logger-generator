@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from './authSlice';
 import { settingsReducer } from './settingSlice';
+import { cycleReducer } from './cycleSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     settings: settingsReducer,
+    cycle: cycleReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

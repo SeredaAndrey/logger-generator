@@ -2,6 +2,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+export const fetchUserData = createAsyncThunk(
+  'setting/user/fetch',
+  async (credential, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('api/owner');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchGeneratorSetting = createAsyncThunk(
   'setting/gen/fetch',
   async (credential, { rejectWithValue }) => {

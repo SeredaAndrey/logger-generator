@@ -6,18 +6,19 @@ import CycleForm from '../form/CycleForm';
 import {
   fetchSingleWorkingCycle,
   patchWorkingCycleUnit,
-} from 'serviceAPI/APIservice';
+} from 'redux/cycleOperation';
+import { useDispatch } from 'react-redux';
 
 const PatchCyclesPage = () => {
   const [cycle, setCycle] = useState({});
   const navigation = useNavigate();
   const params = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const startDateTime = new Date(cycle.timestampStart);
     const stopDateTime = new Date(cycle.timestampStop);
 
-    console.log(stopDateTime.getTime() - startDateTime.getTime());
     setCycle({
       ...cycle,
       workingTimeOfCycle: stopDateTime.getTime() - startDateTime.getTime(),
@@ -28,23 +29,29 @@ const PatchCyclesPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchSingleWorkingCycle(params.id);
+        const data = await dispatch(fetchSingleWorkingCycle(params.id));
+        console.log(data.payload.WorkingCycle.data);
         setCycle({
-          ...(data.WorkingCycle.data.volumeElecricalGeneration !== null && {
+          ...(data.payload.WorkingCycle.data.volumeElecricalGeneration !==
+            null && {
             volumeElecricalGeneration:
-              data.WorkingCycle.data.volumeElecricalGeneration,
+              data.payload.WorkingCycle.data.volumeElecricalGeneration,
           }),
-          ...(data.WorkingCycle.data.refueling !== null && {
-            refueling: data.WorkingCycle.data.refueling,
+          ...(data.payload.WorkingCycle.data.refueling !== null && {
+            refueling: data.payload.WorkingCycle.data.refueling,
           }),
-          ...(data.WorkingCycle.data.changeOil !== null && {
-            changeOil: data.WorkingCycle.data.changeOil,
+          ...(data.payload.WorkingCycle.data.changeOil !== null && {
+            changeOil: data.payload.WorkingCycle.data.changeOil,
           }),
-          ...(data.WorkingCycle.data.timestampStart !== null && {
-            timestampStart: new Date(data.WorkingCycle.data.timestampStart),
+          ...(data.payload.WorkingCycle.data.timestampStart !== null && {
+            timestampStart: new Date(
+              data.payload.WorkingCycle.data.timestampStart
+            ),
           }),
-          ...(data.WorkingCycle.data.timestampStop !== null && {
-            timestampStop: new Date(data.WorkingCycle.data.timestampStop),
+          ...(data.payload.WorkingCycle.data.timestampStop !== null && {
+            timestampStop: new Date(
+              data.payload.WorkingCycle.data.timestampStop
+            ),
           }),
         });
       } catch (error) {
@@ -57,7 +64,9 @@ const PatchCyclesPage = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const data = await patchWorkingCycleUnit({ cycle, id: params.id });
+    const data = await dispatch(
+      patchWorkingCycleUnit({ cycle, id: params.id })
+    );
     setCycle({});
     data
       ? navigation('/cycles/workingreport')

@@ -59,7 +59,7 @@ const countTotalChangeOil = cycles => {
   let totalChangeOil = 0;
 
   cycles.forEach(item => {
-    if (item.refueling) {
+    if (item.changeOil) {
       totalChangeOil += 1;
     }
   });

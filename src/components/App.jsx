@@ -34,10 +34,14 @@ import PatchCyclesPage from './cycles/workingCycle/patchCycles/patchCycles';
 
 import { LOCALES } from 'i18n/locales';
 import { messages } from 'i18n/messages';
+import { getSettingIsLoading } from 'redux/settingsSelector';
+import { getCycleIsLoading } from 'redux/cycleSelector';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isAuthLoading = useSelector(getIsLoading);
+  const isSettingLoading = useSelector(getSettingIsLoading);
+  const isCycleLoading = useSelector(getCycleIsLoading);
   const language = useSelector(getUserLanguage);
 
   useEffect(() => {
@@ -79,7 +83,7 @@ export const App = () => {
             pauseOnHover
             theme="colored"
           />
-          {isLoading && (
+          {(isAuthLoading || isSettingLoading || isCycleLoading) && (
             <SpinnerContainer>
               <RotatingLines
                 strokeColor="blue"

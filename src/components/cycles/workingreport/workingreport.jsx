@@ -6,10 +6,6 @@ import shortid from 'shortid';
 import { FaGasPump, FaOilCan, FaRegClock } from 'react-icons/fa';
 import { ImPower } from 'react-icons/im';
 
-import {
-  deleteWorkingCycleUnit,
-  fetchWorkingCycles,
-} from 'serviceAPI/APIservice';
 import WorkingReportItem from './reportUnit';
 
 import {
@@ -26,11 +22,17 @@ import {
 import FilterCycles from '../filterCycles/filterCycles';
 import WorkingTotalReport from './workingTotalReport';
 import SortingButtonComponent from '../sortingButton/sortingButton';
+import {
+  deleteWorkingCycleUnit,
+  fetchWorkingCycles,
+} from 'redux/cycleOperation';
+import { useDispatch } from 'react-redux';
 
 const WorkingReportPage = () => {
   const [cycles, setCycles] = useState();
   const sortingId = shortid.generate();
   const filteringId = shortid.generate();
+  const dispatch = useDispatch();
 
   const [filtering, setFiltering] = useState(() => {
     const currentDate = new Date();
@@ -58,17 +60,18 @@ const WorkingReportPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchWorkingCycles(filtering, sorting);
-        setCycles(data.data.WorkingCycles);
+        const data = await dispatch(fetchWorkingCycles({ filtering, sorting }));
+        data && setCycles(data.payload.data.WorkingCycles);
       } catch (error) {
         console.log(error);
       }
     }
     fetchData();
-  }, [filtering, sorting]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filtering, sorting, dispatch]);
 
   const deleteCycle = async id => {
-    await deleteWorkingCycleUnit(id);
+    dispatch(deleteWorkingCycleUnit(id));
 
     const updatedCycles = cycles.filter(cycle => cycle._id !== id);
     setCycles(updatedCycles);

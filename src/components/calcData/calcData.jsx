@@ -1,29 +1,33 @@
 import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { fetchCalcData } from 'serviceAPI/APIservice';
 import {
   CalcDataContainer,
   CalcDataString,
   CalcDataStringTitle,
   CalcDataTitle,
 } from './calcDataStyled';
+import { fetchCalcData } from 'redux/cycleOperation';
+import { useDispatch } from 'react-redux';
 
 const CalcData = () => {
   const [calcData, setCalcData] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchCalcData();
+        const data = await dispatch(fetchCalcData());
 
-        data && setCalcData(data);
+        console.log(data);
+
+        data && setCalcData(data.payload);
       } catch (error) {
         console.log(error);
       }
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   const calculateTime = totalWorkingTime => {
     const hours = Math.floor(totalWorkingTime / (1000 * 60 * 60));

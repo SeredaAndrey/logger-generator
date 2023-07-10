@@ -6,6 +6,7 @@ const {
   fetchGeneralSetting,
   createNewGeneralSetting,
   patchGeneralSetting,
+  fetchUserData,
 } = require('./settingOperations');
 
 const initialState = {
@@ -34,6 +35,16 @@ const settingsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      //fetch User Settings
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(fetchUserData.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserData.rejected, (state, action) => {
+        state.isLoading = false;
+      })
       //fetch Generator Settings
       .addCase(fetchGeneratorSetting.fulfilled, (state, action) => {
         state.brand = action.payload.settingGenerator.data.brand;

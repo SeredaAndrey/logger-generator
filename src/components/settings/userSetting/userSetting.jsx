@@ -5,12 +5,9 @@ import { FormattedMessage } from 'react-intl';
 
 import shortid from 'shortid';
 
-import {
-  getUserAvatar,
-  getUserLanguage,
-  getUserToken,
-} from 'redux/authSelector';
-import { fetchUserData } from 'serviceAPI/APIservice';
+import { fetchUserData } from 'redux/settingOperations';
+
+import { getUserAvatar, getUserLanguage } from 'redux/authSelector';
 import { updateUserData, uploadAvatar } from 'redux/userOperations';
 import {
   UserAvatarAddButton,
@@ -28,7 +25,6 @@ import {
 } from './userSettingStyled';
 
 const UserSettingPage = () => {
-  const token = useSelector(getUserToken);
   const [firstName, setFirstName] = useState('');
   const [secondName, setSecondName] = useState('');
   const [email, setEmail] = useState('');
@@ -48,11 +44,11 @@ const UserSettingPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { userData } = await fetchUserData(token);
-        setFirstName(userData.firstName);
-        setSecondName(userData.seccondName);
-        setEmail(userData.email);
-        setAvatarUrl(userData.avatarUrl);
+        const userData = await dispatch(fetchUserData());
+        userData && setFirstName(userData.payload.userData.firstName);
+        userData && setSecondName(userData.payload.userData.seccondName);
+        userData && setEmail(userData.payload.userData.email);
+        userData && setAvatarUrl(userData.payload.userData.avatarUrl);
       } catch (e) {
         console.log(e);
       }
