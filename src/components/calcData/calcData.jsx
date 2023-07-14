@@ -19,9 +19,8 @@ const CalcData = () => {
       try {
         const data = await dispatch(fetchCalcData());
 
-        console.log(data);
-
-        data && setCalcData(data.payload);
+        // console.log(data);
+        if (data.payload.calculationData) data && setCalcData(data.payload);
       } catch (error) {
         console.log(error);
       }
