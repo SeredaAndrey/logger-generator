@@ -60,13 +60,18 @@ export const messages = {
     show_to: 'to:',
 
     calc_data: 'Calculation data',
-    calc_total_gen: 'generated electricity for the entire time of operation',
-    calc_month_gen: 'generated electricity for the last month operation',
+    calc_total_gen:
+      'the amount of generated electricity for the entire period of operation and its estimated cost',
+    calc_month_gen:
+      'the amount of generated electricity and its estimated cost for the current month',
     calc_total_run: 'total generator run time',
     calc_month_run: 'generator run time last month',
     calc_oil_change: 'time until next oil change',
+    calc_fuel_consumpt: 'average fuel consumption',
     h_m: '(hours:minutes)',
     kw: '(kW)',
+    uahKwt: '(UAH/kW*h)',
+    l_hour: '(l/hours)',
 
     total_time: 'total working time (h:m)',
     total_gen: 'total generation power (kW)',
@@ -133,13 +138,17 @@ export const messages = {
 
     calc_data: 'Глобальные данные',
     calc_total_gen:
-      'количество сгенерированной электоэнергии за весь период работы',
-    calc_month_gen: 'количество сгенерированной электоэнергии за текущий месяц',
+      'количество сгенерированной электоэнергии за весь период работы и ее расчетная стоимость',
+    calc_month_gen:
+      'количество сгенерированной электоэнергии за текущий месяц и ее расчетная стоимость',
     calc_total_run: 'общее время работы генератора за весь период',
     calc_month_run: 'время работы генератора за текущий месяц',
     calc_oil_change: 'время до следующей замены масла',
+    calc_fuel_consumpt: 'среднее потребление топлива',
     h_m: '(часы:минуы)',
     kw: '(кВт)',
+    uahKwt: '(грн/кВт*ч)',
+    l_hour: '(литр/час)',
 
     total_time: 'общее время работы (ч:м)',
     total_gen: 'общая генерация энергии (кВт)',
@@ -206,13 +215,17 @@ export const messages = {
 
     calc_data: 'Глобальні данні',
     calc_total_gen:
-      'кількість сгенерованої електоенергії за весь період роботи',
-    calc_month_gen: 'кількість сгенерованої електоенергії за поточний місяць',
+      'кількість сгенерованої електоенергії за весь період роботи та її розрахункова вартість',
+    calc_month_gen:
+      'кількість сгенерованої електоенергії за поточний місяць та її розрахункова вартість',
     calc_total_run: 'загальний час роботи генератора за весь час',
     calc_month_run: 'час роботи генератора за поточний місяць',
     calc_oil_change: 'час до наступної заміни мастила',
+    calc_fuel_consumpt: 'середне споживання палива',
     h_m: '(години:хвилини)',
     kw: '(кВт)',
+    uahKwt: '(грн/кВт*г)',
+    l_hour: '(литр/година)',
 
     total_time: 'загальний час роботи (г:х)',
     total_gen: 'загальна генерація енергії (кВт)',

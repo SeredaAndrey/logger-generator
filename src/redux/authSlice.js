@@ -49,9 +49,7 @@ const authSlice = createSlice({
       //Verification
       .addCase(verification.fulfilled, (state, action) => {
         state.email = action.payload.owner.owner.email;
-        state.name =
-          action.payload.owner.owner.firstName ||
-          action.payload.owner.owner.email;
+        state.name = action.payload.owner.owner.firstName || null;
         state.avatar = action.payload.owner.owner.avatarUrl;
         state.inerfaceLanguage = action.payload.owner.owner.inerfaceLanguage;
         state.token = action.payload.owner.token;

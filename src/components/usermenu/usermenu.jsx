@@ -22,7 +22,7 @@ const UserMenu = () => {
   return (
     <UserMenuContainer>
       <UserMenuTitle>
-        <FormattedMessage id="welcome" />, {name}{' '}
+        <FormattedMessage id="welcome" />, {name && name}{' '}
       </UserMenuTitle>
       <UserMenuImageContainer>
         <UserMenuImage

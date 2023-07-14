@@ -52,7 +52,11 @@ const CalcData = () => {
             {!calcData.calculationData.data.totalGeneration
               ? '---'
               : calcData.calculationData.data.totalGeneration}{' '}
-            <FormattedMessage id="kw" />
+            <FormattedMessage id="kw" />{' '}
+            {!calcData.calculationData.data.totalCostGeneration
+              ? '---'
+              : calcData.calculationData.data.totalCostGeneration}{' '}
+            <FormattedMessage id="uahKwt" />
           </CalcDataString>
           <CalcDataStringTitle>
             <FormattedMessage id="calc_month_gen" />
@@ -61,7 +65,11 @@ const CalcData = () => {
             {!calcData.calculationData.data.totalGenerationMonth
               ? '---'
               : calcData.calculationData.data.totalGenerationMonth}{' '}
-            <FormattedMessage id="kw" />
+            <FormattedMessage id="kw" />{' '}
+            {!calcData.calculationData.data.totalCostGenerationMonth
+              ? '---'
+              : calcData.calculationData.data.totalCostGenerationMonth}{' '}
+            <FormattedMessage id="uahKwt" />
           </CalcDataString>
           <CalcDataStringTitle>
             <FormattedMessage id="calc_total_run" />
@@ -85,6 +93,17 @@ const CalcData = () => {
                 )}{' '}
             <FormattedMessage id="h_m" />
           </CalcDataString>
+
+          <CalcDataStringTitle>
+            <FormattedMessage id="calc_fuel_consumpt" />
+          </CalcDataStringTitle>
+          <CalcDataString>
+            {!calcData.calculationData.data.totalAverageFuelConsumption
+              ? '---'
+              : calcData.calculationData.data.totalAverageFuelConsumption}{' '}
+            <FormattedMessage id="l_hour" />
+          </CalcDataString>
+
           <CalcDataStringTitle>
             <FormattedMessage id="calc_oil_change" />
           </CalcDataStringTitle>
