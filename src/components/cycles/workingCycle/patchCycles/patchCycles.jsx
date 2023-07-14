@@ -30,7 +30,7 @@ const PatchCyclesPage = () => {
     async function fetchData() {
       try {
         const data = await dispatch(fetchSingleWorkingCycle(params.id));
-        console.log(data.payload.WorkingCycle.data);
+        // console.log(data.payload.WorkingCycle.data);
         setCycle({
           ...(data.payload.WorkingCycle.data.volumeElecricalGeneration !==
             null && {
