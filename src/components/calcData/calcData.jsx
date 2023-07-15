@@ -105,6 +105,16 @@ const CalcData = () => {
           </CalcDataString>
 
           <CalcDataStringTitle>
+            <FormattedMessage id="calc_work_cost" />
+          </CalcDataStringTitle>
+          <CalcDataString>
+            {!calcData.calculationData.data.totalAverageWorkingCost
+              ? '---'
+              : calcData.calculationData.data.totalAverageWorkingCost}{' '}
+            <FormattedMessage id="uah_h" />
+          </CalcDataString>
+
+          <CalcDataStringTitle>
             <FormattedMessage id="calc_oil_change" />
           </CalcDataStringTitle>
           <CalcDataString>
