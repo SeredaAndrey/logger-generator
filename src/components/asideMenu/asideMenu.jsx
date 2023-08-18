@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { FcAndroidOs } from 'react-icons/fc';
 
 import {
   AsideMenuContainer,
@@ -8,10 +9,12 @@ import {
   AsidePrimaryListItem,
   AsideSeccondaryListContainer,
   AsideSeccondaryListItem,
+  AsideSeccondaryListItemDown,
   AsideTitle,
 } from './asideMenuStyled';
 import { getIsLoggedIn } from 'redux/authSelector';
 import CalcData from 'components/calcData/calcData';
+import { developerContactData } from 'assets/developerContacts';
 
 const AsideMenu = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -64,6 +67,16 @@ const AsideMenu = () => {
                 </AsideSeccondaryListItem>
               </AsideSeccondaryListContainer>
             </AsidePrimaryListItem>
+            <AsideSeccondaryListItemDown>
+              <a href={developerContactData.androidAPP}>
+                <div>
+                  <FcAndroidOs size={30}></FcAndroidOs>
+                </div>
+                <p>
+                  <FormattedMessage id="downloadAPP" />
+                </p>
+              </a>
+            </AsideSeccondaryListItemDown>
           </AsidePrimaryListContainer>
           <CalcData />
         </AsideMenuContainer>

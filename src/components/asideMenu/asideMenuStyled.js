@@ -166,3 +166,54 @@ export const AsideSeccondaryListItem = styled.li`
     }
   }
 `;
+
+export const AsideSeccondaryListItemDown = styled.li`
+  list-style-type: none;
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding: ${p => p.theme.space[0]};
+
+  > a {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    margin: ${p => p.theme.space[0]};
+
+    font-family: 'Jura';
+    font-style: normal;
+    font-weight: ${p => p.theme.fontWeights.medium};
+    font-size: ${p => p.theme.fontSizes.xs};
+    line-height: ${p => p.theme.fontSizes.s};
+    text-transform: uppercase;
+
+    @media screen and (min-width: ${p => p.theme.space[17]}) {
+      font-size: ${p => p.theme.fontSizes.s};
+      line-height: ${p => p.theme.fontSizes.m};
+    }
+    @media screen and (min-width: ${p => p.theme.space[18]}) {
+      font-size: ${p => p.theme.fontSizes.m};
+      line-height: ${p => p.theme.fontSizes.l};
+    }
+
+    cursor: pointer;
+
+    transition: 250ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color;
+
+    color: ${p => p.theme.colors.colorTextDark};
+
+    &:hover,
+    &:focus {
+      color: ${p => p.theme.colors.colorTextHover};
+    }
+    .active {
+      color: ${p => p.theme.colors.colorTextHover};
+    }
+  }
+`;

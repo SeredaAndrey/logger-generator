@@ -115,8 +115,8 @@ export const ContactsComponentItemLink = styled.a`
   }
 
   @media screen and (min-width: ${p => p.theme.space[17]}) {
-    height: ${p => p.theme.space[5]};
-    width: ${p => p.theme.space[5]};
+    width: calc(${p => p.theme.space[4]} + ${p => p.theme.space[3]});
+    height: calc(${p => p.theme.space[4]} + ${p => p.theme.space[3]});
   }
   @media screen and (min-width: ${p => p.theme.space[18]}) {
     height: ${p => p.theme.space[5]};

@@ -79,6 +79,8 @@ export const messages = {
     total_gen: 'total generation power (kW)',
     total_refueling: 'total refueling (litre)',
     total_reoiling: 'total changing oil (times)',
+
+    downloadAPP: 'download android APK',
   },
   [LOCALES.RUSSIAN]: {
     welcome: 'Добро пожаловать',
@@ -158,6 +160,8 @@ export const messages = {
     total_gen: 'общая генерация энергии (кВт)',
     total_refueling: 'общее количество топлива (литр)',
     total_reoiling: 'замена масла (раз)',
+
+    downloadAPP: 'скачать android приложение',
   },
   [LOCALES.UKRAINIAN]: {
     welcome: 'Ласкаво просимо',
@@ -237,5 +241,7 @@ export const messages = {
     total_gen: 'загальна генерація енергії (кВт)',
     total_refueling: 'загальна кількість палива (літр)',
     total_reoiling: 'заміна мастила (разів)',
+
+    downloadAPP: 'скачати android застосунок',
   },
 };
